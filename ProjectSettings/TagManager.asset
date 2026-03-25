@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Langit
+    uniqueID: 273040021
+    locked: 0
+  - name: Awan
+    uniqueID: 106534687
+    locked: 0
+  - name: AirBelakang
+    uniqueID: 2936832847
+    locked: 0
+  - name: PulauJauh
+    uniqueID: 748361609
+    locked: 0
+  - name: PulauUtama
+    uniqueID: 3871439513
+    locked: 0
+  - name: AirTengah
+    uniqueID: 4250520777
+    locked: 0
+  - name: AirDepan
+    uniqueID: 1396241391
+    locked: 0
+  - name: Player
+    uniqueID: 3873595335
+    locked: 0
+  - name: PulauTerdepan
+    uniqueID: 3770472879
+    locked: 0
