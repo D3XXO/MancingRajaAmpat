@@ -1,30 +1,21 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    [SerializeField] float moveSpeed;
     private float moveInput = 0f;
 
-    void Start()
+    void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
+        if (moveInput != 0)
+        {
+            transform.Translate(Vector2.right * moveInput * moveSpeed * Time.deltaTime);
+        }
     }
 
-    void FixedUpdate()
+    public void StartMoving(float direction)
     {
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-    }
-
-    public void MoveRight()
-    {
-        moveInput = 1f;
-    }
-
-   
-    public void MoveLeft()
-    {
-        moveInput = -1f;
+        moveInput = direction;
     }
 
     public void StopMoving()

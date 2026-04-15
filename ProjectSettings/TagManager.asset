@@ -41,11 +41,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Langit
+  - name: LangitLatar
     uniqueID: 273040021
     locked: 0
-  - name: Awan
-    uniqueID: 106534687
+  - name: LangitTengah
+    uniqueID: 3647503149
+    locked: 0
+  - name: LangitDepan
+    uniqueID: 401896235
     locked: 0
   - name: AirBelakang
     uniqueID: 2936832847
@@ -53,18 +56,21 @@ TagManager:
   - name: PulauJauh
     uniqueID: 748361609
     locked: 0
-  - name: PulauUtama
+  - name: PulauTengah
     uniqueID: 3871439513
     locked: 0
   - name: AirTengah
     uniqueID: 4250520777
     locked: 0
-  - name: AirDepan
-    uniqueID: 1396241391
+  - name: PulauTerdepan
+    uniqueID: 3770472879
+    locked: 0
+  - name: Homestay
+    uniqueID: 1032789961
     locked: 0
   - name: Player
     uniqueID: 3873595335
     locked: 0
-  - name: PulauTerdepan
-    uniqueID: 3770472879
+  - name: Canvas
+    uniqueID: 3564756679
     locked: 0
