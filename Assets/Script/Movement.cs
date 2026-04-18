@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (moveInput != 0)
+        if (this.enabled && moveInput != 0)
         {
             transform.Translate(Vector2.right * moveInput * moveSpeed * Time.deltaTime);
         }
