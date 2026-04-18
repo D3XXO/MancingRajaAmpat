@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 0
@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: TebingNew_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 218
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838c4a961c2fa9342abd73349f1a3bd5
+      internalID: -1925167806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_1
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 5
+        width: 243
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59efa5c1d744c540886daa7591b607e
+      internalID: -2061987794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_2
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 6
+        width: 147
+        height: 239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83bf69843bbe3a419e6dc020a200f3a
+      internalID: -2079397774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_3
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 0
+        width: 196
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 085a70ff52605754da44767558c36d5d
+      internalID: -85655207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_4
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 0
+        width: 174
+        height: 218
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0d462a0267caa49b6aa1c8d10c3c4d
+      internalID: 364294851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_5
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 2
+        width: 270
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f18298402317b646b6b523083c10944
+      internalID: -2044759237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_6
+      rect:
+        serializedVersion: 2
+        x: 1364
+        y: 2
+        width: 294
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a595de6ce88b62842860b2ac97c78d22
+      internalID: 1495260783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TebingNew_7
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 12
+        width: 310
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14905b45ac3c5e542b251992ab7fe03b
+      internalID: -2143867025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TebingNew_0: -1925167806
+      TebingNew_1: -2061987794
+      TebingNew_2: -2079397774
+      TebingNew_3: -85655207
+      TebingNew_4: 364294851
+      TebingNew_5: -2044759237
+      TebingNew_6: 1495260783
+      TebingNew_7: -2143867025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
