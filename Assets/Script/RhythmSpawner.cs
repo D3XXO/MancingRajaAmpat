@@ -12,12 +12,14 @@ public class RhythmSpawner : MonoBehaviour
     [Header("Systems")]
     public RhythmManager rhythmManager;
 
+    private FishData _currentFish;
     private bool _isSpawning = false;
     private Coroutine _spawnRoutine;
 
-    public void StartSpawning()
+    public void StartSpawning(FishData fish)
     {
         if (_isSpawning) return;
+        _currentFish = fish;
         _isSpawning = true;
         _spawnRoutine = StartCoroutine(SpawnRoutine());
     }
@@ -43,12 +45,14 @@ public class RhythmSpawner : MonoBehaviour
             newNoteObj.transform.position = spawnPoint.position;
 
             RhythmNote noteComponent = newNoteObj.GetComponent<RhythmNote>();
+            noteComponent.moveSpeed = _currentFish.moveSpeed;
 
             if (rhythmManager != null)
             {
                 rhythmManager.allActiveNotes.Add(noteComponent);
             }
-            
+
+            float randomInterval = Random.Range(_currentFish.minSpawnInterval, _currentFish.maxSpawnInterval);
             yield return new WaitForSeconds(spawnInterval);
         }
     }

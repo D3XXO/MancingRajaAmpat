@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerStateManager : MonoBehaviour
     public MovementState MovementState { get; private set; }
     public WaitingState WaitingState { get; private set; }
     public FishingState FishingState { get; private set; }
+    public List<FishData> availableFish;
 
     void Awake()
     {

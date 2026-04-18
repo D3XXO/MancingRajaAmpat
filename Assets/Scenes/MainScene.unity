@@ -185,11 +185,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 705376056}
-  m_Father: {fileID: 1201952077}
+  m_Father: {fileID: 1255034276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 1337.6718, y: 80.495735}
+  m_AnchoredPosition: {x: -252, y: 170.00003}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296955633
@@ -2414,7 +2414,6 @@ RectTransform:
   m_Children:
   - {fileID: 1807978670}
   - {fileID: 1960733181}
-  - {fileID: 296955632}
   m_Father: {fileID: 1255034276}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2517,6 +2516,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1201952077}
+  - {fileID: 296955632}
   - {fileID: 1129450093}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3425,6 +3425,8 @@ MonoBehaviour:
   fishingButton: {fileID: 296955631}
   fishingProgressBar: {fileID: 1303236654}
   rhythmSpawner: {fileID: 1129450095}
+  availableFish:
+  - {fileID: 11400000, guid: 8a682860d6b4d2c44b64d10db8d56e9d, type: 2}
 --- !u!1 &1737152798
 GameObject:
   m_ObjectHideFlags: 0

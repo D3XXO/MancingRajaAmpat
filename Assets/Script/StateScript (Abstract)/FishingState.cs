@@ -6,6 +6,7 @@ public class FishingState : IPlayerState
     private PlayerStateManager _manager;
     private bool _isTugging;
     private float _currentProgress = 0f;
+    private FishData _activeFish;
 
     public FishingState(PlayerStateManager manager) => _manager = manager;
 
@@ -21,7 +22,11 @@ public class FishingState : IPlayerState
         _manager.fishingButton.SetActive(false);
         _manager.movementButtonsParent.SetActive(false);
 
-        if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StartSpawning();
+        if (_manager.rhythmSpawner != null)
+        {
+            _activeFish = _manager.availableFish[Random.Range(0, _manager.availableFish.Count)];
+            _manager.rhythmSpawner.StartSpawning(_activeFish);
+        }
     }
 
     public void ChangeProgress(float amount)
@@ -42,7 +47,9 @@ public class FishingState : IPlayerState
 
     private void WinFishing()
     {
-        Debug.Log("Ikan Tertangkap!");
+        string namaIkan = (_activeFish != null) ? _activeFish.fishName : "Ikan Misterius";
+        Debug.Log("Ikan " + namaIkan + " Tertangkap!");
+
         _manager.SwitchState(_manager.MovementState);
     }
 
@@ -63,6 +70,8 @@ public class FishingState : IPlayerState
         _manager.fishingMinigamePanel.SetActive(false);
         _manager.fishingButton.SetActive(true);
         if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StopSpawning();
+
+        _activeFish = null;
     }
 
     public void SetTugging(bool status) => _isTugging = status;
