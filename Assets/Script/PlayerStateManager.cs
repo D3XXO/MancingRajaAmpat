@@ -26,6 +26,10 @@ public class PlayerStateManager : MonoBehaviour
     public Image caughtFishImage;
     public Text caughtFishText;
 
+    [Header("Value Score")]
+    public int totalValueScore;
+    public Text valueScoreText;
+
     public MovementState MovementState { get; private set; }
     public WaitingState WaitingState { get; private set; }
     public FishingState FishingState { get; private set; }
@@ -42,7 +46,11 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
+        totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
+        UpdateVSText();
+
         SwitchState(MovementState);
+
         if (fishingMinigamePanel != null) fishingMinigamePanel.SetActive(false);
     }
 
@@ -88,5 +96,21 @@ public class PlayerStateManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         caughtFishPanel.SetActive(false);
+    }
+
+    public void AddValueScore(int amount)
+    {
+        totalValueScore += amount;
+        PlayerPrefs.SetInt("TotalValueScore", totalValueScore);
+        PlayerPrefs.Save();
+        UpdateVSText();
+    }
+
+    private void UpdateVSText()
+    {
+        if (valueScoreText != null)
+        {
+            valueScoreText.text = "Score: " + totalValueScore;
+        }
     }
 }

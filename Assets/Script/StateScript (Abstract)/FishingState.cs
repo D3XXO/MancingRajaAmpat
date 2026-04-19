@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-
+using System.Collections.Generic;
 public class FishingState : IPlayerState
 {
     private PlayerStateManager _manager;
@@ -22,10 +21,27 @@ public class FishingState : IPlayerState
         _manager.fishingButton.SetActive(false);
         _manager.movementButtonsParent.SetActive(false);
 
-        if (_manager.rhythmSpawner != null)
+        if (_manager.rhythmSpawner != null && _manager.availableFish.Count > 0)
         {
-            _activeFish = _manager.availableFish[Random.Range(0, _manager.availableFish.Count)];
-            _manager.rhythmSpawner.StartSpawning(_activeFish);
+            List<FishData> catchableFish = new List<FishData>();
+
+            foreach (FishData fish in _manager.availableFish)
+            {
+                if (_manager.totalValueScore >= fish.minVSRequirement)
+                {
+                    catchableFish.Add(fish);
+                }
+            }
+
+            if (catchableFish.Count > 0)
+            {
+                _activeFish = catchableFish[Random.Range(0, catchableFish.Count)];
+                _manager.rhythmSpawner.StartSpawning(_activeFish);
+            }
+            else
+            {
+                Debug.LogWarning("Tidak ada ikan yang tersedia untuk skor saat ini!");
+            }
         }
     }
 
@@ -52,6 +68,7 @@ public class FishingState : IPlayerState
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
             PlayerPrefs.Save();
 
+            _manager.AddValueScore(_activeFish.vsValue);
             _manager.ShowCaughtFish(_activeFish);
         }
 

@@ -16,4 +16,8 @@ public class FishData : ScriptableObject
     [Header("Spawn Interval Range")]
     public float minSpawnInterval;
     public float maxSpawnInterval;
+
+    [Header("Value Score Mechanics")]
+    public int minVSRequirement;
+    public int vsValue;
 }

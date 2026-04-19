@@ -19,3 +19,5 @@ MonoBehaviour:
   moveSpeed: 4
   minSpawnInterval: 0.7
   maxSpawnInterval: 0.9
+  minVSRequirement: 20
+  vsValue: 3
