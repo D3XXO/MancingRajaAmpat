@@ -47,8 +47,13 @@ public class FishingState : IPlayerState
 
     private void WinFishing()
     {
-        string namaIkan = (_activeFish != null) ? _activeFish.fishName : "Ikan Misterius";
-        Debug.Log("Ikan " + namaIkan + " Tertangkap!");
+        if (_activeFish != null)
+        {
+            PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
+            PlayerPrefs.Save();
+
+            _manager.ShowCaughtFish(_activeFish);
+        }
 
         _manager.SwitchState(_manager.MovementState);
     }
@@ -69,6 +74,8 @@ public class FishingState : IPlayerState
     {
         _manager.fishingMinigamePanel.SetActive(false);
         _manager.fishingButton.SetActive(true);
+        _manager.ensiklopediaButton.SetActive(true);
+
         if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StopSpawning();
 
         _activeFish = null;

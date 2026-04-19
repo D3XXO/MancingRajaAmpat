@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
-  m_Name: Ikan1
+  m_Name: Ikan3
   m_EditorClassIdentifier: 
-  fishName: IkanApaKek
-  moveSpeed: 3
-  minSpawnInterval: 1
-  maxSpawnInterval: 2
+  fishID: Ikan3
+  fishName: Cirrhilabrus Marinda
+  fishIcon: {fileID: 21300000, guid: 20a201e449a96f847bfe9c35af5c9619, type: 3}
+  description: Cirrhilabrus Marinda
+  moveSpeed: 4
+  minSpawnInterval: 0.7
+  maxSpawnInterval: 0.9

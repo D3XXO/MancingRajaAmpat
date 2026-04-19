@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d247847020110c745bc63103fe4c11e7
+guid: 4d949368467049c43890745864bf89bc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,133 +121,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: TebingMid_0
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 10
-        width: 247
-        height: 241
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59fe28bc709e54a49b02365dd834fea5
-      internalID: -597674890
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TebingMid_1
-      rect:
-        serializedVersion: 2
-        x: 302
-        y: 16
-        width: 375
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a28d0158461b7ef448b188fc70772d22
-      internalID: 5498245
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TebingMid_2
-      rect:
-        serializedVersion: 2
-        x: 694
-        y: 19
-        width: 230
-        height: 218
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b767f8fbe3335742a4967e569253b8b
-      internalID: 1719451034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TebingMid_3
-      rect:
-        serializedVersion: 2
-        x: 959
-        y: 23
-        width: 309
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f75aa22d54e437b4cae1e775866dd380
-      internalID: 1978850050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TebingMid_4
-      rect:
-        serializedVersion: 2
-        x: 1308
-        y: 18
-        width: 254
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f687ea9aa9ffec548989a9da8d080a29
-      internalID: -1262484991
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TebingMid_5
-      rect:
-        serializedVersion: 2
-        x: 1650
-        y: 22
-        width: 237
-        height: 218
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 04a7874784141aa428f06c4cbfc035ed
-      internalID: 1533948185
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -258,13 +132,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      TebingMid_0: -597674890
-      TebingMid_1: 5498245
-      TebingMid_2: 1719451034
-      TebingMid_3: 1978850050
-      TebingMid_4: -1262484991
-      TebingMid_5: 1533948185
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

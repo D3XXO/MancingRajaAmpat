@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerStateManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerStateManager : MonoBehaviour
     [Header("References")]
     public Movement movementComponent;
     public GameObject movementButtonsParent;
+    public GameObject ensiklopediaButton;
     public Animator PlayerAnimator;
 
     [Header("Fishing Minigame UI")]
@@ -18,6 +20,11 @@ public class PlayerStateManager : MonoBehaviour
 
     [Header("Minigame Systems")]
     public RhythmSpawner rhythmSpawner;
+
+    [Header("Caught Fish UI")]
+    public GameObject caughtFishPanel;
+    public Image caughtFishImage;
+    public Text caughtFishText;
 
     public MovementState MovementState { get; private set; }
     public WaitingState WaitingState { get; private set; }
@@ -64,5 +71,22 @@ public class PlayerStateManager : MonoBehaviour
         {
             SwitchState(MovementState);
         }
+    }
+
+    public void ShowCaughtFish(FishData fish)
+    {
+        StartCoroutine(DisplayFishRoutine(fish));
+    }
+
+    private IEnumerator DisplayFishRoutine(FishData fish)
+    {
+        caughtFishImage.sprite = fish.fishIcon;
+        caughtFishText.text = fish.fishName;
+
+        caughtFishPanel.SetActive(true);
+
+        yield return new WaitForSeconds(3f);
+
+        caughtFishPanel.SetActive(false);
     }
 }

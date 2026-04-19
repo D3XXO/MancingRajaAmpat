@@ -56,11 +56,14 @@ TagManager:
   - name: PulauJauh
     uniqueID: 748361609
     locked: 0
+  - name: AirTengah
+    uniqueID: 4250520777
+    locked: 0
   - name: PulauTengah
     uniqueID: 3871439513
     locked: 0
-  - name: AirTengah
-    uniqueID: 4250520777
+  - name: AirDepan
+    uniqueID: 3317175161
     locked: 0
   - name: PulauTerdepan
     uniqueID: 3770472879
@@ -70,6 +73,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3873595335
+    locked: 0
+  - name: PulauPalingDepan
+    uniqueID: 2357332439
     locked: 0
   - name: Canvas
     uniqueID: 3564756679

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "MancingRajaAmpat-main.sln"
+    "dotnet.defaultSolution": "MancingRajaAmpat.sln"
 }
