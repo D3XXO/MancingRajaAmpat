@@ -74,8 +74,14 @@ TagManager:
   - name: Player
     uniqueID: 3873595335
     locked: 0
+  - name: NPC
+    uniqueID: 2424130861
+    locked: 0
   - name: PulauPalingDepan
     uniqueID: 2357332439
+    locked: 0
+  - name: CanvasLatar
+    uniqueID: 3600690669
     locked: 0
   - name: Canvas
     uniqueID: 3564756679

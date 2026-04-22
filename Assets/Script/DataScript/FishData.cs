@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Fish Data", menuName = "Fishing/Fish Data")]
+[CreateAssetMenu(fileName = "New Fish Data")]
 public class FishData : ScriptableObject
 {
     public string fishID;
