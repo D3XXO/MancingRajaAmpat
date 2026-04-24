@@ -77,7 +77,6 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
-        Debug.Log("Ikan Lepas!");
         _manager.SwitchState(_manager.MovementState);
     }
 

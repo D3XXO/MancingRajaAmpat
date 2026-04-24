@@ -34,5 +34,6 @@ public class WaitingState : IPlayerState
     public void Exit()
     {
         _manager.PlayerAnimator.ResetTrigger("PlayerCast");
+        _manager.ensiklopediaButton.SetActive(true);
     }
 }

@@ -10,21 +10,10 @@ public class DialogueManager : MonoBehaviour
     public PlayerStateManager playerManager;
 
     private Queue<string> _sentences = new Queue<string>();
-    private bool _isDialogueActive = false;
-
-    void Start()
-    {
-        if (dialoguePanel != null)
-        {
-            gameObject.SetActive(false);
-        }
-    }
 
     public void StartDialogue(DialogueData data)
     {
-        _isDialogueActive = true;
         dialoguePanel.SetActive(true);
-
         TogglePlayerUI(false);
 
         int randomIndex = Random.Range(0, data.dialogueGroups.Length);
@@ -53,9 +42,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        _isDialogueActive = false;
         dialoguePanel.SetActive(false);
-
         TogglePlayerUI(true);
     }
 

@@ -6,7 +6,6 @@ public class NPCInteraction : MonoBehaviour
     public DialogueData npcDialogue;
     public GameObject interactButton;
     private DialogueManager _dialogueManager;
-    private bool _isPlayerNear = false;
 
     void Start()
     {
@@ -18,7 +17,6 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _isPlayerNear = true;
             interactButton.SetActive(true);
             
             interactButton.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -30,7 +28,6 @@ public class NPCInteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _isPlayerNear = false;
             if (interactButton != null)
             {
                 interactButton.SetActive(false);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BackgroundCycle : MonoBehaviour
+public class BackgroundController : MonoBehaviour
 {
     [SerializeField] private GameObject cam;
     [SerializeField] private float parallaxEffect;
