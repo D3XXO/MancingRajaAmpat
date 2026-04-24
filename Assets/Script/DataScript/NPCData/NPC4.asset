@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0aa73c25086ea9499625e6b3ef777a6, type: 3}
+  m_Name: NPC4
+  m_EditorClassIdentifier: 
+  dialogueGroups:
+  - topicName: Sapaan
+    sentences:
+    - 'Kaka Lince
+
+
+      Malam, Penjelajah! Ko tra takut kah sendirian di tengah
+      laut luas?'
+    - 'Kamu
+
+
+      Halo Kaka Lince. Awalnya takut, tapi pemandangannya bikin tenang.'
+    - 'Kaka Lince
+
+
+      Bagus! Laut ini kawan kalau tong sopan sama dia.'
+    - 'Kamu
+
+
+      Ternyata banyak juga ya nelayan perempuan di sini.'
+    - 'Kaka Lince
+
+
+      Hau! Perempuan Papua itu tangguh, Kaka. Laut tra pilih
+      kasih soal gender.'
+  - topicName: Tradisi Sasi
+    sentences:
+    - 'Kamu
+
+
+      Kaka Lince, saya dengar ada area laut yang dilarang dipancing?'
+    - 'Kaka Lince
+
+
+      Oh, itu namanya wilayah Sasi, Kaka. Adat yang larang tong
+      ambil hasil laut di situ.'
+    - 'Kamu
+
+
+      Supaya apa, Kaka?'
+    - 'Kaka Lince
+
+
+      Supaya alam bisa istirahat. Nanti ada waktunya baru tong
+      buka dan panen sama-sama.'
+    - 'Kamu
+
+
+      Keren sekali, adat bisa menjaga kelestarian alam ya.'
+    - 'Kaka Lince
+
+
+      Iyo. Adat itu cara leluhur bicara supaya tong tra serakah.'
+  - topicName: Burung Cendrawasih
+    sentences:
+    - 'Kaka Lince
+
+
+      Kalau pagi hari, ko bisa dengar suara Burung Cendrawasih
+      dari arah hutan.'
+    - 'Kamu
+
+
+      Wah, saya sangat ingin melihat burung surga itu.'
+    - 'Kaka Lince
+
+
+      Dong itu permata tanah Papua. Harus jaga hutan supaya dong
+      tetap menari.'
+    - 'Kamu
+
+
+      Ikan di laut dijaga, burung di hutan juga dijaga ya.'
+    - 'Kaka Lince
+
+
+      Betul. Semua itu satu nafas, Kaka. Tra boleh ada yang rusak.'

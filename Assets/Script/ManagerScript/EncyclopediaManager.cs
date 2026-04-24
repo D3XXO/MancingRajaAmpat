@@ -12,16 +12,13 @@ public class EncyclopediaManager : MonoBehaviour
     public Text nameText;
     public Image detailImage;
 
+    [Header("Controls to Toggle")]
+    public GameObject movementButtons;
+    public GameObject fishingButton;
+    public GameObject interactButton;
+
     [Header("Data")]
     public List<FishData> allFish;
-
-    void Start()
-    {
-        if (encyclopediaPanel != null)
-        {
-            encyclopediaPanel.SetActive(false);
-        }
-    }
 
     void OnEnable()
     {
@@ -53,7 +50,22 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ToggleEncyclopedia()
     {
-        bool isActive = gameObject.activeSelf;
-        gameObject.SetActive(!isActive);
+        if (encyclopediaPanel == null) return;
+        bool willBeActive = !encyclopediaPanel.activeSelf;
+
+        if (willBeActive)
+        {
+            RefreshUI();
+        }
+
+        encyclopediaPanel.SetActive(willBeActive);
+
+        if (movementButtons != null) movementButtons.SetActive(!willBeActive);
+        if (fishingButton != null) fishingButton.SetActive(!willBeActive);
+
+        if (willBeActive && interactButton != null)
+        {
+            interactButton.SetActive(false);
+        }
     }
 }

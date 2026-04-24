@@ -90,7 +90,6 @@ public class FishingState : IPlayerState
     {
         _manager.fishingMinigamePanel.SetActive(false);
         _manager.fishingButton.SetActive(true);
-        _manager.ensiklopediaButton.SetActive(true);
 
         if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StopSpawning();
 

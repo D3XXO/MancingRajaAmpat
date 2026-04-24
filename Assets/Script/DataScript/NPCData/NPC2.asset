@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0aa73c25086ea9499625e6b3ef777a6, type: 3}
+  m_Name: NPC2
+  m_EditorClassIdentifier: 
+  dialogueGroups:
+  - topicName: Sapaan
+    sentences:
+    - 'Epen
+
+
+      Woi Kaka! Semangat sekali ko mendayung malam-malam begini.'
+    - 'Kamu
+
+
+      Iya Pen, udaranya enak sekali, tenang.'
+    - 'Epen
+
+
+      Iyo to! Kalau bosan sendiri, merapat sini tong cerita-cerita.'
+    - 'Kamu
+
+
+      Siap, terima kasih.'
+    - 'Epen
+
+
+      Sama-sama. Kita sesama penjelajah harus saling jaga di laut e!'
+  - topicName: Langit Malam & Bintang
+    sentences:
+    - 'Epen
+
+
+      Kaka, coba ko lihat ke atas sebentar.'
+    - 'Kamu
+
+
+      Wah, bintangnya banyak sekali, Pen. Jelas sekali galaksinya.'
+    - 'Epen
+
+
+      Itu kompas tong nelayan di sini kalau tra bawa alat.'
+    - 'Kamu
+
+
+      Jadi kalian bisa tahu arah hanya dari bintang?'
+    - 'Epen
+
+
+      Iyo. Bintang itu tra pernah bohong soal arah pulang.'
+    - 'Kamu
+
+
+      Pemandangan ini mahal sekali harganya.'
+  - topicName: Larangan Bom Ikan
+    sentences:
+    - 'Kamu
+
+
+      Kenapa laut di sini masih sangat terjaga, Pen?'
+    - 'Epen
+
+
+      Karena tong benci sekali orang pakai bom atau racun ikan.'
+    - 'Kamu
+
+
+      Benar, itu bisa menghancurkan karang dalam sekejap.'
+    - 'Epen
+
+
+      Betul! Kalau karang hancur, ikan tra mau datang lagi ratusan
+      tahun.'
+    - 'Kamu
+
+
+      Semoga semua orang punya kesadaran seperti warga di sini.'
+    - 'Epen
+
+
+      Harus itu! Laut ini tong punya harga diri.'

@@ -15,7 +15,6 @@ public class WaitingState : IPlayerState
     {
         _manager.PlayerAnimator.SetTrigger("PlayerCast");
         _manager.PlayerAnimator.SetBool("isWaiting", true);
-        _manager.ensiklopediaButton.SetActive(false);
 
         _waitTime = Random.Range(3f, 5f);
         _timer = 0;
@@ -34,6 +33,5 @@ public class WaitingState : IPlayerState
     public void Exit()
     {
         _manager.PlayerAnimator.ResetTrigger("PlayerCast");
-        _manager.ensiklopediaButton.SetActive(true);
     }
 }

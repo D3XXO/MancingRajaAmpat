@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class PlayerStateManager : MonoBehaviour
 {
     private IPlayerState _currentState;
+    public IPlayerState CurrentState => _currentState;
 
     [Header("References")]
     public Movement movementComponent;

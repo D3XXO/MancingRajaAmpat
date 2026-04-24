@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0aa73c25086ea9499625e6b3ef777a6, type: 3}
+  m_Name: NPC3
+  m_EditorClassIdentifier: 
+  dialogueGroups:
+  - topicName: Welcome
+    sentences:
+    - 'Pace
+
+
+      Selamat datang di surga kecil, Kaka! Bagaimana? Mata su segar
+      lihat air biru begini?'
+    - 'Kamu
+
+
+      Luar biasa, Pace. Saya belum pernah lihat air sejernih ini sebelumnya.'
+    - 'Pace
+
+
+      Iyo to! Orang bilang ini jatuhannya potongan surga. Ko harus
+      keliling sampai ke Wayag sana.'
+    - 'Kamu
+
+
+      Pasti, Pace. Saya datang jauh-jauh memang untuk melihat keindahan
+      ini.'
+    - 'Pace
+
+
+      Bagus! Tapi ingat, hati senang boleh, tapi sampah jangan kasih
+      tinggal di laut e!'
+  - topicName: The Four King (Legenda)
+    sentences:
+    - 'Kamu
+
+
+      Pace, saya penasaran. Kenapa tempat ini dinamakan ''Raja Ampat''?'
+    - 'Pace
+
+
+      Ah, itu cerita tua, Kaka. Konon dulu ada orang tua temukan tujuh
+      telur naga.'
+    - 'Kamu
+
+
+      Tujuh telur? Lalu menetas jadi apa, Pace?'
+    - 'Pace
+
+
+      Empat jadi raja di pulau besar: Waigeo, Misool, Salawati, dan
+      Batanta. Itu makanya tong sebut Empat Raja.'
+    - 'Kamu
+
+
+      Wah, jadi itu asal mulanya. Lalu tiga telur sisanya?'
+    - 'Pace
+
+
+      Dong bilang jadi batu, hantu, dan wanita. Mistis to? Tapi itulah
+      sejarah tong punya tanah.'
+  - topicName: The Walking Shark
+    sentences:
+    - 'Pace
+
+
+      Kaka, Ko sudah pernah lihat ikan yang kalau jalan pakai kaki?'
+    - 'Kamu
+
+
+      Ikan jalan pakai kaki? Pace jangan bercanda, mana ada ikan begitu.'
+    - 'Pace
+
+
+      Hau! Sa tra bercanda. Tong di sini panggil dia Ikan Kalabia,
+      hiu yang suka jalan di dasar karang.'
+    - 'Kamu
+
+
+      Luar biasa! Apa dia berbahaya untuk manusia?'
+    - 'Pace
+
+
+      Traada! Dia kecil dan pemalu. Cuma ada di sini saja, traada di
+      tempat lain di dunia.'
+  - topicName: Pesan Konservasi
+    sentences:
+    - 'Kamu
+
+
+      Pace, kenapa nelayan di sini sangat menjaga ikan-ikan tertentu?'
+    - 'Pace
+
+
+      Karena laut ini tong punya napas, Kaka. Kalau ikan habis, tong
+      anak cucu mau makan apa?'
+    - 'Kamu
+
+
+      Saya mengerti. Itu sebabnya saya hanya ingin mencatat data mereka
+      lalu melepasnya.'
+    - 'Pace
+
+
+      Itu baru namanya penjelajah jempol! Tangkap, pelajari, lalu kasih
+      pulang mereka ke laut.'
+    - 'Kamu
+
+
+      Iya Pace, supaya keindahan ini tetap ada sampai kapanpun.'
+    - 'Pace
+
+
+      Mantap! Laut jaga tong, tong jaga laut. Pegang itu kunci e!'

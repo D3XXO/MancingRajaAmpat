@@ -13,8 +13,86 @@ MonoBehaviour:
   m_Name: NPC1
   m_EditorClassIdentifier: 
   dialogueGroups:
-  - topicName: PerkenalanGame
+  - topicName: Kehidupan Laut
     sentences:
-    - 'NPC
+    - 'Mace
 
-      Halo, saat ini game dalam progres pengembangan'
+
+      Eee Kaka! Sa pikir siapa yang dayung jauh sampai sini, ternyata
+      penjelajah muda.'
+    - 'Kamu
+
+
+      Halo, Mace. Lagi sibuk apa hari ini di tengah laut?'
+    - 'Mace
+
+
+      Cuma lihat-lihat arus, Kaka. Perempuan di sini juga kuat melaut,
+      tra cuma laki-laki saja.'
+    - 'Kamu
+
+
+      Hebat sekali, Mace. Laut benar-benar jadi rumah kedua ya?'
+    - 'Mace
+
+
+      Rumah kedua? Tra, Kaka. Ini tong punya rumah pertama! Dari kecil
+      tong su kawan dengan ombak.'
+  - topicName: Kehidupan Bawah Laut
+    sentences:
+    - 'Mace
+
+
+      Kaka, jangan ko pikir bawah air itu kosong cuma karena gelap
+      e.'
+    - 'Kamu
+
+
+      Iya Mace, airnya dalam sekali di sini, saya tra bisa lihat dasarnya.'
+    - 'Mace
+
+
+      Di bawah situ, karang-karang lagi tidur. Dong itu yang kasih
+      makan semua ikan yang ko pancing.'
+    - 'Kamu
+
+
+      Jadi meskipun gelap, mereka tetap penting ya, Mace?'
+    - 'Mace
+
+
+      Penting sekali! Kalau karang rusak, ikan traada tempat tinggal,
+      nanti ko tra bisa pancing lagi.'
+    - 'Kamu
+
+
+      Saya mengerti. Laut yang sehat dimulai dari apa yang tra kelihatan
+      di permukaan.'
+    - 'Mace
+
+
+      Pintar ko! Jaga yang di bawah, supaya yang di atas tetap indah.'
+  - topicName: Warna Laut
+    sentences:
+    - 'Mace
+
+
+      Kaka, ko lihat gradasi air itu? traada bosannya sa lihat.'
+    - 'Kamu
+
+
+      Iya Mace, warnanya cantik sekali, apalagi saat malam begini.'
+    - 'Mace
+
+
+      Itu tanda lautnya dalam dan jernih. Kalau air su keruh, berarti
+      ada yang salah dengan alam.'
+    - 'Kamu
+
+
+      Saya beruntung bisa datang dan melihat langsung semua ini.'
+    - 'Mace
+
+
+      Ko jangan cuma lihat, Kaka. Simpan itu indah di dalam hati, baru
+      kasih tahu dunia kalau Papua itu hebat.'
