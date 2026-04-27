@@ -1,11 +1,14 @@
 using UnityEngine;
 
+public enum FishRarity { Normal, Endemic, Rare }
+
 [CreateAssetMenu(fileName = "New Fish Data")]
 public class FishData : ScriptableObject
 {
     public string fishID;
     public string fishName;
     public Sprite fishIcon;
+    public FishRarity rarity;
 
     [TextArea(3, 10)]
     public string description;

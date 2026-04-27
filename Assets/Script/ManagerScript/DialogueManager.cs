@@ -49,7 +49,6 @@ public class DialogueManager : MonoBehaviour
     private void TogglePlayerUI(bool status)
     {
         playerManager.movementButtonsParent.SetActive(status);
-        playerManager.fishingButton.SetActive(status);
         playerManager.ensiklopediaButton.SetActive(status);
         
         playerManager.movementComponent.enabled = status;

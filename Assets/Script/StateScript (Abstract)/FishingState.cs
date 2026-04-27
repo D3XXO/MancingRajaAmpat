@@ -77,6 +77,7 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
+        _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);
     }
 
@@ -89,7 +90,6 @@ public class FishingState : IPlayerState
     public void Exit()
     {
         _manager.fishingMinigamePanel.SetActive(false);
-        _manager.fishingButton.SetActive(true);
 
         if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StopSpawning();
 

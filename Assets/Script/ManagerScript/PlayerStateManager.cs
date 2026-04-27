@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 
 public class PlayerStateManager : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class PlayerStateManager : MonoBehaviour
     public int totalValueScore;
     public Text valueScoreText;
 
+    [Header("Camera Settings")]
+    public CinemachineVirtualCamera virtualCamera;
+    public bool IsInFishingZone;
+
     public MovementState MovementState { get; private set; }
     public WaitingState WaitingState { get; private set; }
     public FishingState FishingState { get; private set; }
@@ -53,6 +58,7 @@ public class PlayerStateManager : MonoBehaviour
         SwitchState(MovementState);
 
         if (fishingMinigamePanel != null) fishingMinigamePanel.SetActive(false);
+        if (fishingButton != null) fishingButton.SetActive(false);
     }
 
     void Update()
@@ -93,9 +99,7 @@ public class PlayerStateManager : MonoBehaviour
         caughtFishText.text = fish.fishName;
 
         caughtFishPanel.SetActive(true);
-
         yield return new WaitForSeconds(3f);
-
         caughtFishPanel.SetActive(false);
     }
 
@@ -113,5 +117,39 @@ public class PlayerStateManager : MonoBehaviour
         {
             valueScoreText.text = "Score: " + totalValueScore;
         }
+    }
+
+    public void StartZoom(float targetSize)
+    {
+        StopCoroutine("ZoomRoutine");
+        StartCoroutine(ZoomRoutine(targetSize));
+    }
+
+    private IEnumerator ZoomRoutine(float targetSize)
+    {
+        float startSize = virtualCamera.m_Lens.OrthographicSize;
+        float elapsed = 0;
+        float duration = 1.0f;
+
+        while (elapsed < duration)
+        {
+            virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(startSize, targetSize, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        virtualCamera.m_Lens.OrthographicSize = targetSize;
+    }
+
+    public void TriggerShake(float intensity, float time)
+    {
+        StartCoroutine(ShakeRoutine(intensity, time));
+    }
+
+    private IEnumerator ShakeRoutine(float intensity, float duration)
+    {
+        var noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        noise.m_AmplitudeGain = intensity;
+        yield return new WaitForSeconds(duration);
+        noise.m_AmplitudeGain = 0f;
     }
 }

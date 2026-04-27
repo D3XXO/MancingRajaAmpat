@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
-  m_Name: Ikan2
+  m_Name: IE1
   m_EditorClassIdentifier: 
-  fishID: Ikan2
+  fishID: IE1
   fishName: Betok Unipa
   fishIcon: {fileID: 21300000, guid: 4d949368467049c43890745864bf89bc, type: 3}
+  rarity: 1
   description: 'Deskripsi Umum: Ikan karang yang sering terlihat berenang dalam kelompok
     besar di antara karang Acropora. Memiliki warna tubuh yang cerah, ikan ini menjadi
     indikator bahwa sebuah terumbu karang masih dalam kondisi sehat dan kaya akan
@@ -25,8 +26,8 @@ MonoBehaviour:
     Universitas Papua (UNIPA) di Manokwari. Ikan ini ditemukan oleh para peneliti
     yang bekerja sama dengan universitas tersebut, menjadikannya simbol kebanggaan
     riset kelautan lokal di tanah Papua.'
-  moveSpeed: 5
-  minSpawnInterval: 0.5
-  maxSpawnInterval: 0.7
-  minVSRequirement: 0
-  vsValue: 4
+  moveSpeed: 4
+  minSpawnInterval: 0.45
+  maxSpawnInterval: 0.5
+  minVSRequirement: 100
+  vsValue: 25
