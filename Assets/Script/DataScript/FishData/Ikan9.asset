@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
+  m_Name: Ikan9
+  m_EditorClassIdentifier: 
+  fishID: Ikan9
+  fishName: Ikan Napoleon
+  fishIcon: {fileID: 21300000, guid: 226546a3387c87947973a7927b1ef6e6, type: 3}
+  description: 'Deskripsi Umum:Ikan Napoleon memiliki tubuh yang sangat kuat dan
+    tebal, dengan kulit yang ditutupi sisik besar dan pola garis-garis yang rumit
+    serta berwarna cerah, seperti perpaduan hijau, biru, dan ungu. Secara morfologis,
+    ciri paling dominan yang membedakannya adalah tonjolan besar di bagian dahi (benjolan
+    kepala) yang akan semakin berkembang seiring bertambahnya usia, serta bibir yang
+    sangat tebal.
+
+
+    Fakta Unik:Ikan Napoleon memiliki sistem reproduksi yang
+    kompleks. Mereka lahir sebagai betina, namun seiring bertambahnya usia dan ukuran
+    tubuh, beberapa individu akan mengalami perubahan secara biologis menjadi jantan.
+    Jantan yang dominan biasanya berukuran jauh lebih besar dan memiliki tonjolan
+    di dahi yang sangat menonjol dibandingkan individu lainnya.'
+  moveSpeed: 10
+  minSpawnInterval: 0.1
+  maxSpawnInterval: 1
+  minVSRequirement: 10
+  vsValue: 5
