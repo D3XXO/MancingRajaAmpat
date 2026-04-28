@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
+  m_Name: IN4
+  m_EditorClassIdentifier: 
+  fishID: IN4
+  fishName: Gobi Kerdil
+  fishIcon: {fileID: 21300000, guid: 9ea65c5162e465049a2b0cb9ddd876c5, type: 3}
+  rarity: 0
+  description: 'Deskripsi Umum: Ikan Gobi Kerdil, merupakan salah satu temuan biologis
+    yang sangat menarik dari perairan Indonesia
+
+
+    Fakta Unik: Sebagai bagian
+    dari kelompok gobi kerdil, ikan ini adalah salah satu kandidat vertebrata terkecil
+    di dunia. Ukuran tubuhnya yang mungil adalah bentuk adaptasi evolusioner untuk
+    memanfaatkan celah karang yang sempit, yang tidak dapat diakses oleh predator
+    yang lebih besar.'
+  moveSpeed: 3.5
+  minSpawnInterval: 0.5
+  maxSpawnInterval: 0.55
+  minVSRequirement: 50
+  vsValue: 15

@@ -53,7 +53,7 @@ public class RhythmSpawner : MonoBehaviour
             }
 
             float randomInterval = Random.Range(_currentFish.minSpawnInterval, _currentFish.maxSpawnInterval);
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(randomInterval);
         }
     }
 }

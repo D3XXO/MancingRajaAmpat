@@ -61,11 +61,22 @@ public class EncyclopediaManager : MonoBehaviour
         encyclopediaPanel.SetActive(willBeActive);
 
         if (movementButtons != null) movementButtons.SetActive(!willBeActive);
-        if (fishingButton != null) fishingButton.SetActive(!willBeActive);
+        if (willBeActive && interactButton != null) interactButton.SetActive(false);
 
-        if (willBeActive && interactButton != null)
+        if (fishingButton != null)
         {
-            interactButton.SetActive(false);
+            if (willBeActive)
+            {
+                fishingButton.SetActive(false);
+            }
+            else
+            {
+                PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+                if (player != null)
+                {
+                    fishingButton.SetActive(player.IsInFishingZone);
+                }
+            }
         }
     }
 }

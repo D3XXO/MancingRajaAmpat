@@ -16,6 +16,8 @@ public class WaitingState : IPlayerState
         _manager.PlayerAnimator.SetTrigger("PlayerCast");
         _manager.PlayerAnimator.SetBool("isWaiting", true);
 
+        _manager.StartZoom(4.5f);
+
         _waitTime = Random.Range(3f, 5f);
         _timer = 0;
     }

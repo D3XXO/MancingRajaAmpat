@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
-  m_Name: Ikan1
+  m_Name: IE2
   m_EditorClassIdentifier: 
-  fishID: Ikan1
+  fishID: IE2
   fishName: Gobi Papua
   fishIcon: {fileID: 21300000, guid: 17c69ef2c8762d448bd2034ac459eac2, type: 3}
+  rarity: 1
   description: 'Deskripsi Umum: Ikan kecil yang sangat pemalu dan sering menghabiskan
-    waktunya di celah-celah karang sempit. Ikan ini memiliki tubuh yang ramping dengan
+    waktunya di celah karang sempit. Ikan ini memiliki tubuh yang ramping dengan
     pola warna yang membantu mereka menyamar di lingkungan terumbu karang.
 
 
@@ -24,8 +25,8 @@ MonoBehaviour:
     Unik: Gobi Papua adalah ahli persembunyian. Karena ukurannya yang kecil dan sifatnya
     yang lincah, ikan ini sangat sulit dideteksi oleh predator maupun pemancing,
     menjadikannya salah satu tantangan tersendiri untuk didokumentasikan.'
-  moveSpeed: 10
-  minSpawnInterval: 0.5
-  maxSpawnInterval: 1
-  minVSRequirement: 10
-  vsValue: 10
+  moveSpeed: 4
+  minSpawnInterval: 0.45
+  maxSpawnInterval: 0.5
+  minVSRequirement: 150
+  vsValue: 35

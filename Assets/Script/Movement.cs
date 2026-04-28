@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [Header("References")]
     SpriteRenderer spriteRenderer;
     Animator animator;
+    Rigidbody2D rb;
 
     private float moveInput = 0f;
 
@@ -15,19 +16,24 @@ public class Movement : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        HandleMovement();
         HandleSprite();
+    }
+
+    void FixedUpdate()
+    {
+        HandleMovement();
     }
 
     private void HandleMovement()
     {
-        if (this.enabled && moveInput != 0)
+        if (this.enabled)
         {
-            transform.Translate(Vector2.right * moveInput * moveSpeed * Time.deltaTime);
+            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
         }
     }
 

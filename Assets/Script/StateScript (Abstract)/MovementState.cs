@@ -14,12 +14,17 @@ public class MovementState : IPlayerState
         _manager.movementButtonsParent.SetActive(true);
         _manager.movementComponent.enabled = true;
 
-        if (_manager.ensiklopediaButton != null) 
+        if (_manager.IsInFishingZone && _manager.fishingButton != null)
+        _manager.fishingButton.SetActive(true);
+
+        if (_manager.ensiklopediaButton != null)
             _manager.ensiklopediaButton.SetActive(true);
 
         _manager.PlayerAnimator.SetBool("isWaiting", false);
         _manager.PlayerAnimator.SetBool("PlayerUlur", false);
         _manager.PlayerAnimator.SetBool("PlayerTarik", false);
+
+        _manager.StartZoom(5f);
     }
 
     public void Update()
