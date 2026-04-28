@@ -89,4 +89,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteID: 0
-  moveSpeed: 5
+  moveSpeed: 0
