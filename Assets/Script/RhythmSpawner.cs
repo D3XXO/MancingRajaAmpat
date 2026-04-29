@@ -37,6 +37,8 @@ public class RhythmSpawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine()
     {
+        yield return new WaitForSeconds(2f);
+
         while (_isSpawning)
         {
             int randomIndex = Random.Range(0, notePrefabs.Length);

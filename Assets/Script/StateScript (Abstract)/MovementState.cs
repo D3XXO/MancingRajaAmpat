@@ -18,7 +18,10 @@ public class MovementState : IPlayerState
         _manager.fishingButton.SetActive(true);
 
         if (_manager.ensiklopediaButton != null)
-            _manager.ensiklopediaButton.SetActive(true);
+        _manager.ensiklopediaButton.SetActive(true);
+
+        if (_manager.pauseButton != null)
+        _manager.pauseButton.SetActive(true);
 
         _manager.PlayerAnimator.SetBool("isWaiting", false);
         _manager.PlayerAnimator.SetBool("PlayerUlur", false);
@@ -40,7 +43,10 @@ public class MovementState : IPlayerState
         _manager.movementButtonsParent.SetActive(false);
         _manager.ensiklopediaButton.SetActive(true);
 
-        if (_manager.ensiklopediaButton != null) 
-            _manager.ensiklopediaButton.SetActive(false);
+        if (_manager.ensiklopediaButton != null)
+        _manager.ensiklopediaButton.SetActive(false);
+
+        if (_manager.pauseButton != null) 
+        _manager.pauseButton.SetActive(false);
     }
 }

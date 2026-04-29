@@ -58,6 +58,12 @@ public class EncyclopediaManager : MonoBehaviour
             RefreshUI();
         }
 
+        PauseManager pm = FindObjectOfType<PauseManager>();
+        if (pm != null && pm.pauseButton != null)
+        {
+            pm.pauseButton.SetActive(!willBeActive);
+        }
+
         encyclopediaPanel.SetActive(willBeActive);
 
         if (movementButtons != null) movementButtons.SetActive(!willBeActive);

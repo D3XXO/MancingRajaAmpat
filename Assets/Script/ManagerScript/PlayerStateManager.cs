@@ -13,6 +13,7 @@ public class PlayerStateManager : MonoBehaviour
     public Movement movementComponent;
     public GameObject movementButtonsParent;
     public GameObject ensiklopediaButton;
+    public GameObject pauseButton;
     public Animator PlayerAnimator;
 
     [Header("Fishing Minigame UI")]
