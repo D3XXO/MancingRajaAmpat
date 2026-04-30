@@ -27,6 +27,11 @@ public class PauseManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PauseAllAudio();
+        }
+
         if (movementButtons != null) movementButtons.SetActive(false);
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
         if (fishingButton != null) fishingButton.SetActive(false);
@@ -37,6 +42,12 @@ public class PauseManager : MonoBehaviour
     {
         pauseGamePanel.SetActive(false);
         Time.timeScale = 1f;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ResumeAllAudio();
+        }
+
         RestoreGameplayUI();
     }
 
@@ -60,6 +71,20 @@ public class PauseManager : MonoBehaviour
     public void MainMenu()
     {
         Time.timeScale = 1f;
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ResumeAllAudio();
+        }
+
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ToggleMusic()
+    {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ToggleMusic();
+        }
     }
 }
