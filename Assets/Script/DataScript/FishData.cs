@@ -10,8 +10,12 @@ public class FishData : ScriptableObject
     public Sprite fishIcon;
     public FishRarity rarity;
 
+    [Header("Informasi Ikan")]
     [TextArea(3, 10)]
-    public string description;
+    public string generalDescription;
+
+    [TextArea(3, 10)]
+    public string funFact;
 
     [Header("Rhythm Settings")]
     public float moveSpeed;

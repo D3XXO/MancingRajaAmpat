@@ -22,6 +22,12 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame()
     {
+        PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+        if (player != null && player.movementComponent != null)
+        {
+            player.movementComponent.StopMoving();
+        }
+
         pauseGamePanel.SetActive(true);
         pauseButton.SetActive(false);
 

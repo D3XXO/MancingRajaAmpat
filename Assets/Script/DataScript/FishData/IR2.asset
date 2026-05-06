@@ -16,16 +16,13 @@ MonoBehaviour:
   fishName: Ikan Raja Laut
   fishIcon: {fileID: 21300000, guid: c675965bb12f0284aa8285586c669953, type: 3}
   rarity: 2
-  description: 'Deskripsi Umum: Sering dijuluki sebagai Fosil Hidup. Ikan ini memiliki
-    bentuk tubuh purba yang sangat khas dengan sirip-sirip yang berdaging dan terlihat
-    seperti pangkal kaki. Biasanya mendiami gua-gua di laut dalam.
-
-
-    Fakta Unik:
-    Ikan ini sempat dianggap telah punah jutaan tahun yang lalu bersama dinosaurus,
+  generalDescription: Sering dijuluki sebagai Fosil Hidup. Ikan ini memiliki bentuk
+    tubuh purba yang sangat khas dengan sirip-sirip yang berdaging dan terlihat seperti
+    pangkal kaki. Biasanya mendiami gua-gua di laut dalam.
+  funFact: Ikan ini sempat dianggap telah punah jutaan tahun yang lalu bersama dinosaurus,
     sampai akhirnya ditemukan kembali di perairan Indonesia. Penemuan ini mengguncang
     dunia sains internasional karena membuktikan bahwa mahluk dari zaman prasejarah
-    masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.'
+    masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.
   moveSpeed: 5.5
   minSpawnInterval: 0.35
   maxSpawnInterval: 0.5

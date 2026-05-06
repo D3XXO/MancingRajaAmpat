@@ -50,6 +50,12 @@ public class DialogueManager : MonoBehaviour
     {
         playerManager.movementButtonsParent.SetActive(status);
         playerManager.ensiklopediaButton.SetActive(status);
+
+        if (!status)
+        {
+            playerManager.movementComponent.StopMoving();
+        }
+
         playerManager.movementComponent.enabled = status;
 
         PauseManager pm = FindObjectOfType<PauseManager>();

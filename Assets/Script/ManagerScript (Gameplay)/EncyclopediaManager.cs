@@ -12,6 +12,12 @@ public class EncyclopediaManager : MonoBehaviour
     public Text nameText;
     public Image detailImage;
 
+    [Header("Panel Detail & Konten")]
+    public GameObject selectionButtonsPanel;
+    public GameObject contentTextPanel;
+    public Text detailContentText;
+    private FishData _selectedFish;
+
     [Header("Controls to Toggle")]
     public GameObject movementButtons;
     public GameObject fishingButton;
@@ -41,10 +47,37 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void DisplayFishDetails(FishData data)
     {
+        _selectedFish = data;
         nameText.text = data.fishName;
-        descriptionText.text = data.description;
         detailImage.sprite = data.fishIcon;
         detailImage.color = Color.white;
+
+        selectionButtonsPanel.SetActive(true);
+        contentTextPanel.SetActive(false);
+    }
+
+    public void ShowGeneralDescription()
+    {
+        if (_selectedFish == null) return;
+        
+        detailContentText.text = _selectedFish.generalDescription;
+        selectionButtonsPanel.SetActive(false);
+        contentTextPanel.SetActive(true);
+    }
+
+    public void ShowFunFact()
+    {
+        if (_selectedFish == null) return;
+
+        detailContentText.text = _selectedFish.funFact;
+        selectionButtonsPanel.SetActive(false);
+        contentTextPanel.SetActive(true);
+    }
+
+    public void BackToSelection()
+    {
+        selectionButtonsPanel.SetActive(true);
+        contentTextPanel.SetActive(false);
     }
 
     public void ClearDetails()
@@ -57,8 +90,10 @@ public class EncyclopediaManager : MonoBehaviour
             detailImage.sprite = null;
             detailImage.color = new Color(1, 1, 1, 0);
         }
-    }
 
+        selectionButtonsPanel.SetActive(false);
+        contentTextPanel.SetActive(false);
+    }
 
     public void ToggleEncyclopedia()
     {
@@ -69,6 +104,12 @@ public class EncyclopediaManager : MonoBehaviour
 
         if (willBeActive)
         {
+            PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+            if (player != null && player.movementComponent != null)
+            {
+                player.movementComponent.StopMoving();
+            }
+
             RefreshUI();
         }
 

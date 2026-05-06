@@ -16,15 +16,13 @@ MonoBehaviour:
   fishName: Keling Marinda
   fishIcon: {fileID: 21300000, guid: 20a201e449a96f847bfe9c35af5c9619, type: 3}
   rarity: 1
-  description: 'Deskripsi Umum: Ikan Keling atau Wrasse ini memiliki gradasi warna
-    yang sangat indah menyerupai pelangi. Mereka sering terlihat menari di antara
-    terumbu karang saat mencari makan.
-
-
-    Fakta Unik: Ikan jantan dari spesies
-    ini memiliki kemampuan luar biasa untuk mengubah warna tubuhnya menjadi jauh
-    lebih terang dan kontras dalam sekejap saat mencoba memikat perhatian ikan betina.
-    Fenomena visual ini sering disebut sebagai pertunjukan warna di bawah laut.'
+  generalDescription: Ikan Keling atau Wrasse ini memiliki gradasi warna yang sangat
+    indah menyerupai pelangi. Mereka sering terlihat menari di antara terumbu karang
+    saat mencari makan.
+  funFact: Ikan jantan dari spesies ini memiliki kemampuan luar biasa untuk mengubah
+    warna tubuhnya menjadi jauh lebih terang dan kontras dalam sekejap saat mencoba
+    memikat perhatian ikan betina. Fenomena visual ini sering disebut sebagai pertunjukan
+    warna di bawah laut.
   moveSpeed: 4.5
   minSpawnInterval: 0.4
   maxSpawnInterval: 0.75

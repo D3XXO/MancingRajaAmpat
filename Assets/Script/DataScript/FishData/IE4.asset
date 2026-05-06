@@ -16,19 +16,16 @@ MonoBehaviour:
   fishName: Ikan Napoleon
   fishIcon: {fileID: 21300000, guid: 226546a3387c87947973a7927b1ef6e6, type: 3}
   rarity: 1
-  description: 'Deskripsi Umum: Ikan Napoleon memiliki tubuh yang sangat kuat dan
-    tebal, dengan kulit yang ditutupi sisik besar dan pola garis yang rumit serta
-    berwarna cerah, seperti perpaduan hijau, biru, dan ungu. Ciri paling dominan
-    yang membedakan adalah tonjolan besar di bagian dahi (benjolan kepala) yang akan
-    semakin berkembang seiring bertambahnya usia, serta bibir yang sangat tebal.
-
-
-    Fakta
-    Unik: Ikan Napoleon memiliki sistem reproduksi yang kompleks. Mereka lahir sebagai
+  generalDescription: Ikan Napoleon memiliki tubuh yang sangat kuat dan tebal, dengan
+    kulit yang ditutupi sisik besar dan pola garis yang rumit serta berwarna cerah,
+    seperti perpaduan hijau, biru, dan ungu. Ciri paling dominan yang membedakan
+    adalah tonjolan besar di bagian dahi (benjolan kepala) yang akan semakin berkembang
+    seiring bertambahnya usia, serta bibir yang sangat tebal.
+  funFact: Ikan Napoleon memiliki sistem reproduksi yang kompleks. Mereka lahir sebagai
     betina, namun seiring bertambahnya usia dan ukuran tubuh, beberapa individu akan
     mengalami perubahan secara biologis menjadi jantan. Jantan yang dominan biasanya
     berukuran jauh lebih besar dan memiliki tonjolan di dahi yang sangat menonjol
-    dibandingkan individu lainnya.'
+    dibandingkan individu lainnya.
   moveSpeed: 4.5
   minSpawnInterval: 0.4
   maxSpawnInterval: 0.75

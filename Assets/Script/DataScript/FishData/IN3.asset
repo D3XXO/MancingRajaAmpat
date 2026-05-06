@@ -16,18 +16,16 @@ MonoBehaviour:
   fishName: Ikan Tuna
   fishIcon: {fileID: 21300000, guid: 51dfe8eea192d454f9b53b21ffd65dca, type: 3}
   rarity: 0
-  description: 'Deskripsi Umum: Ikan tuna adalah kelompok ikan pelagis besar yang
-    termasuk dalam keluarga Scombridae. Mereka merupakan penghuni laut lepas yang
-    dikenal karena kemampuan berenangnya yang luar biasa. Tubuh tuna berevolusi menjadi
-    bentuk seperti torpedo yang sangat hidrodinamis, memungkinkan mereka membelah
-    kolom air dengan hambatan minimal.
-
-
-    Fakta Unik: Tuna memiliki mekanisme
-    pernapasan yang unik. Mereka tidak memiliki otot untuk memompa air secara aktif
-    ke insangnya. Sebagai gantinya, mereka harus terus bergerak maju dengan mulut
-    terbuka agar air mengalir melewati insang secara konstan. Jika seekor tuna berhenti
-    berenang, mereka akan mengalami kesulitan bernapas dan dapat mengalami hipoksia.'
+  generalDescription: Ikan tuna adalah kelompok ikan pelagis besar yang termasuk
+    dalam keluarga Scombridae. Mereka merupakan penghuni laut lepas yang dikenal
+    karena kemampuan berenangnya yang luar biasa. Tubuh tuna berevolusi menjadi bentuk
+    seperti torpedo yang sangat hidrodinamis, memungkinkan mereka membelah kolom
+    air dengan hambatan minimal.
+  funFact: Tuna memiliki mekanisme pernapasan yang unik. Mereka tidak memiliki otot
+    untuk memompa air secara aktif ke insangnya. Sebagai gantinya, mereka harus terus
+    bergerak maju dengan mulut terbuka agar air mengalir melewati insang secara konstan.
+    Jika seekor tuna berhenti berenang, mereka akan mengalami kesulitan bernapas
+    dan dapat mengalami hipoksia.
   moveSpeed: 3.5
   minSpawnInterval: 0.5
   maxSpawnInterval: 1

@@ -71,6 +71,11 @@ public class PlayerStateManager : MonoBehaviour
     {
         _currentState?.Exit();
 
+        if (movementComponent != null)
+        {
+            movementComponent.StopMoving();
+        }
+
         PlayerAnimator.SetBool("isMoving", false);
 
         _currentState = newState;
@@ -79,6 +84,11 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnFishingButtonClicked()
     {
+        if (movementComponent != null)
+        {
+            movementComponent.StopMoving();
+        }
+
         if (_currentState == MovementState)
         {
             SwitchState(WaitingState);

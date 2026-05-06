@@ -60,5 +60,15 @@ public class Movement : MonoBehaviour
     public void StopMoving()
     {
         moveInput = 0f;
+
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        if (animator != null)
+        {
+            animator.SetBool("isMoving", false);
+        }
     }
 }
