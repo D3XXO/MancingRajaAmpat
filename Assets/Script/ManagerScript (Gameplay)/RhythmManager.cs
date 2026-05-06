@@ -11,8 +11,6 @@ public class RhythmManager : MonoBehaviour
 
     public void OnButtonPressed(int buttonID)
     {
-        stateManager.FishingState.SetTugging(true);
-
         RhythmNote noteToHit = null;
         float hitThreshold = 80f;
 
@@ -37,10 +35,5 @@ public class RhythmManager : MonoBehaviour
             allActiveNotes.Remove(noteToHit);
             Destroy(noteToHit.gameObject);
         }
-    }
-
-    public void OnButtonReleased()
-    {
-        stateManager.FishingState.SetTugging(false);
     }
 }

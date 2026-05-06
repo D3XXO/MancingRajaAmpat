@@ -27,6 +27,6 @@ MonoBehaviour:
     yang lebih besar.'
   moveSpeed: 3.5
   minSpawnInterval: 0.5
-  maxSpawnInterval: 0.55
+  maxSpawnInterval: 2
   minVSRequirement: 50
   vsValue: 15

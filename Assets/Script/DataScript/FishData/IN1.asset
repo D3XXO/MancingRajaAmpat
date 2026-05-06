@@ -29,6 +29,6 @@ MonoBehaviour:
     masuk ke dalam mulutnya dalam hitungan milidetik.'
   moveSpeed: 3
   minSpawnInterval: 0.55
-  maxSpawnInterval: 0.6
+  maxSpawnInterval: 2
   minVSRequirement: 0
   vsValue: 5

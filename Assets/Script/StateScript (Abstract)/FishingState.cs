@@ -16,6 +16,7 @@ public class FishingState : IPlayerState
 
         _manager.PlayerAnimator.SetBool("isWaiting", false);
         _manager.PlayerAnimator.SetBool("PlayerUlur", true);
+        _manager.PlayerAnimator.SetBool("PlayerTarik", false);
         
         _manager.fishingMinigamePanel.SetActive(true);
         _manager.fishingButton.SetActive(false);
@@ -83,8 +84,21 @@ public class FishingState : IPlayerState
 
     public void Update()
     {
-        _manager.PlayerAnimator.SetBool("PlayerTarik", _isTugging);
-        _manager.PlayerAnimator.SetBool("PlayerUlur", !_isTugging);
+        AnimatorStateInfo stateInfo = _manager.PlayerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.normalizedTime >= 1f && !_manager.PlayerAnimator.IsInTransition(0))
+        {
+            if (stateInfo.IsName("PlayerUlur"))
+            {
+                _manager.PlayerAnimator.SetBool("PlayerUlur", false);
+                _manager.PlayerAnimator.SetBool("PlayerTarik", true);
+            }
+            else if (stateInfo.IsName("PlayerTarik"))
+            {
+                _manager.PlayerAnimator.SetBool("PlayerTarik", false);
+                _manager.PlayerAnimator.SetBool("PlayerUlur", true);
+            }
+        }
     }
 
     public void Exit()
@@ -95,6 +109,4 @@ public class FishingState : IPlayerState
 
         _activeFish = null;
     }
-
-    public void SetTugging(bool status) => _isTugging = status;
 }

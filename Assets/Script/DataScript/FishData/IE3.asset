@@ -27,6 +27,6 @@ MonoBehaviour:
     Fenomena visual ini sering disebut sebagai pertunjukan warna di bawah laut.'
   moveSpeed: 4.5
   minSpawnInterval: 0.4
-  maxSpawnInterval: 0.45
+  maxSpawnInterval: 1.5
   minVSRequirement: 200
   vsValue: 40

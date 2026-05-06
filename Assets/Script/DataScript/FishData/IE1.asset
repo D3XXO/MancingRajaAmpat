@@ -28,6 +28,6 @@ MonoBehaviour:
     riset kelautan lokal di tanah Papua.'
   moveSpeed: 4
   minSpawnInterval: 0.45
-  maxSpawnInterval: 0.5
+  maxSpawnInterval: 1.5
   minVSRequirement: 100
   vsValue: 25

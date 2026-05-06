@@ -30,6 +30,6 @@ MonoBehaviour:
     berenang, mereka akan mengalami kesulitan bernapas dan dapat mengalami hipoksia.'
   moveSpeed: 3.5
   minSpawnInterval: 0.5
-  maxSpawnInterval: 0.55
+  maxSpawnInterval: 2
   minVSRequirement: 30
   vsValue: 12

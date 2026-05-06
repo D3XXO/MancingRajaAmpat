@@ -27,6 +27,6 @@ MonoBehaviour:
     menjadikannya salah satu tantangan tersendiri untuk didokumentasikan.'
   moveSpeed: 4
   minSpawnInterval: 0.45
-  maxSpawnInterval: 0.5
+  maxSpawnInterval: 1.5
   minVSRequirement: 150
   vsValue: 35

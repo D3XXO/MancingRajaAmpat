@@ -31,6 +31,6 @@ MonoBehaviour:
     dibandingkan individu lainnya.'
   moveSpeed: 4.5
   minSpawnInterval: 0.4
-  maxSpawnInterval: 0.45
+  maxSpawnInterval: 1.5
   minVSRequirement: 300
   vsValue: 50
