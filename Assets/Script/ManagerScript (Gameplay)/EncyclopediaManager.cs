@@ -47,11 +47,25 @@ public class EncyclopediaManager : MonoBehaviour
         detailImage.color = Color.white;
     }
 
+    public void ClearDetails()
+    {
+        if (nameText != null) nameText.text = "";
+        if (descriptionText != null) descriptionText.text = null;
+
+        if (detailImage != null)
+        {
+            detailImage.sprite = null;
+            detailImage.color = new Color(1, 1, 1, 0);
+        }
+    }
+
 
     public void ToggleEncyclopedia()
     {
         if (encyclopediaPanel == null) return;
         bool willBeActive = !encyclopediaPanel.activeSelf;
+
+        ClearDetails();
 
         if (willBeActive)
         {

@@ -28,6 +28,6 @@ MonoBehaviour:
     masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.'
   moveSpeed: 5.5
   minSpawnInterval: 0.35
-  maxSpawnInterval: 1
+  maxSpawnInterval: 0.5
   minVSRequirement: 750
   vsValue: 150

@@ -28,6 +28,6 @@ MonoBehaviour:
     di antara karang dan pasir.'
   moveSpeed: 5
   minSpawnInterval: 0.35
-  maxSpawnInterval: 1
+  maxSpawnInterval: 0.5
   minVSRequirement: 500
   vsValue: 100

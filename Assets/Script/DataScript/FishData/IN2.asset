@@ -24,6 +24,6 @@ MonoBehaviour:
     melainkan untuk mencengkeram mangsa dengan kuat agar tidak lepas sebelum ditelan."
   moveSpeed: 3
   minSpawnInterval: 0.55
-  maxSpawnInterval: 2
+  maxSpawnInterval: 1
   minVSRequirement: 10
   vsValue: 8
