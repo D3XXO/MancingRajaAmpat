@@ -794,8 +794,8 @@ PolygonCollider2D:
     - - {x: -8.722995, y: 5.6657877}
       - {x: -8.7177105, y: -7.979278}
       - {x: 0.63785416, y: -8.124059}
-      - {x: 192.4296, y: -8.228351}
-      - {x: 192.41154, y: 5.6859894}
+      - {x: 230.1301, y: -8.022712}
+      - {x: 229.97496, y: 5.6859894}
   m_UseDelaunayMesh: 0
 --- !u!4 &197951001
 Transform:
@@ -2324,7 +2324,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1129036, y: -0.99999, z: -10}
+  m_LocalPosition: {x: 2.3159873, y: -0.99996996, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3135,83 +3135,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 611261663}
   m_CullTransparentMesh: 1
---- !u!1 &612876206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 612876208}
-  - component: {fileID: 612876207}
-  m_Layer: 0
-  m_Name: BatasKanan
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &612876207
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612876206}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.14761496}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 26.282936}
-  m_EdgeRadius: 0
---- !u!4 &612876208
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 612876206}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 192.20801, y: -2.8043377, z: -0.097960494}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &641240944
 GameObject:
   m_ObjectHideFlags: 0
@@ -18246,6 +18169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  decelerationSpeed: 0.5
 --- !u!50 &1670303215
 Rigidbody2D:
   serializedVersion: 4
@@ -18367,6 +18291,10 @@ MonoBehaviour:
   valueScoreText: {fileID: 292438481}
   virtualCamera: {fileID: 1567383464}
   IsInFishingZone: 0
+  leftMoveButton: {fileID: 1807978669}
+  rightMoveButton: {fileID: 1960733180}
+  minWorldX: -1
+  maxWorldX: 200
   availableFish:
   - {fileID: 11400000, guid: ca1def5ef044eda4592f30a5d7d6a064, type: 2}
   - {fileID: 11400000, guid: 739d844fb9e42214387fce850bb65070, type: 2}
@@ -20451,7 +20379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -465881833, guid: 8d16551af94ade64c896dc7cc590bf22, type: 3}
+  m_Sprite: {fileID: -310916931, guid: 502d8d044e5cda448ad6ef52c41f5517, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20484,5 +20412,4 @@ SceneRoots:
   - {fileID: 197951001}
   - {fileID: 1585479813}
   - {fileID: 1751568445}
-  - {fileID: 612876208}
   - {fileID: 1848918608}

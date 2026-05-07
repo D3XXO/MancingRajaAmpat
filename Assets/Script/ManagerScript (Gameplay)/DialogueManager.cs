@@ -51,12 +51,22 @@ public class DialogueManager : MonoBehaviour
         playerManager.movementButtonsParent.SetActive(status);
         playerManager.ensiklopediaButton.SetActive(status);
 
+        if (playerManager.fishingButton != null)
+        {
+            if (status)
+            {
+                playerManager.fishingButton.SetActive(playerManager.IsInFishingZone);
+            }
+            else
+            {
+                playerManager.fishingButton.SetActive(false);
+            }
+        }
+
         if (!status)
         {
             playerManager.movementComponent.StopMoving();
         }
-
-        playerManager.movementComponent.enabled = status;
 
         PauseManager pm = FindObjectOfType<PauseManager>();
         if (pm != null && pm.pauseButton != null)

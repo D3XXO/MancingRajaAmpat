@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [Header("Settings")]
     [SerializeField] float moveSpeed;
+    [SerializeField] float decelerationSpeed;
     
     [Header("References")]
     SpriteRenderer spriteRenderer;
@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     Rigidbody2D rb;
 
     private float moveInput = 0f;
+    private float targetDirection = 0f;
 
     void Start()
     {
@@ -21,54 +22,38 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        HandleSprite();
-    }
-
-    void FixedUpdate()
-    {
         HandleMovement();
+        HandleSprite();
     }
 
     private void HandleMovement()
     {
-        if (this.enabled)
-        {
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
-        }
+        moveInput = Mathf.MoveTowards(moveInput, targetDirection, decelerationSpeed * Time.deltaTime);
+        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
     }
 
     private void HandleSprite()
     {
-        if (moveInput > 0)
+        if (moveInput > 0.01f)
         {
             spriteRenderer.flipX = false;
         }
-        else if (moveInput < 0)
+        else if (moveInput < -0.01f)
         {
             spriteRenderer.flipX = true;
         }
 
-        bool isMoving = moveInput != 0;
+        bool isMoving = Mathf.Abs(moveInput) > 0.01f;
         animator.SetBool("isMoving", isMoving);
     }
 
     public void StartMoving(float direction)
     {
-        moveInput = direction;
+        targetDirection = direction;
     }
 
     public void StopMoving()
     {
-        moveInput = 0f;
-
-        if (rb != null)
-        {
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        }
-
-        if (animator != null)
-        {
-            animator.SetBool("isMoving", false);
-        }
+        targetDirection = 0f;
     }
 }

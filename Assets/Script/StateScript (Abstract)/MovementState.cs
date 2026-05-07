@@ -32,7 +32,33 @@ public class MovementState : IPlayerState
 
     public void Update()
     {
+        float currentX = _manager.transform.position.x;
 
+        if (currentX <= _manager.minWorldX)
+        {
+            if (_manager.leftMoveButton.activeSelf)
+            {
+                _manager.leftMoveButton.SetActive(false);
+                _manager.movementComponent.StopMoving();
+            }
+        }
+        else
+        {
+            if (!_manager.leftMoveButton.activeSelf) _manager.leftMoveButton.SetActive(true);
+        }
+
+        if (currentX >= _manager.maxWorldX)
+        {
+            if (_manager.rightMoveButton.activeSelf)
+            {
+                _manager.rightMoveButton.SetActive(false);
+                _manager.movementComponent.StopMoving();
+            }
+        }
+        else
+        {
+            if (!_manager.rightMoveButton.activeSelf) _manager.rightMoveButton.SetActive(true);
+        }
     }
 
     public void Exit()

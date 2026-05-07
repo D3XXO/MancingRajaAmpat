@@ -37,6 +37,12 @@ public class PlayerStateManager : MonoBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public bool IsInFishingZone;
 
+    [Header("Movement Boundaries")]
+    public GameObject leftMoveButton;
+    public GameObject rightMoveButton;
+    public float minWorldX;
+    public float maxWorldX;
+
     public MovementState MovementState { get; private set; }
     public WaitingState WaitingState { get; private set; }
     public FishingState FishingState { get; private set; }

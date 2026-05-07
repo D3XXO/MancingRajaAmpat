@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d16551af94ade64c896dc7cc590bf22
+guid: 502d8d044e5cda448ad6ef52c41f5517
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,6 +94,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kertas_0
+      name: Kertas 1_0
       rect:
         serializedVersion: 2
         x: 649
@@ -137,8 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33c60edd8bab6414bbc8b571feb32260
-      internalID: -465881833
+      spriteID: 0926b163f532af745a9c509c31ca1e05
+      internalID: -310916931
       vertices: []
       indices: 
       edges: []
@@ -154,7 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Kertas_0: -465881833
+      Kertas 1_0: -310916931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
