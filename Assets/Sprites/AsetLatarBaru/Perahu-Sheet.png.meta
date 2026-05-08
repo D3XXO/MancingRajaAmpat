@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 03eb8465d7428f24881583e22de85ec7
+guid: 0cc140ffdaac7ce41b9dd97ef4ee965d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -94,6 +94,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -123,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PIdle1
+      name: Perahu-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,20 +144,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d499a0e377151bf4483fcf6617c201d6
-      internalID: 1150180203
+      spriteID: 304dd80277064c34d8c574c164c4891d
+      internalID: 717063871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PIdle2
+      name: Perahu-Sheet_1
       rect:
         serializedVersion: 2
         x: 200
@@ -152,20 +165,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 080040f1b972aa0448a6706bf3598bad
-      internalID: -563327968
+      spriteID: 904a502efdaac6e4690728349b88a945
+      internalID: -77627491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PIdle3
+      name: Perahu-Sheet_2
       rect:
         serializedVersion: 2
         x: 400
@@ -173,20 +186,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4141f584a174f6540a08066569b36ad9
-      internalID: 1631006584
+      spriteID: 6d1ae21bfef9bcd49954a48273cfcb72
+      internalID: 1856339491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PIdle4
+      name: Perahu-Sheet_3
       rect:
         serializedVersion: 2
         x: 600
@@ -194,20 +207,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55b402394262b52428c174ef0a35595d
-      internalID: 1904298743
+      spriteID: 56132d7e69b5aa54fb08f97c618e7a71
+      internalID: -818334350
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar1
+      name: Perahu-Sheet_4
       rect:
         serializedVersion: 2
         x: 800
@@ -215,20 +228,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1bc9dac746d19e488ce1236fe6a3551
-      internalID: -1186051911
+      spriteID: dd93c832f1eca2842a7a9d35721ad1c6
+      internalID: 1791372411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar2
+      name: Perahu-Sheet_5
       rect:
         serializedVersion: 2
         x: 1000
@@ -236,20 +249,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df2a20218bd071644b838ceb6ab37b85
-      internalID: -137593181
+      spriteID: 5991ff3f5bff04b4a94340862d433085
+      internalID: -168331100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar3
+      name: Perahu-Sheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -257,20 +270,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 930db963f2deffa4293f3f9ae7d9805d
-      internalID: -338976402
+      spriteID: a2336f36375107d429c356aa991b293c
+      internalID: 1859229914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar4
+      name: Perahu-Sheet_7
       rect:
         serializedVersion: 2
         x: 200
@@ -278,20 +291,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36967c1cf88f3eb4ab782f79510a4c17
-      internalID: -1371885889
+      spriteID: 054149bffb0f62d4ea1aeedb41a94992
+      internalID: -1373087235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar5
+      name: Perahu-Sheet_8
       rect:
         serializedVersion: 2
         x: 400
@@ -299,20 +312,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2496bdfc09f3cf43b25439d83802eff
-      internalID: -639302436
+      spriteID: 984d783311d355747aef9cf81090a84d
+      internalID: -819681642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLempar6
+      name: Perahu-Sheet_9
       rect:
         serializedVersion: 2
         x: 600
@@ -320,20 +333,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7537a0063c2ba2e4db17de2dcbf0b3dc
-      internalID: -103291123
+      spriteID: 48484a37982383747abc53ef0fe261b4
+      internalID: -336655914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNunggu1
+      name: Perahu-Sheet_10
       rect:
         serializedVersion: 2
         x: 800
@@ -341,20 +354,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73c8f6a2595cc864594a8e9ef41652c5
-      internalID: 2044026488
+      spriteID: 72417f4cbff63894ea67049f3546cfc3
+      internalID: -2145616379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNunggu2
+      name: Perahu-Sheet_11
       rect:
         serializedVersion: 2
         x: 1000
@@ -362,20 +375,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba057d164ac8a914285c690590587889
-      internalID: -1001957344
+      spriteID: 11a0489d87b43b848a9cd91bc09aa48a
+      internalID: -943658567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNunggu3
+      name: Perahu-Sheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -383,20 +396,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 306acfcaa2be9a34fbf52d0850b7c27a
-      internalID: 165615899
+      spriteID: 47fdbd245610692478bfa0d6f51bd5de
+      internalID: -526418083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNunggu4
+      name: Perahu-Sheet_13
       rect:
         serializedVersion: 2
         x: 200
@@ -404,20 +417,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 138f7018af2105449b5f74ae760a62d8
-      internalID: 1452507549
+      spriteID: aebf060f9f6bbe84596cb71337b2844e
+      internalID: -839512143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik1
+      name: Perahu-Sheet_14
       rect:
         serializedVersion: 2
         x: 400
@@ -425,20 +438,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b3e6964ea46db94aa33e39a14804622
-      internalID: 171538053
+      spriteID: 852af976d9c34f54e879fbbda83898c3
+      internalID: -755312919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik2
+      name: Perahu-Sheet_15
       rect:
         serializedVersion: 2
         x: 600
@@ -446,20 +459,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07a68c04418de654a9ff011976a04868
-      internalID: 976148241
+      spriteID: b26e26284534ef84cae887a9697aaf20
+      internalID: 933030497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik3
+      name: Perahu-Sheet_16
       rect:
         serializedVersion: 2
         x: 800
@@ -467,20 +480,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a600df97af5706c4f83cd26365de3068
-      internalID: -2070558435
+      spriteID: 75804a9ca8cffd349aeaae248f99dc4e
+      internalID: -1226564596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik4
+      name: Perahu-Sheet_17
       rect:
         serializedVersion: 2
         x: 1000
@@ -488,20 +501,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbc36da7e9a2f5d4ea75d10ffbb2fbdd
-      internalID: -1852007090
+      spriteID: 26c17ac81742f6541925b1dd6dcf4a64
+      internalID: -213724592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik5
+      name: Perahu-Sheet_18
       rect:
         serializedVersion: 2
         x: 0
@@ -509,20 +522,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f13ff57bc47c1a4092bf1bbc95fa917
-      internalID: 1256303698
+      spriteID: 2f74b2a0049af5f4c97126615976fb70
+      internalID: -1223683053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik6
+      name: Perahu-Sheet_19
       rect:
         serializedVersion: 2
         x: 200
@@ -530,20 +543,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3db119f1370a94e479d6cca2d47973fc
-      internalID: 404645194
+      spriteID: 3a958a97fa539e2439fec9e3ff249439
+      internalID: 1389541216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik7
+      name: Perahu-Sheet_20
       rect:
         serializedVersion: 2
         x: 400
@@ -551,20 +564,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 862d5889972112846b4421d72892f89f
-      internalID: -376548915
+      spriteID: f6064d795d5f856478c07d53adb98629
+      internalID: 1252606975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PNarik8
+      name: Perahu-Sheet_21
       rect:
         serializedVersion: 2
         x: 600
@@ -572,20 +585,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58643b7915d469840a01fddfb6044c49
-      internalID: 997723867
+      spriteID: 0cf03a05b1806b549bd467950a69cc0b
+      internalID: -1462711730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur1
+      name: Perahu-Sheet_22
       rect:
         serializedVersion: 2
         x: 800
@@ -593,20 +606,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 641358b3b7d9a304b8403a8e68d7d68c
-      internalID: -233299532
+      spriteID: eb102d40e61004b41b971758f3489a26
+      internalID: -2087659910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur2
+      name: Perahu-Sheet_23
       rect:
         serializedVersion: 2
         x: 1000
@@ -614,20 +627,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a30e2bb4add3f0a408c1306251d23279
-      internalID: -1759918595
+      spriteID: c4808709b927c644a99fc69a6a389799
+      internalID: -811314261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur3
+      name: Perahu-Sheet_24
       rect:
         serializedVersion: 2
         x: 0
@@ -635,20 +648,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83ac31234a99f8b4ba7b56baa2d78c1a
-      internalID: 182281489
+      spriteID: 2b9343960274cc643a507e409dfeab45
+      internalID: -659542572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur4
+      name: Perahu-Sheet_25
       rect:
         serializedVersion: 2
         x: 200
@@ -656,20 +669,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15db537b9c5246041a0aa08680f79284
-      internalID: 485177129
+      spriteID: 820f82b12b7c2a0438104c6296f7946a
+      internalID: -1618057516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur5
+      name: Perahu-Sheet_26
       rect:
         serializedVersion: 2
         x: 400
@@ -677,20 +690,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f3c4d5307d069948a2abe43580c573f
-      internalID: 1640494642
+      spriteID: ab5f66f149c11ab4cb65c45abd471043
+      internalID: 99864113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur6
+      name: Perahu-Sheet_27
       rect:
         serializedVersion: 2
         x: 600
@@ -698,20 +711,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62091e711d4f09a41b1d2edb3004fc59
-      internalID: -1962647271
+      spriteID: 82f2b69a64106ba48b7ee02da40da42a
+      internalID: 1291008956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur7
+      name: Perahu-Sheet_28
       rect:
         serializedVersion: 2
         x: 800
@@ -719,20 +732,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbdf5549125695242ab91a2dd2740827
-      internalID: -887658174
+      spriteID: a4ca4ce89bdf15d4f95d74018a6daa3f
+      internalID: -1838610680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PUlur8
+      name: Perahu-Sheet_29
       rect:
         serializedVersion: 2
         x: 1000
@@ -740,20 +753,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7eaa812bb1fba4d428633f54e41984f9
-      internalID: -1191778316
+      spriteID: 4d402326934417d4b85d47de146be0e3
+      internalID: -1820638997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PDayung1
+      name: Perahu-Sheet_30
       rect:
         serializedVersion: 2
         x: 0
@@ -761,20 +774,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f2294d4a1c522469f3d089dcda72c0
-      internalID: 1179050350
+      spriteID: a46a52a2cd1f06d429c9c3355aa5508b
+      internalID: -1685155679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PDayung2
+      name: Perahu-Sheet_31
       rect:
         serializedVersion: 2
         x: 200
@@ -788,14 +801,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5faf73ae21b25be4fb92605448a6e082
-      internalID: -938143012
+      spriteID: ca8419442e0198b4b877c592d2efcc0e
+      internalID: 1232600388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PDayung3
+      name: Perahu-Sheet_32
       rect:
         serializedVersion: 2
         x: 400
@@ -809,14 +822,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a970f3a208f34e04f8558d3312ac7873
-      internalID: -554218048
+      spriteID: 752ab903539be2748932fa61d88d0385
+      internalID: 1689011915
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PDayung4
+      name: Perahu-Sheet_33
       rect:
         serializedVersion: 2
         x: 600
@@ -830,8 +843,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e689f5efcb890647bc904d84c228bab
-      internalID: 1271179095
+      spriteID: 88ced41954ef3e44099ab2d778be7a8c
+      internalID: 160975362
       vertices: []
       indices: 
       edges: []
@@ -847,40 +860,40 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PDayung1: 1179050350
-      PDayung2: -938143012
-      PDayung3: -554218048
-      PDayung4: 1271179095
-      PIdle1: 1150180203
-      PIdle2: -563327968
-      PIdle3: 1631006584
-      PIdle4: 1904298743
-      PLempar1: -1186051911
-      PLempar2: -137593181
-      PLempar3: -338976402
-      PLempar4: -1371885889
-      PLempar5: -639302436
-      PLempar6: -103291123
-      PNarik1: 171538053
-      PNarik2: 976148241
-      PNarik3: -2070558435
-      PNarik4: -1852007090
-      PNarik5: 1256303698
-      PNarik6: 404645194
-      PNarik7: -376548915
-      PNarik8: 997723867
-      PNunggu1: 2044026488
-      PNunggu2: -1001957344
-      PNunggu3: 165615899
-      PNunggu4: 1452507549
-      PUlur1: -233299532
-      PUlur2: -1759918595
-      PUlur3: 182281489
-      PUlur4: 485177129
-      PUlur5: 1640494642
-      PUlur6: -1962647271
-      PUlur7: -887658174
-      PUlur8: -1191778316
+      Perahu-Sheet_0: 717063871
+      Perahu-Sheet_1: -77627491
+      Perahu-Sheet_10: -2145616379
+      Perahu-Sheet_11: -943658567
+      Perahu-Sheet_12: -526418083
+      Perahu-Sheet_13: -839512143
+      Perahu-Sheet_14: -755312919
+      Perahu-Sheet_15: 933030497
+      Perahu-Sheet_16: -1226564596
+      Perahu-Sheet_17: -213724592
+      Perahu-Sheet_18: -1223683053
+      Perahu-Sheet_19: 1389541216
+      Perahu-Sheet_2: 1856339491
+      Perahu-Sheet_20: 1252606975
+      Perahu-Sheet_21: -1462711730
+      Perahu-Sheet_22: -2087659910
+      Perahu-Sheet_23: -811314261
+      Perahu-Sheet_24: -659542572
+      Perahu-Sheet_25: -1618057516
+      Perahu-Sheet_26: 99864113
+      Perahu-Sheet_27: 1291008956
+      Perahu-Sheet_28: -1838610680
+      Perahu-Sheet_29: -1820638997
+      Perahu-Sheet_3: -818334350
+      Perahu-Sheet_30: -1685155679
+      Perahu-Sheet_31: 1232600388
+      Perahu-Sheet_32: 1689011915
+      Perahu-Sheet_33: 160975362
+      Perahu-Sheet_4: 1791372411
+      Perahu-Sheet_5: -168331100
+      Perahu-Sheet_6: 1859229914
+      Perahu-Sheet_7: -1373087235
+      Perahu-Sheet_8: -819681642
+      Perahu-Sheet_9: -336655914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
