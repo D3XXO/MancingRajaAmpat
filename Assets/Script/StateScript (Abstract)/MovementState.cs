@@ -65,7 +65,6 @@ public class MovementState : IPlayerState
     {
         _manager.movementComponent.StopMoving();
 
-        _manager.movementComponent.enabled = false;
         _manager.movementButtonsParent.SetActive(false);
         _manager.ensiklopediaButton.SetActive(true);
 

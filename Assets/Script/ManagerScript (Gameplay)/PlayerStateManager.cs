@@ -90,13 +90,13 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnFishingButtonClicked()
     {
-        if (movementComponent != null)
-        {
-            movementComponent.StopMoving();
-        }
-
         if (_currentState == MovementState)
         {
+            if (movementComponent != null)
+            {
+                movementComponent.StopMoving();
+            }
+
             SwitchState(WaitingState);
         }
         else if (_currentState == WaitingState)
