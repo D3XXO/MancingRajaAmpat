@@ -3,24 +3,39 @@ using UnityEngine.UI;
 
 public class FishingZone : MonoBehaviour
 {
-    public string zoneName;
+    [Header("Zone Configuration")]
+    public float gachaCooldown;
+
+    [Header("UI World Space Setup")]
     public GameObject textPrefab;
     public Vector3 uiOffset;
 
     [HideInInspector] public FishingZoneData zoneSettings = new FishingZoneData();
+    [HideInInspector] public bool isPlayerInside = false;
+    [HideInInspector] public FishingZoneSpawner spawnerParent;
+    
     private GameObject _instantiatedUI;
+    private float _lastGachaTime = -999f;
+    private bool _hasGeneratedBefore = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            isPlayerInside = true;
+
             PlayerStateManager player = other.GetComponent<PlayerStateManager>();
             if (player != null && player.fishingButton != null)
             {
                 player.IsInFishingZone = true;
                 player.fishingButton.SetActive(true);
                 
-                GenerateDynamicChances(player.totalValueScore, player.availableFish);
+                if (!_hasGeneratedBefore || Time.time - _lastGachaTime >= gachaCooldown)
+                {
+                    GenerateDynamicChances(player.totalValueScore, player.availableFish);
+                    _lastGachaTime = Time.time;
+                    _hasGeneratedBefore = true;
+                }
 
                 player.currentZoneData = this.zoneSettings;
 
@@ -33,6 +48,8 @@ public class FishingZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            isPlayerInside = false;
+
             PlayerStateManager player = other.GetComponent<PlayerStateManager>();
             if (player != null && player.fishingButton != null)
             {
@@ -42,13 +59,16 @@ public class FishingZone : MonoBehaviour
 
                 if (_instantiatedUI != null) Destroy(_instantiatedUI);
             }
+
+            if (spawnerParent != null)
+            {
+                spawnerParent.OnPlayerLeftZone(this.gameObject);
+            }
         }
     }
 
     private void GenerateDynamicChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
     {
-        zoneSettings.zoneName = this.zoneName;
-
         int minEndemicReq = int.MaxValue;
         int minRareReq = int.MaxValue;
 
@@ -60,27 +80,19 @@ public class FishingZone : MonoBehaviour
                 minRareReq = fish.minVSRequirement;
         }
 
-        float normal = 100f;
-        float endemic = 0f;
-        float rare = 0f;
+        float maxEndemicPossible = 0f;
+        float maxRarePossible = 0f;
 
-        if (playerScore >= minEndemicReq && minEndemicReq > 0)
-        {
-            float progressFactor = (float)playerScore / (minEndemicReq * 2);
-            endemic = Mathf.Clamp(progressFactor * 25f, 10f, 40f);
-        }
+        if (playerScore >= minEndemicReq) maxEndemicPossible = 50f;
+        if (playerScore >= minRareReq) maxRarePossible = 30f;
 
-        if (playerScore >= minRareReq && minRareReq > 0)
-        {
-            float progressFactor = (float)playerScore / (minRareReq * 2);
-            rare = Mathf.Clamp(progressFactor * 10f, 2f, 20f);
-        }
+        float endemicChance = Random.Range(0f, maxEndemicPossible);
+        float rareChance = Random.Range(0f, maxRarePossible);
+        float normalChance = 100f - (endemicChance + rareChance);
 
-        normal = 100f - (endemic + rare);
-
-        zoneSettings.normalChance = Mathf.Round(normal);
-        zoneSettings.endemicChance = Mathf.Round(endemic);
-        zoneSettings.rareChance = Mathf.Round(rare);
+        zoneSettings.normalChance = Mathf.Round(normalChance);
+        zoneSettings.endemicChance = Mathf.Round(endemicChance);
+        zoneSettings.rareChance = Mathf.Round(rareChance);
     }
 
     private void UpdateZoneInfoUI()
@@ -95,8 +107,7 @@ public class FishingZone : MonoBehaviour
             Text txt = _instantiatedUI.GetComponentInChildren<Text>();
             if (txt != null)
             {
-                txt.text = $"{zoneSettings.zoneName}\n" +
-                        $"Normal: {zoneSettings.normalChance}%\n" +
+                txt.text = $"Normal: {zoneSettings.normalChance}%\n" +
                         $"Endemic: {zoneSettings.endemicChance}%\n" +
                         $"Rare: {zoneSettings.rareChance}%";
             }
