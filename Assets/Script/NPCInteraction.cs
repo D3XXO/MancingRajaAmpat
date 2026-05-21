@@ -9,7 +9,6 @@ public class NPCInteraction : MonoBehaviour
     public GameObject interactButton;
 
     private DialogueManager _dialogueManager;
-    private EncyclopediaManager _encyclopedia;
     private bool _isPlayerNear = false;
 
     void Start()
@@ -17,16 +16,20 @@ public class NPCInteraction : MonoBehaviour
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _npcAI = GetComponent<NPCStateManager>();
 
-        if (_dialogueManager != null)
-        {
-            _encyclopedia = _dialogueManager.GetComponent<EncyclopediaManager>();
-        }
-
         if (interactButton != null) interactButton.SetActive(false);
     }
 
     void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+            if (interactButton != null && interactButton.activeSelf)
+            {
+                interactButton.SetActive(false);
+            }
+            return;
+        }
+
         if (_isPlayerNear && _dialogueManager != null && _dialogueManager.playerManager != null)
         {
             EncyclopediaManager enzy = _dialogueManager.GetComponent<EncyclopediaManager>();
@@ -41,7 +44,6 @@ public class NPCInteraction : MonoBehaviour
             }
 
             bool canInteract = isMovingState && isNotTalking && enzyIsClosed;
-            
             if (interactButton.activeSelf != canInteract)
             {
                 interactButton.SetActive(canInteract);
@@ -73,6 +75,12 @@ public class NPCInteraction : MonoBehaviour
 
     void TriggerDialogue()
     {
+        if (_dialogueManager != null && _dialogueManager.playerManager != null)
+        {
+            var player = _dialogueManager.playerManager;
+            if (player.CurrentState != player.MovementState) return;
+        }
+
         interactButton.SetActive(false);
         _dialogueManager.StartDialogue(npcDialogue);
     }

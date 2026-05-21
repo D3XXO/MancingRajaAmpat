@@ -22,27 +22,61 @@ public class FishingState : IPlayerState
         _manager.fishingButton.SetActive(false);
         _manager.movementButtonsParent.SetActive(false);
 
-        if (_manager.rhythmSpawner != null && _manager.availableFish.Count > 0)
+        if (_manager.rhythmSpawner != null && _manager.availableFish.Count > 0 && _manager.currentZoneData != null)
         {
-            List<FishData> catchableFish = new List<FishData>();
-
+            List<FishData> validScoreFish = new List<FishData>();
             foreach (FishData fish in _manager.availableFish)
             {
                 if (_manager.totalValueScore >= fish.minVSRequirement)
                 {
-                    catchableFish.Add(fish);
+                    validScoreFish.Add(fish);
                 }
             }
 
-            if (catchableFish.Count > 0)
+            if (validScoreFish.Count > 0)
             {
-                _activeFish = catchableFish[Random.Range(0, catchableFish.Count)];
+                FishRarity selectedRarity = RollRarity(_manager.currentZoneData);
+
+                List<FishData> finalPool = new List<FishData>();
+                foreach (FishData fish in validScoreFish)
+                {
+                    if (fish.rarity == selectedRarity)
+                    {
+                        finalPool.Add(fish);
+                    }
+                }
+
+                if (finalPool.Count == 0)
+                {
+                    finalPool = validScoreFish;
+                }
+
+                _activeFish = finalPool[Random.Range(0, finalPool.Count)];
                 _manager.rhythmSpawner.StartSpawning(_activeFish);
             }
             else
             {
                 Debug.LogWarning("Tidak ada ikan yang tersedia untuk skor saat ini!");
+                _manager.SwitchState(_manager.MovementState);
             }
+        }
+    }
+
+    private FishRarity RollRarity(FishingZoneData zone)
+    {
+        float roll = Random.Range(0f, 100f);
+
+        if (roll <= zone.normalChance)
+        {
+            return FishRarity.Normal;
+        }
+        else if (roll <= zone.normalChance + zone.endemicChance)
+        {
+            return FishRarity.Endemic;
+        }
+        else
+        {
+            return FishRarity.Rare;
         }
     }
 

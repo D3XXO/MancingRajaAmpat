@@ -41,5 +41,9 @@ public class RhythmManager : MonoBehaviour
             allActiveNotes.Remove(noteToHit);
             Destroy(noteToHit.gameObject);
         }
+        else
+        {
+            stateManager.FishingState.ChangeProgress(-0.05f); // Menghukum player (mengurangi progress)
+        }
     }
 }

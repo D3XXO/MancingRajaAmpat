@@ -65,11 +65,7 @@ public class PauseManager : MonoBehaviour
         
         if (movementButtons != null) movementButtons.SetActive(isMoving);
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(isMoving);
-
-        if (fishingButton != null)
-        {
-            fishingButton.SetActive(isMoving && _player.IsInFishingZone);
-        }
+        if (fishingButton != null) fishingButton.SetActive(isMoving && _player.IsInFishingZone);
 
         pauseButton.SetActive(true);
     }

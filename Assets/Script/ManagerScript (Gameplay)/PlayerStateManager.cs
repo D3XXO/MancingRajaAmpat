@@ -48,6 +48,9 @@ public class PlayerStateManager : MonoBehaviour
     public FishingState FishingState { get; private set; }
     public List<FishData> availableFish;
 
+    [HideInInspector]
+    public FishingZoneData currentZoneData;
+
     void Awake()
     {
         MovementState = new MovementState(this);
@@ -90,6 +93,9 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnFishingButtonClicked()
     {
+        DialogueManager dialogue = FindObjectOfType<DialogueManager>();
+        if (dialogue != null && dialogue.dialoguePanel != null && dialogue.dialoguePanel.activeSelf) return;
+
         if (_currentState == MovementState)
         {
             if (movementComponent != null)
@@ -144,6 +150,11 @@ public class PlayerStateManager : MonoBehaviour
 
     private IEnumerator ZoomRoutine(float targetSize)
     {
+        if (fishingButton != null)
+        {
+            fishingButton.SetActive(false);
+        }
+
         float startSize = virtualCamera.m_Lens.OrthographicSize;
         float elapsed = 0;
         float duration = 1.0f;
@@ -154,7 +165,13 @@ public class PlayerStateManager : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+
         virtualCamera.m_Lens.OrthographicSize = targetSize;
+
+        if (fishingButton != null && IsInFishingZone && _currentState == MovementState)
+        {
+            fishingButton.SetActive(true);
+        }
     }
 
     public void TriggerShake(float intensity, float time)
