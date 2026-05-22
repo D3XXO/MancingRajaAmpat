@@ -12,6 +12,7 @@ public class PauseManager : MonoBehaviour
     public GameObject fishingButton;
     public GameObject interactButton;
     public GameObject pauseButton;
+    public GameObject muteIcon;
 
     private PlayerStateManager _player;
 
@@ -30,6 +31,12 @@ public class PauseManager : MonoBehaviour
 
         pauseGamePanel.SetActive(true);
         pauseButton.SetActive(false);
+
+        if (AudioManager.Instance != null)
+        {
+            muteIcon.SetActive(AudioManager.Instance.IsMuted);
+            AudioManager.Instance.PauseAllAudio();
+        }
 
         Time.timeScale = 0f;
 
@@ -86,7 +93,8 @@ public class PauseManager : MonoBehaviour
     {
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.ToggleMusic();
+            bool isMuted = AudioManager.Instance.ToggleMusic();
+            muteIcon.SetActive(isMuted);
         }
     }
 }

@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfxSource;
 
     private bool _isMuted = false;
+    public bool IsMuted => _isMuted;
 
     void Awake()
     {
@@ -32,7 +33,7 @@ public class AudioManager : MonoBehaviour
         bgmSource.Play();
     }
 
-    public void ToggleMusic()
+    public bool ToggleMusic()
     {
         _isMuted = !_isMuted;
         bgmSource.mute = _isMuted;
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
         PlayerPrefs.SetInt("IsMusicMuted", _isMuted ? 1 : 0);
         PlayerPrefs.Save();
+        return _isMuted;
     }
 
     private void LoadAudioSettings()
