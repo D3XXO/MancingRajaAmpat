@@ -37,13 +37,21 @@ public class RhythmManager : MonoBehaviour
 
         if (noteToHit != null)
         {
-            stateManager.FishingState.ChangeProgress(0.1f);
+            if (noteToHit.isRedNote)
+            {
+                stateManager.FishingState.ChangeProgress(-0.1f);
+            }
+            else
+            {
+                stateManager.FishingState.ChangeProgress(0.1f);
+            }
+
             allActiveNotes.Remove(noteToHit);
             Destroy(noteToHit.gameObject);
         }
         else
         {
-            stateManager.FishingState.ChangeProgress(-0.05f); // Menghukum player (mengurangi progress)
+            stateManager.FishingState.ChangeProgress(-0.05f);
         }
     }
 }

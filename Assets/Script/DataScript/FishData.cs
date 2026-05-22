@@ -27,4 +27,9 @@ public class FishData : ScriptableObject
     [Header("Value Score Mechanics")]
     public int minVSRequirement;
     public int vsValue;
+
+    [HideInInspector] 
+    public string customAudioPath;
+    [HideInInspector]
+    public AudioClip customAudioClip;
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class RhythmSpawner : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class RhythmSpawner : MonoBehaviour
 
     [Header("Systems")]
     public RhythmManager rhythmManager;
+
+    private Color[] _noteColors = new Color[]
+    {
+        new Color(0.2f, 0.8f, 0.2f), // Hijau
+        new Color(1f, 0.9f, 0f),     // Kuning
+        new Color(0.2f, 0.6f, 1f),   // Biru
+        new Color(1f, 0.5f, 0f),     // Oren
+        new Color(1f, 0.2f, 0.2f)    // Merah
+    };
 
     private FishData _currentFish;
     private bool _isSpawning = false;
@@ -48,6 +58,18 @@ public class RhythmSpawner : MonoBehaviour
 
             RhythmNote noteComponent = newNoteObj.GetComponent<RhythmNote>();
             noteComponent.moveSpeed = _currentFish.moveSpeed;
+
+            Image noteImage = newNoteObj.GetComponent<Image>();
+            if (noteImage != null)
+            {
+                int randomColorIndex = Random.Range(0, _noteColors.Length);
+                noteImage.color = _noteColors[randomColorIndex];
+
+                if (randomColorIndex == 4)
+                {
+                    noteComponent.isRedNote = true;
+                }
+            }
 
             if (rhythmManager != null)
             {

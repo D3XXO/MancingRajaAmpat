@@ -104,6 +104,13 @@ public class FishingState : IPlayerState
             PlayerPrefs.Save();
 
             _manager.AddValueScore(_activeFish.vsValue);
+
+            FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
+            if (floatScript != null)
+            {
+                floatScript.TriggerText("+" + _activeFish.vsValue, new Color(1f, 0.8f, 0f));
+            }
+
             _manager.ShowCaughtFish(_activeFish);
         }
 

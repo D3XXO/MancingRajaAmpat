@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RhythmNote : MonoBehaviour
 {
     public int noteID;
     public float moveSpeed;
+    public bool isRedNote;
 
     void Update()
     {
@@ -11,7 +13,11 @@ public class RhythmNote : MonoBehaviour
 
         if (transform.localPosition.x < -530f)
         {
-            FindObjectOfType<PlayerStateManager>().FishingState.ChangeProgress(-0.1f);
+            if (!isRedNote)
+            {
+                FindObjectOfType<PlayerStateManager>().FishingState.ChangeProgress(-0.1f);
+            }
+
             Destroy(gameObject);
         }
     }
