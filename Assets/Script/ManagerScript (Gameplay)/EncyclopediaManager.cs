@@ -31,6 +31,7 @@ public class EncyclopediaManager : MonoBehaviour
     public Text recordingStatusText;
     private AudioClip _recordingClip;
     private float _startRecordingTime;
+    private bool _isRecordingCancelled;
 
     [Header("Data")]
     public List<FishData> allFish;
@@ -56,6 +57,8 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void DisplayFishDetails(FishData data)
     {
+        CancelRecording();
+
         _selectedFish = data;
         nameText.text = data.fishName;
         detailImage.sprite = data.fishIcon;
@@ -78,6 +81,7 @@ public class EncyclopediaManager : MonoBehaviour
 
         if (File.Exists(savedPath))
         {
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
             _selectedFish.customAudioPath = savedPath;
             PlayFishAudio();
         }
@@ -85,6 +89,7 @@ public class EncyclopediaManager : MonoBehaviour
         {
             _selectedFish.customAudioPath = "";
             _selectedFish.customAudioClip = null;
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
 
             if (fishAudioSource != null && fishAudioSource.isPlaying)
             {
@@ -95,6 +100,8 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ShowGeneralDescription()
     {
+        CancelRecording();
+
         if (_selectedFish == null) return;
         
         detailContentText.text = _selectedFish.generalDescription;
@@ -104,6 +111,8 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ShowFunFact()
     {
+        CancelRecording();
+
         if (_selectedFish == null) return;
 
         detailContentText.text = _selectedFish.funFact;
@@ -182,6 +191,8 @@ public class EncyclopediaManager : MonoBehaviour
     {
         if (_selectedFish == null) return;
 
+        _isRecordingCancelled = false;
+
         _recordingClip = Microphone.Start(null, false, 10, 44100);
         _startRecordingTime = Time.time;
 
@@ -190,7 +201,7 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void StopRecordingVoice()
     {
-        if (_selectedFish == null || !Microphone.IsRecording(null)) return;
+        if (_selectedFish == null || !Microphone.IsRecording(null) || _isRecordingCancelled) return;
 
         float recordingLength = Time.time - _startRecordingTime;
         Microphone.End(null);
@@ -275,5 +286,16 @@ public class EncyclopediaManager : MonoBehaviour
     {
         byte[] wavData = SavWav.ConvertToWav(clip);
         File.WriteAllBytes(filepath, wavData);
+    }
+
+    public void CancelRecording()
+    {
+        if (Microphone.IsRecording(null))
+        {
+            Microphone.End(null);
+            _isRecordingCancelled = true;
+            
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
+        }
     }
 }
