@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class FishingZone : MonoBehaviour
 {
@@ -15,14 +16,21 @@ public class FishingZone : MonoBehaviour
     [HideInInspector] public FishingZoneSpawner spawnerParent;
     
     private GameObject _instantiatedUI;
-    private float _lastGachaTime = -999f;
     private bool _hasGeneratedBefore = false;
     private PlayerStateManager _currentPlayer;
+
+    private Coroutine _cooldownCoroutine;
+    private float _currentCooldownTimer = 0f;
 
     public void ForceUpdateChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
     {
         GenerateDynamicChances(playerScore, allFish);
-        UpdateZoneInfoUI();
+        _hasGeneratedBefore = true;
+
+        if (isPlayerInside)
+        {
+            UpdateZoneInfoUI();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -32,21 +40,24 @@ public class FishingZone : MonoBehaviour
             isPlayerInside = true;
             _currentPlayer = other.GetComponent<PlayerStateManager>();
 
-            PlayerStateManager player = other.GetComponent<PlayerStateManager>();
-            if (player != null && player.fishingButton != null)
+            if (_cooldownCoroutine != null)
             {
-                player.IsInFishingZone = true;
-                player.fishingButton.SetActive(true);
+                StopCoroutine(_cooldownCoroutine);
+                _cooldownCoroutine = null;
+            }
+
+            if (_currentPlayer != null && _currentPlayer.fishingButton != null)
+            {
+                _currentPlayer.IsInFishingZone = true;
+                _currentPlayer.fishingButton.SetActive(true);
                 
-                if (!_hasGeneratedBefore || Time.time - _lastGachaTime >= gachaCooldown)
+                if (!_hasGeneratedBefore)
                 {
-                    GenerateDynamicChances(player.totalValueScore, player.availableFish);
-                    _lastGachaTime = Time.time;
+                    GenerateDynamicChances(_currentPlayer.totalValueScore, _currentPlayer.availableFish);
                     _hasGeneratedBefore = true;
                 }
 
-                player.currentZoneData = this.zoneSettings;
-
+                _currentPlayer.currentZoneData = this.zoneSettings;
                 UpdateZoneInfoUI();
             }
         }
@@ -57,23 +68,37 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
-            _currentPlayer = null;
 
-            PlayerStateManager player = other.GetComponent<PlayerStateManager>();
-            if (player != null && player.fishingButton != null)
+            if (_currentPlayer != null && _currentPlayer.fishingButton != null)
             {
-                player.IsInFishingZone = false;
-                player.fishingButton.SetActive(false);
-                player.currentZoneData = null;
+                _currentPlayer.IsInFishingZone = false;
+                _currentPlayer.fishingButton.SetActive(false);
+                _currentPlayer.currentZoneData = null;
 
                 if (_instantiatedUI != null) Destroy(_instantiatedUI);
             }
+
+            _currentPlayer = null;
+
+            _cooldownCoroutine = StartCoroutine(CooldownRoutine());
 
             if (spawnerParent != null)
             {
                 spawnerParent.OnPlayerLeftZone(this.gameObject);
             }
         }
+    }
+
+    private IEnumerator CooldownRoutine()
+    {
+        while (_currentCooldownTimer < gachaCooldown)
+        {
+            _currentCooldownTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        _hasGeneratedBefore = false;
+        _currentCooldownTimer = 0f;
     }
 
     private void GenerateDynamicChances(int playerScore, System.Collections.Generic.List<FishData> allFish)

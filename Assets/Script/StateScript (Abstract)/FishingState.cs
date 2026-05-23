@@ -134,13 +134,16 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
-        _manager.AddValueScore(-2);
-
-        FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
-        if (floatScript != null)
+        if (_manager.totalValueScore > 0)
         {
-            floatScript.TriggerText("-2", Color.red);
+            FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
+            if (floatScript != null)
+            {
+                floatScript.TriggerText("-2", Color.red);
+            }
         }
+
+        _manager.AddValueScore(-2);
 
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);

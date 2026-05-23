@@ -7,7 +7,6 @@ public class RhythmNote : MonoBehaviour
     public float moveSpeed;
     public bool isRedNote;
     public Text labelText;
-    [HideInInspector] public PlayerStateManager stateManager;
 
     void Update()
     {
@@ -18,7 +17,6 @@ public class RhythmNote : MonoBehaviour
             if (!isRedNote)
             {
                 FindObjectOfType<PlayerStateManager>().FishingState.ChangeProgress(-0.1f);
-                stateManager.TriggerShake(1f, 0.5f);
             }
 
             Destroy(gameObject);
