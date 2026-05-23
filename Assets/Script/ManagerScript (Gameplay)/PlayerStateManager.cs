@@ -131,6 +131,16 @@ public class PlayerStateManager : MonoBehaviour
     public void AddValueScore(int amount)
     {
         totalValueScore += amount;
+
+        if (IsInFishingZone && currentZoneData != null)
+        {
+            FishingZone activeZone = FindObjectOfType<FishingZone>();
+            if (activeZone != null && activeZone.isPlayerInside)
+            {
+                activeZone.ForceUpdateChances(totalValueScore, availableFish);
+            }
+        }
+
         PlayerPrefs.SetInt("TotalValueScore", totalValueScore);
         PlayerPrefs.Save();
         UpdateVSText();

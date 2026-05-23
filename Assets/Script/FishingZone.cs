@@ -17,12 +17,20 @@ public class FishingZone : MonoBehaviour
     private GameObject _instantiatedUI;
     private float _lastGachaTime = -999f;
     private bool _hasGeneratedBefore = false;
+    private PlayerStateManager _currentPlayer;
+
+    public void ForceUpdateChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
+    {
+        GenerateDynamicChances(playerScore, allFish);
+        UpdateZoneInfoUI();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
+            _currentPlayer = other.GetComponent<PlayerStateManager>();
 
             PlayerStateManager player = other.GetComponent<PlayerStateManager>();
             if (player != null && player.fishingButton != null)
@@ -49,6 +57,7 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
+            _currentPlayer = null;
 
             PlayerStateManager player = other.GetComponent<PlayerStateManager>();
             if (player != null && player.fishingButton != null)
