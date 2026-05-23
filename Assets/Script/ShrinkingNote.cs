@@ -27,7 +27,7 @@ public class ShrinkingNote : MonoBehaviour
 
     void Update()
     {
-        float speedMultiplier = shrinkSpeed / 100f;
+        float speedMultiplier = shrinkSpeed / 80f;
         
         _currentScale -= speedMultiplier;
         transform.localScale = Vector3.one * Mathf.Max(0, _currentScale);
@@ -37,6 +37,7 @@ public class ShrinkingNote : MonoBehaviour
             if (!isRedNote)
             {
                 if (_stateManager != null) _stateManager.FishingState.ChangeProgress(-0.1f);
+                _stateManager.TriggerShake(1f, 0.5f);
             }
             Destroy(gameObject);
         }
@@ -54,6 +55,7 @@ public class ShrinkingNote : MonoBehaviour
             if (isRedNote)
             {
                 _stateManager.FishingState.ChangeProgress(-0.1f);
+                _stateManager.TriggerShake(1f, 0.5f);
             }
             else
             {
