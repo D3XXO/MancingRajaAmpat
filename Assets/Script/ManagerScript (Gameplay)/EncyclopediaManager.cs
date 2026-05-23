@@ -75,13 +75,12 @@ public class EncyclopediaManager : MonoBehaviour
             if (fileInfo.Length < 1000)
             {
                 File.Delete(savedPath);
-                Debug.LogWarning("File audio korup terdeteksi dan telah dibersihkan.");
             }
         }
 
         if (File.Exists(savedPath))
         {
-            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam";
             _selectedFish.customAudioPath = savedPath;
             PlayFishAudio();
         }
@@ -89,7 +88,7 @@ public class EncyclopediaManager : MonoBehaviour
         {
             _selectedFish.customAudioPath = "";
             _selectedFish.customAudioClip = null;
-            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam";
 
             if (fishAudioSource != null && fishAudioSource.isPlaying)
             {

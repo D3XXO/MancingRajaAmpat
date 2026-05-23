@@ -7,17 +7,17 @@ public class FishingZoneSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     public GameObject fishingZonePrefab;
     public int totalZonesToSpawn;
+    public float waitDuration;
 
     [Header("Coordinate Rules")]
-    private float spawnY = -4f;
+    private float spawnY = -3.5f;
     private float minX = 36f;
     private float maxX = 180f;
-    private float zoneWidth = 12f;
+    private float zoneWidth = 25f;
     private float minDistanceToMove = 20f;
 
     [Header("References")]
     public Transform playerTransform;
-
     private List<GameObject> _spawnedZones = new List<GameObject>();
 
     void Start()
@@ -44,28 +44,36 @@ public class FishingZoneSpawner : MonoBehaviour
 
     public void OnPlayerLeftZone(GameObject zone)
     {
+        StopCoroutine("WaitAndRepositionRoutine");
         StartCoroutine(WaitAndRepositionRoutine(zone));
     }
 
     private IEnumerator WaitAndRepositionRoutine(GameObject zone)
     {
         FishingZone zoneScript = zone.GetComponent<FishingZone>();
-        
-        while (zoneScript != null && !zoneScript.isPlayerInside)
-        {
-            float distanceToPlayer = Mathf.Abs(zone.transform.position.x - playerTransform.position.x);
+        float elapsedWaitTime = 0f;
 
-            if (distanceToPlayer > minDistanceToMove)
+        while (elapsedWaitTime < waitDuration)
+        {
+            if (zoneScript != null && zoneScript.isPlayerInside)
             {
-                Vector3 newPos = GetRandomValidPosition();
-                if (newPos != Vector3.zero)
-                {
-                    zone.transform.position = newPos;
-                    yield break;
-                }
+                yield return new WaitForSeconds(0.5f);
+                continue;
             }
 
+            elapsedWaitTime += 0.5f;
             yield return new WaitForSeconds(0.5f);
+        }
+
+        float distanceToPlayer = Mathf.Abs(zone.transform.position.x - playerTransform.position.x);
+
+        if (distanceToPlayer > minDistanceToMove)
+        {
+            Vector3 newPos = GetRandomValidPosition();
+            if (newPos != Vector3.zero)
+            {
+                zone.transform.position = newPos;
+            }
         }
     }
 

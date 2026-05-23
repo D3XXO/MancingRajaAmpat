@@ -3,7 +3,6 @@ using System.Collections.Generic;
 public class FishingState : IPlayerState
 {
     private PlayerStateManager _manager;
-    private bool _isTugging;
     private float _currentProgress = 0f;
     private FishData _activeFish;
 
@@ -99,7 +98,7 @@ public class FishingState : IPlayerState
         _currentProgress = Mathf.Clamp01(_currentProgress);
         UpdateUI();
 
-        if (_currentProgress >= 1f) WinFishing();
+        if (_currentProgress == 1f) WinFishing();
         else if (_currentProgress <= 0f) LoseFishing();
     }
 

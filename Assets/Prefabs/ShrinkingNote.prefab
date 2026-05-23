@@ -215,4 +215,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRedNote: 0
   shrinkSpeed: 0
+  sfxKlikTombol: {fileID: 8300000, guid: cfdbea779eb599f4089cd55aadf57b21, type: 3}
   labelText: {fileID: 7302413428127372361}
