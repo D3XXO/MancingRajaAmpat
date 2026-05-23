@@ -75,7 +75,7 @@ public class RhythmManager : MonoBehaviour
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         
         RectTransform rt = go.GetComponent<RectTransform>();
-        rt.anchoredPosition = new Vector2(Random.Range(-50f, 50f), Random.Range(-50f, 50f));
+        rt.anchoredPosition = new Vector2(Random.Range(-200f, 200f), Random.Range(-200f, 200f));
         
         go.GetComponent<FeedbackText>().Setup(message, color);
     }
