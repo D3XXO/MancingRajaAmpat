@@ -15,6 +15,7 @@ public class PauseManager : MonoBehaviour
     public GameObject muteIcon;
 
     private PlayerStateManager _player;
+    public LoadingScreen loadingScreen;
 
     void Start()
     {
@@ -86,7 +87,7 @@ public class PauseManager : MonoBehaviour
             AudioManager.Instance.ResumeAllAudio();
         }
 
-        SceneManager.LoadScene("MainMenu");
+        loadingScreen.LoadScene("MainMenu");
     }
 
     public void ToggleMusic()

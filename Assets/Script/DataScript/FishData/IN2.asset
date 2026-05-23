@@ -23,8 +23,10 @@ MonoBehaviour:
     kerucut yang tersusun rapat pada rahangnya. Struktur gigi ini dirancang bukan
     untuk mengunyah, melainkan untuk mencengkeram mangsa dengan kuat agar tidak lepas
     sebelum ditelan.
-  moveSpeed: 3
-  minSpawnInterval: 0.55
+  moveSpeed: 6
+  minSpawnInterval: 0.3
   maxSpawnInterval: 1
   minVSRequirement: 10
   vsValue: 8
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

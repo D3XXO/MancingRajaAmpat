@@ -23,8 +23,10 @@ MonoBehaviour:
     warna tubuhnya menjadi jauh lebih terang dan kontras dalam sekejap saat mencoba
     memikat perhatian ikan betina. Fenomena visual ini sering disebut sebagai pertunjukan
     warna di bawah laut.
-  moveSpeed: 4.5
-  minSpawnInterval: 0.4
+  moveSpeed: 8.5
+  minSpawnInterval: 0.2
   maxSpawnInterval: 0.75
   minVSRequirement: 200
   vsValue: 40
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

@@ -23,8 +23,10 @@ MonoBehaviour:
     sampai akhirnya ditemukan kembali di perairan Indonesia. Penemuan ini mengguncang
     dunia sains internasional karena membuktikan bahwa mahluk dari zaman prasejarah
     masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.
-  moveSpeed: 5.5
-  minSpawnInterval: 0.35
+  moveSpeed: 10.5
+  minSpawnInterval: 0.1
   maxSpawnInterval: 0.5
   minVSRequirement: 750
   vsValue: 150
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

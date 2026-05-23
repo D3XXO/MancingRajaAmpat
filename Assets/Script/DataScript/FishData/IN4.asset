@@ -22,8 +22,10 @@ MonoBehaviour:
     vertebrata terkecil di dunia. Ukuran tubuhnya yang mungil adalah bentuk adaptasi
     evolusioner untuk memanfaatkan celah karang yang sempit, yang tidak dapat diakses
     oleh predator yang lebih besar.
-  moveSpeed: 3.5
-  minSpawnInterval: 0.5
+  moveSpeed: 6.5
+  minSpawnInterval: 0.3
   maxSpawnInterval: 1
   minVSRequirement: 50
   vsValue: 15
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

@@ -24,8 +24,10 @@ MonoBehaviour:
     cara mengisap (suction feeding). Saat mangsa mendekat, kerapu akan membuka mulutnya
     yang besar dan menciptakan tekanan negatif yang sangat kuat. Seketika itu juga,
     air dan mangsa akan tersedot masuk ke dalam mulutnya dalam hitungan milidetik.
-  moveSpeed: 3
-  minSpawnInterval: 0.55
+  moveSpeed: 6
+  minSpawnInterval: 0.3
   maxSpawnInterval: 1
   minVSRequirement: 0
   vsValue: 5
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

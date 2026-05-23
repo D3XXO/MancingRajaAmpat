@@ -26,8 +26,10 @@ MonoBehaviour:
     bergerak maju dengan mulut terbuka agar air mengalir melewati insang secara konstan.
     Jika seekor tuna berhenti berenang, mereka akan mengalami kesulitan bernapas
     dan dapat mengalami hipoksia.
-  moveSpeed: 3.5
-  minSpawnInterval: 0.5
+  moveSpeed: 6.5
+  minSpawnInterval: 0.3
   maxSpawnInterval: 1
   minVSRequirement: 30
   vsValue: 12
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

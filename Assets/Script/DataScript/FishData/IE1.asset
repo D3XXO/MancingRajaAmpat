@@ -24,8 +24,10 @@ MonoBehaviour:
     di Manokwari. Ikan ini ditemukan oleh para peneliti yang bekerja sama dengan
     universitas tersebut, menjadikannya simbol kebanggaan riset kelautan lokal di
     tanah Papua.
-  moveSpeed: 4
-  minSpawnInterval: 0.45
+  moveSpeed: 8
+  minSpawnInterval: 0.2
   maxSpawnInterval: 0.75
   minVSRequirement: 100
   vsValue: 25
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

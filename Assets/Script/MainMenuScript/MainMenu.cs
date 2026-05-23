@@ -5,6 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public AudioClip clickButton;
     public GameObject muteIcon;
+    public LoadingScreen loadingScreen;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class MainMenu : MonoBehaviour
             AudioManager.Instance.PlaySFX(clickButton);
         }
 
-        SceneManager.LoadScene("MainScene");
+        loadingScreen.LoadScene("MainScene");
     }
 
     public void QuitGame()
