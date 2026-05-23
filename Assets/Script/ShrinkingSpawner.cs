@@ -152,7 +152,7 @@ public class ShrinkingSpawner : MonoBehaviour
                         else
                         {
                             noteComp.labelText.text = safeLabels[Random.Range(0, safeLabels.Length)];
-                            noteComp.labelText.color = Color.black;
+                            noteComp.labelText.color = Color.white;
                         }
                     }
                 }
