@@ -7,29 +7,26 @@ public class FloatingText : MonoBehaviour
     public float moveSpeed;
     public float duration;
 
-    private Color _textColor;
+    private Color _currentColor;
     private float _timer;
     private Vector3 _startLocalPosition;
 
     void Awake()
     {
         _startLocalPosition = transform.localPosition;
-        
-        if (textDisplay != null)
-        {
-            _textColor = textDisplay.color;
-        }
     }
 
     public void TriggerText(string text, Color color)
     {
         transform.localPosition = _startLocalPosition;
         _timer = 0f;
+        
+        _currentColor = color;
 
         if (textDisplay != null)
         {
             textDisplay.text = text;
-            textDisplay.color = new Color(color.r, color.g, color.b, 1f);
+            textDisplay.color = color;
         }
 
         gameObject.SetActive(true);
@@ -44,7 +41,7 @@ public class FloatingText : MonoBehaviour
         if (textDisplay != null)
         {
             float alpha = Mathf.Lerp(1f, 0f, _timer / duration);
-            textDisplay.color = new Color(_textColor.r, _textColor.g, _textColor.b, alpha);
+            textDisplay.color = new Color(_currentColor.r, _currentColor.g, _currentColor.b, alpha);
         }
 
         if (_timer >= duration)

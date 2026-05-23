@@ -52,7 +52,21 @@ public class FishingState : IPlayerState
                 }
 
                 _activeFish = finalPool[Random.Range(0, finalPool.Count)];
-                _manager.rhythmSpawner.StartSpawning(_activeFish);
+
+                int gachaMinigame = Random.Range(0, 2);
+
+                if (gachaMinigame == 0 && _manager.rhythmSpawner != null)
+                {
+                    if (_manager.shrinkingSpawner != null) _manager.shrinkingSpawner.gameObject.SetActive(false);
+                    _manager.rhythmSpawner.gameObject.SetActive(true);
+                    _manager.rhythmSpawner.StartSpawning(_activeFish);
+                }
+                else if (gachaMinigame == 1 && _manager.shrinkingSpawner != null)
+                {
+                    if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.gameObject.SetActive(false);
+                    _manager.shrinkingSpawner.gameObject.SetActive(true);
+                    _manager.shrinkingSpawner.StartSpawning(_activeFish);
+                }
             }
             else
             {
@@ -92,8 +106,11 @@ public class FishingState : IPlayerState
 
     private void UpdateUI()
     {
-        if (_manager.fishingProgressBar != null)
-            _manager.fishingProgressBar.fillAmount = _currentProgress;
+        if (_manager.rhythmProgressBar != null)
+            _manager.rhythmProgressBar.fillAmount = _currentProgress;
+            
+        if (_manager.shrinkingProgressBar != null)
+            _manager.shrinkingProgressBar.fillAmount = _currentProgress;
     }
 
     private void WinFishing()
@@ -119,6 +136,14 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
+        _manager.AddValueScore(-2);
+
+        FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
+        if (floatScript != null)
+        {
+            floatScript.TriggerText("-2", new Color(1f, 0.2f, 0.2f));
+        }
+
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);
     }
@@ -144,9 +169,20 @@ public class FishingState : IPlayerState
 
     public void Exit()
     {
-        _manager.fishingMinigamePanel.SetActive(false);
+        if (_manager.fishingMinigamePanel != null) 
+            _manager.fishingMinigamePanel.SetActive(false);
 
-        if (_manager.rhythmSpawner != null) _manager.rhythmSpawner.StopSpawning();
+        if (_manager.rhythmSpawner != null) 
+            _manager.rhythmSpawner.StopSpawning();
+            
+        if (_manager.shrinkingSpawner != null) 
+            _manager.shrinkingSpawner.StopSpawning();
+
+        if (_manager.rhythmSpawner != null) 
+            _manager.rhythmSpawner.gameObject.SetActive(false);
+            
+        if (_manager.shrinkingSpawner != null) 
+            _manager.shrinkingSpawner.gameObject.SetActive(false);
 
         _activeFish = null;
     }

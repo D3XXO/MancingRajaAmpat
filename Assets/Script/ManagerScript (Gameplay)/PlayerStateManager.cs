@@ -19,10 +19,12 @@ public class PlayerStateManager : MonoBehaviour
     [Header("Fishing Minigame UI")]
     public GameObject fishingMinigamePanel;
     public GameObject fishingButton;
-    public Image fishingProgressBar;
+    public Image rhythmProgressBar;
+    public Image shrinkingProgressBar;
 
     [Header("Minigame Systems")]
     public RhythmSpawner rhythmSpawner;
+    public ShrinkingSpawner shrinkingSpawner;
 
     [Header("Caught Fish UI")]
     public GameObject caughtFishPanel;

@@ -6,6 +6,7 @@ public class RhythmNote : MonoBehaviour
     public int noteID;
     public float moveSpeed;
     public bool isRedNote;
+    public Text labelText;
 
     void Update()
     {

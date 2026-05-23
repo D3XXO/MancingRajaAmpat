@@ -13,6 +13,10 @@ public class RhythmSpawner : MonoBehaviour
     [Header("Systems")]
     public RhythmManager rhythmManager;
 
+    [Header("Accessibility Settings")]
+    public string[] safeLabels;
+    public string[] dangerLabels;
+
     private Color[] _noteColors = new Color[]
     {
         new Color(0.2f, 0.8f, 0.2f), // Hijau
@@ -68,6 +72,20 @@ public class RhythmSpawner : MonoBehaviour
                 if (randomColorIndex == 4)
                 {
                     noteComponent.isRedNote = true;
+                }
+            }
+
+            if (noteComponent.labelText != null)
+            {
+                if (noteComponent.isRedNote)
+                {
+                    noteComponent.labelText.text = dangerLabels[Random.Range(0, dangerLabels.Length)];
+                    noteComponent.labelText.color = Color.red;
+                }
+                else
+                {
+                    noteComponent.labelText.text = safeLabels[Random.Range(0, safeLabels.Length)];
+                    noteComponent.labelText.color = Color.white;
                 }
             }
 
