@@ -10,6 +10,10 @@ public class ShrinkingNote : MonoBehaviour
     [Header("Accessibility")]
     public Text labelText;
 
+    [Header("Visual Settings")]
+    public RectTransform visualTransform;
+    public float minHitboxScale;
+
     private float _currentScale = 10f;
     private PlayerStateManager _stateManager;
 
@@ -23,6 +27,8 @@ public class ShrinkingNote : MonoBehaviour
         {
             btn.onClick.AddListener(OnClick);
         }
+
+        UpdateScale();
     }
 
     void Update()
@@ -40,6 +46,18 @@ public class ShrinkingNote : MonoBehaviour
                 _stateManager.TriggerShake(1f, 0.5f);
             }
             Destroy(gameObject);
+        }
+    }
+
+    private void UpdateScale()
+    {
+        float hitboxScale = Mathf.Max(minHitboxScale, _currentScale);
+        transform.localScale = Vector3.one * hitboxScale;
+
+        if (visualTransform != null)
+        {
+            float childLocalScale = Mathf.Max(0, _currentScale) / hitboxScale;
+            visualTransform.localScale = Vector3.one * childLocalScale;
         }
     }
 

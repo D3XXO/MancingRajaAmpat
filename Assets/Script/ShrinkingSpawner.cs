@@ -61,7 +61,7 @@ public class ShrinkingSpawner : MonoBehaviour
             GameObject newNote = Instantiate(notePrefab, spawnPanel);
             RectTransform noteRect = newNote.GetComponent<RectTransform>();
             
-            float startScale = 3f;
+            float startScale = 12f;
             float noteWidth = noteRect.rect.width * startScale;
             float noteHeight = noteRect.rect.height * startScale;
 
@@ -126,14 +126,19 @@ public class ShrinkingSpawner : MonoBehaviour
             {
                 noteRect.anchoredPosition = validPosition;
 
-                Image noteImage = newNote.GetComponent<Image>();
+                Image rootImage = newNote.GetComponent<Image>();
                 ShrinkingNote noteComp = newNote.GetComponent<ShrinkingNote>();
 
-                if (noteImage != null && noteComp != null)
+                if (noteComp != null)
                 {
-                    int colorIndex = Random.Range(0, _noteColors.Length);
-                    noteImage.color = _noteColors[colorIndex];
-                    if (colorIndex == 4) noteComp.isRedNote = true;
+                    Image targetImage = noteComp.visualTransform != null ? noteComp.visualTransform.GetComponent<Image>() : rootImage;
+
+                    if (targetImage != null)
+                    {
+                        int colorIndex = Random.Range(0, _noteColors.Length);
+                        targetImage.color = _noteColors[colorIndex];
+                        if (colorIndex == 4) noteComp.isRedNote = true;
+                    }
 
                     noteComp.shrinkSpeed = _currentFish.moveSpeed;
 

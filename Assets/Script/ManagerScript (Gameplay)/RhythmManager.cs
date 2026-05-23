@@ -48,7 +48,19 @@ public class RhythmManager : MonoBehaviour
             }
             else
             {
-                stateManager.FishingState.ChangeProgress(0.05f);
+                if (distance < 20f)
+                {
+                    stateManager.FishingState.ChangeProgress(1.5f);
+                }
+                else if (distance < 50f)
+                {
+                    stateManager.FishingState.ChangeProgress(0.05f);
+                }
+                else
+                {
+                    stateManager.FishingState.ChangeProgress(-0.1f);
+                    stateManager.TriggerShake(1f, 0.5f);
+                }
             }
 
             allActiveNotes.Remove(noteToHit);
@@ -69,7 +81,7 @@ public class RhythmManager : MonoBehaviour
 
         if (distance >= 999f) { message = "BAD"; color = Color.red; }
         else if (distance < 20f) { message = "PERFECT"; color = Color.green; }
-        else if (distance < 70f) { message = "GOOD"; color = Color.yellow; }
+        else if (distance < 50f) { message = "GOOD"; color = Color.yellow; }
         else { message = "BAD"; color = Color.red; }
 
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
