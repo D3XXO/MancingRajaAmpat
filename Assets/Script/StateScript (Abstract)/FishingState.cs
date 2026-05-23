@@ -70,7 +70,6 @@ public class FishingState : IPlayerState
             }
             else
             {
-                Debug.LogWarning("Tidak ada ikan yang tersedia untuk skor saat ini!");
                 _manager.SwitchState(_manager.MovementState);
             }
         }
@@ -125,7 +124,7 @@ public class FishingState : IPlayerState
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
             {
-                floatScript.TriggerText("+" + _activeFish.vsValue, new Color(1f, 0.8f, 0f));
+                floatScript.TriggerText("+" + _activeFish.vsValue, Color.white);
             }
 
             _manager.ShowCaughtFish(_activeFish);
@@ -141,7 +140,7 @@ public class FishingState : IPlayerState
         FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
         if (floatScript != null)
         {
-            floatScript.TriggerText("-2", new Color(1f, 0.2f, 0.2f));
+            floatScript.TriggerText("-2", Color.red);
         }
 
         _manager.TriggerShake(2.0f, 0.5f);
@@ -169,19 +168,19 @@ public class FishingState : IPlayerState
 
     public void Exit()
     {
-        if (_manager.fishingMinigamePanel != null) 
+        if (_manager.fishingMinigamePanel != null)
             _manager.fishingMinigamePanel.SetActive(false);
 
-        if (_manager.rhythmSpawner != null) 
+        if (_manager.rhythmSpawner != null)
             _manager.rhythmSpawner.StopSpawning();
             
-        if (_manager.shrinkingSpawner != null) 
+        if (_manager.shrinkingSpawner != null)
             _manager.shrinkingSpawner.StopSpawning();
 
-        if (_manager.rhythmSpawner != null) 
+        if (_manager.rhythmSpawner != null)
             _manager.rhythmSpawner.gameObject.SetActive(false);
             
-        if (_manager.shrinkingSpawner != null) 
+        if (_manager.shrinkingSpawner != null)
             _manager.shrinkingSpawner.gameObject.SetActive(false);
 
         _activeFish = null;

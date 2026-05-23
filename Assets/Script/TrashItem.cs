@@ -21,7 +21,7 @@ public class TrashItem : MonoBehaviour
                 
                 if (floatScript != null)
                 {
-                    floatScript.TriggerText("+" + scoreReward, Color.green);
+                    floatScript.TriggerText("+" + scoreReward, Color.white);
                 }
 
                 if (spawnerParent != null)

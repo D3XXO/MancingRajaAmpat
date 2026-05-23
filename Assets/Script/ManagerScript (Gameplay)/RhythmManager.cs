@@ -43,7 +43,7 @@ public class RhythmManager : MonoBehaviour
             }
             else
             {
-                stateManager.FishingState.ChangeProgress(0.1f);
+                stateManager.FishingState.ChangeProgress(0.025f);
             }
 
             allActiveNotes.Remove(noteToHit);
@@ -51,7 +51,7 @@ public class RhythmManager : MonoBehaviour
         }
         else
         {
-            stateManager.FishingState.ChangeProgress(-0.05f);
+            stateManager.FishingState.ChangeProgress(-0.1f);
         }
     }
 }

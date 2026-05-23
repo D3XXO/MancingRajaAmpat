@@ -9,7 +9,7 @@ public class TrashSpawner : MonoBehaviour
     public int totalTrashToSpawn;
 
     [Header("Coordinate Rules")]
-    private float spawnY = -3.5f;
+    private float spawnY = -4f;
     private float minX = -10f;
     private float maxX = 180f;
     private float trashBufferWidth = 8f;
