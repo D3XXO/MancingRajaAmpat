@@ -124,7 +124,7 @@ public class PlayerStateManager : MonoBehaviour
         caughtFishText.text = fish.fishName;
 
         caughtFishPanel.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         caughtFishPanel.SetActive(false);
     }
 

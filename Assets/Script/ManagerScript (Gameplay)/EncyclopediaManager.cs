@@ -32,6 +32,7 @@ public class EncyclopediaManager : MonoBehaviour
     private AudioClip _recordingClip;
     private float _startRecordingTime;
     private bool _isRecordingCancelled;
+    private bool _isRecordingActive;
 
     [Header("Data")]
     public List<FishData> allFish;
@@ -80,7 +81,7 @@ public class EncyclopediaManager : MonoBehaviour
 
         if (File.Exists(savedPath))
         {
-            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam";
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam (maks 3 detik)";
             _selectedFish.customAudioPath = savedPath;
             PlayFishAudio();
         }
@@ -88,7 +89,7 @@ public class EncyclopediaManager : MonoBehaviour
         {
             _selectedFish.customAudioPath = "";
             _selectedFish.customAudioClip = null;
-            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam";
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam (maks 3 detik)";
 
             if (fishAudioSource != null && fishAudioSource.isPlaying)
             {
@@ -191,18 +192,32 @@ public class EncyclopediaManager : MonoBehaviour
         if (_selectedFish == null) return;
 
         _isRecordingCancelled = false;
+        _isRecordingActive = true;
 
-        _recordingClip = Microphone.Start(null, false, 10, 44100);
+        _recordingClip = Microphone.Start(null, false, 3, 44100);
         _startRecordingTime = Time.time;
 
-        if (recordingStatusText != null) recordingStatusText.text = "Merekam... (Maks 10 Detik)";
+        if (recordingStatusText != null) recordingStatusText.text = "Merekam...";
+        StartCoroutine(AutoStopRecordingRoutine());
+    }
+
+    private IEnumerator AutoStopRecordingRoutine()
+    {
+        yield return new WaitForSeconds(3f);
+        
+        if (_isRecordingActive && !_isRecordingCancelled)
+        {
+            StopRecordingVoice();
+        }
     }
 
     public void StopRecordingVoice()
     {
-        if (_selectedFish == null || !Microphone.IsRecording(null) || _isRecordingCancelled) return;
+        if (_selectedFish == null || !_isRecordingActive || _isRecordingCancelled) return;
 
-        float recordingLength = Time.time - _startRecordingTime;
+        _isRecordingActive = false;
+
+        float recordingLength = Mathf.Clamp(Time.time - _startRecordingTime, 0.1f, 3f);
         Microphone.End(null);
 
         string filePath = Path.Combine(Application.persistentDataPath, _selectedFish.fishID + ".wav");
@@ -266,7 +281,7 @@ public class EncyclopediaManager : MonoBehaviour
 
     private AudioClip TrimAudioClip(AudioClip clip, float duration)
     {
-        duration = Mathf.Max(1f, duration);
+        duration = Mathf.Max(0.1f, duration);
 
         int totalSamples = Mathf.CeilToInt(clip.frequency * duration);
         
@@ -294,7 +309,7 @@ public class EncyclopediaManager : MonoBehaviour
             Microphone.End(null);
             _isRecordingCancelled = true;
             
-            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam!";
+            if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam (maks 3 detik)";
         }
     }
 }
