@@ -23,10 +23,11 @@ MonoBehaviour:
     sirip dadanya untuk berjalan di dasar laut daripada berenang. Pola bintiknya
     adalah kamuflase sempurna agar tidak terlihat oleh mangsanya saat ia sedang beristirahat
     di antara karang dan pasir.
-  moveSpeed: 10
+  moveSpeed: 8
   minSpawnInterval: 0.1
   maxSpawnInterval: 0.5
   minVSRequirement: 500
   vsValue: 100
+  minusScore: -50
   customAudioPath: 
   customAudioClip: {fileID: 0}

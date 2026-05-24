@@ -26,10 +26,11 @@ MonoBehaviour:
     mengalami perubahan secara biologis menjadi jantan. Jantan yang dominan biasanya
     berukuran jauh lebih besar dan memiliki tonjolan di dahi yang sangat menonjol
     dibandingkan individu lainnya.
-  moveSpeed: 8.5
+  moveSpeed: 7.5
   minSpawnInterval: 0.2
   maxSpawnInterval: 0.75
   minVSRequirement: 300
   vsValue: 50
+  minusScore: -25
   customAudioPath: 
   customAudioClip: {fileID: 0}

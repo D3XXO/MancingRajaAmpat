@@ -33,7 +33,7 @@ public class ShrinkingNote : MonoBehaviour
 
     void Update()
     {
-        float speedMultiplier = shrinkSpeed / 80f;
+        float speedMultiplier = shrinkSpeed / 60f;
         
         _currentScale -= speedMultiplier;
         transform.localScale = Vector3.one * Mathf.Max(0, _currentScale);

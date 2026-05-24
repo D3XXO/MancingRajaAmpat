@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System.IO;
+using UnityEngine.Networking;
 public class FishingState : IPlayerState
 {
     private PlayerStateManager _manager;
@@ -127,9 +130,39 @@ public class FishingState : IPlayerState
             }
 
             _manager.ShowCaughtFish(_activeFish);
+            _manager.StartCoroutine(PlayRecordAudioRoutine(_activeFish.fishID));
         }
 
         _manager.SwitchState(_manager.MovementState);
+    }
+
+    private IEnumerator PlayRecordAudioRoutine(string fishID)
+    {
+        string path = Path.Combine(Application.persistentDataPath, fishID + ".wav");
+        
+        if (File.Exists(path))
+        {
+            string fullPath = new System.Uri(path).AbsoluteUri;
+
+            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
+            {
+                yield return www.SendWebRequest();
+
+                if (www.result == UnityWebRequest.Result.Success)
+                {
+                    AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                    
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.PlaySFX(clip);
+                    }
+                    else if (Camera.main != null)
+                    {
+                        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
+                    }
+                }
+            }
+        }
     }
 
     private void LoseFishing()
@@ -139,11 +172,11 @@ public class FishingState : IPlayerState
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
             {
-                floatScript.TriggerText("-2", Color.red);
+                floatScript.TriggerText(_activeFish.minusScore.ToString(), Color.red);
             }
         }
 
-        _manager.AddValueScore(-2);
+        _manager.AddValueScore(_activeFish.minusScore);
 
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);

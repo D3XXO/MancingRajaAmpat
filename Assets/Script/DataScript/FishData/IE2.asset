@@ -22,10 +22,11 @@ MonoBehaviour:
   funFact: Gobi Papua adalah ahli persembunyian. Karena ukurannya yang kecil dan
     sifatnya yang lincah, ikan ini sangat sulit dideteksi oleh predator maupun pemancing,
     menjadikannya salah satu tantangan tersendiri untuk didokumentasikan.
-  moveSpeed: 8
+  moveSpeed: 7
   minSpawnInterval: 0.2
   maxSpawnInterval: 0.75
   minVSRequirement: 150
   vsValue: 35
+  minusScore: -20
   customAudioPath: 
   customAudioClip: {fileID: 0}
