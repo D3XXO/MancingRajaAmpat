@@ -5,7 +5,6 @@ public class ShrinkingNote : MonoBehaviour
 {
     public bool isRedNote;
     public float shrinkSpeed;
-    public AudioClip sfxKlikTombol;
 
     [Header("Accessibility")]
     public Text labelText;
@@ -63,11 +62,6 @@ public class ShrinkingNote : MonoBehaviour
 
     public void OnClick()
     {
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlaySFX(sfxKlikTombol);
-        }
-
         if (_stateManager != null)
         {
             if (isRedNote)

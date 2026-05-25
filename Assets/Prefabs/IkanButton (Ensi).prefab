@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 1401007088840133006}
   - component: {fileID: 6760989057643842372}
   - component: {fileID: 2002405472123729554}
+  - component: {fileID: -1149947636423272561}
   m_Layer: 5
   m_Name: IkanButton (Ensi)
   m_TagString: Untagged
@@ -299,3 +300,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fishImage: {fileID: 6593441230326543558}
   backgroundImage: {fileID: 2266980669418015656}
+--- !u!114 &-1149947636423272561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8243195943492788520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5429d1f7598b624409fa493588738a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkFactor: 0.9

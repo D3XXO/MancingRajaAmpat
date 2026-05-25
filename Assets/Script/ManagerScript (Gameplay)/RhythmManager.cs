@@ -7,7 +7,6 @@ public class RhythmManager : MonoBehaviour
     [Header("References")]
     public RectTransform targetZoneRect;
     public PlayerStateManager stateManager;
-    public AudioClip sfxKlikTombol;
     public GameObject feedbackTextPrefab;
     public RectTransform feedbackPanel;
     public List<RhythmNote> allActiveNotes = new List<RhythmNote>();
@@ -17,11 +16,6 @@ public class RhythmManager : MonoBehaviour
         RhythmNote noteToHit = null;
         float hitThreshold = 80f;
         float distance = 0f;
-
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlaySFX(sfxKlikTombol);
-        }
 
         for (int i = allActiveNotes.Count - 1; i >= 0; i--)
         {
