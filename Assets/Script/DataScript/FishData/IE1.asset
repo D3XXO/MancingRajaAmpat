@@ -29,6 +29,6 @@ MonoBehaviour:
   maxSpawnInterval: 0.75
   minVSRequirement: 100
   vsValue: 25
-  minusScore: -15
+  minusScore: -20
   customAudioPath: 
   customAudioClip: {fileID: 0}

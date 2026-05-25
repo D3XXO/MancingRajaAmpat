@@ -24,10 +24,10 @@ MonoBehaviour:
     adalah kamuflase sempurna agar tidak terlihat oleh mangsanya saat ia sedang beristirahat
     di antara karang dan pasir.
   moveSpeed: 8
-  minSpawnInterval: 0.1
+  minSpawnInterval: 0.2
   maxSpawnInterval: 0.5
   minVSRequirement: 500
   vsValue: 100
-  minusScore: -50
+  minusScore: -70
   customAudioPath: 
   customAudioClip: {fileID: 0}

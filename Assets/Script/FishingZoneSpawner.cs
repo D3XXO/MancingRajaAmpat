@@ -19,6 +19,8 @@ public class FishingZoneSpawner : MonoBehaviour
     [Header("References")]
     public Transform playerTransform;
     private List<GameObject> _spawnedZones = new List<GameObject>();
+    private EncyclopediaManager _encyclopediaManager;
+    private DialogueManager _dialogueManager;
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class FishingZoneSpawner : MonoBehaviour
         {
             playerTransform = FindObjectOfType<PlayerStateManager>().transform;
         }
+
+        _encyclopediaManager = FindObjectOfType<EncyclopediaManager>();
+        _dialogueManager = FindObjectOfType<DialogueManager>();
 
         for (int i = 0; i < totalZonesToSpawn; i++)
         {
@@ -55,7 +60,19 @@ public class FishingZoneSpawner : MonoBehaviour
 
         while (elapsedWaitTime < waitDuration)
         {
-            if (zoneScript != null && zoneScript.isPlayerInside)
+            bool isUIActive = false;
+
+            if (_encyclopediaManager != null && _encyclopediaManager.encyclopediaPanel != null)
+            {
+                if (_encyclopediaManager.encyclopediaPanel.activeSelf) isUIActive = true;
+            }
+            
+            if (_dialogueManager != null && _dialogueManager.dialoguePanel != null)
+            {
+                if (_dialogueManager.dialoguePanel.activeSelf) isUIActive = true;
+            }
+
+            if ((zoneScript != null && zoneScript.isPlayerInside) || isUIActive)
             {
                 yield return new WaitForSeconds(0.5f);
                 continue;

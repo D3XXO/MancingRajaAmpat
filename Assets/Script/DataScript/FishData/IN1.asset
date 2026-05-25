@@ -25,7 +25,7 @@ MonoBehaviour:
     yang besar dan menciptakan tekanan negatif yang sangat kuat. Seketika itu juga,
     air dan mangsa akan tersedot masuk ke dalam mulutnya dalam hitungan milidetik.
   moveSpeed: 4
-  minSpawnInterval: 0.3
+  minSpawnInterval: 0.5
   maxSpawnInterval: 1
   minVSRequirement: 0
   vsValue: 5

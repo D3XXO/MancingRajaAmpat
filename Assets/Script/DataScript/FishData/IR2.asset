@@ -24,10 +24,10 @@ MonoBehaviour:
     dunia sains internasional karena membuktikan bahwa mahluk dari zaman prasejarah
     masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.
   moveSpeed: 8.5
-  minSpawnInterval: 0.1
+  minSpawnInterval: 0.2
   maxSpawnInterval: 0.5
   minVSRequirement: 750
   vsValue: 150
-  minusScore: -100
+  minusScore: -130
   customAudioPath: 
   customAudioClip: {fileID: 0}
