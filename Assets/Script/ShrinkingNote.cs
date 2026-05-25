@@ -43,7 +43,7 @@ public class ShrinkingNote : MonoBehaviour
             if (!isRedNote)
             {
                 if (_stateManager != null) _stateManager.FishingState.ChangeProgress(-0.1f);
-                _stateManager.TriggerShake(1f, 0.5f);
+                _stateManager.TriggerShake(2.0f, 0.5f);
             }
             Destroy(gameObject);
         }
@@ -73,7 +73,7 @@ public class ShrinkingNote : MonoBehaviour
             if (isRedNote)
             {
                 _stateManager.FishingState.ChangeProgress(-0.1f);
-                _stateManager.TriggerShake(1f, 0.5f);
+                _stateManager.TriggerShake(2.0f, 0.5f);
             }
             else
             {

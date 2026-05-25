@@ -44,13 +44,13 @@ public class RhythmManager : MonoBehaviour
             if (noteToHit.isRedNote)
             {
                 stateManager.FishingState.ChangeProgress(-0.1f);
-                stateManager.TriggerShake(1f, 0.5f);
+                stateManager.TriggerShake(2.0f, 0.5f);
             }
             else
             {
-                if (distance <= 30f)
+                if (distance <= 20f)
                 {
-                    stateManager.FishingState.ChangeProgress(0.15f);
+                    stateManager.FishingState.ChangeProgress(0.1f);
                 }
                 else if (distance <= 50f)
                 {
@@ -59,7 +59,7 @@ public class RhythmManager : MonoBehaviour
                 else 
                 {
                     stateManager.FishingState.ChangeProgress(-0.1f);
-                    stateManager.TriggerShake(1f, 0.5f);
+                    stateManager.TriggerShake(2.0f, 0.5f);
                 }
             }
 
@@ -69,7 +69,7 @@ public class RhythmManager : MonoBehaviour
         else
         {
             stateManager.FishingState.ChangeProgress(-0.1f);
-            stateManager.TriggerShake(1f, 0.5f);
+            stateManager.TriggerShake(2.0f, 0.5f);
             ShowFeedback(999f);
         }
     }
