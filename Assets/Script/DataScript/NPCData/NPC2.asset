@@ -14,77 +14,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueGroups:
   - topicName: Sapaan
-    sentences:
-    - 'Epen
-
-
-      Woi Kaka! Semangat sekali ko mendayung malam-malam begini.'
-    - 'Kamu
-
-
-      Iya Pen, udaranya enak sekali, tenang.'
-    - 'Epen
-
-
-      Iyo to! Kalau bosan sendiri, merapat sini tong cerita-cerita.'
-    - 'Kamu
-
-
-      Siap, terima kasih.'
-    - 'Epen
-
-
-      Sama-sama. Kita sesama penjelajah harus saling jaga di laut e!'
+    lines:
+    - characterName: Epen
+      sentence: Woi Kaka! Semangat sekali ko mendayung malam-malam begini.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Iya Pen, udaranya enak sekali, tenang.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Iyo to! Kalau bosan sendiri, merapat sini tong cerita-cerita.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Siap, terima kasih.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Sama-sama. Kita sesama penjelajah harus saling jaga di laut e!
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
   - topicName: Langit Malam & Bintang
-    sentences:
-    - 'Epen
-
-
-      Kaka, coba ko lihat ke atas sebentar.'
-    - 'Kamu
-
-
-      Wah, bintangnya banyak sekali, Pen. Jelas sekali galaksinya.'
-    - 'Epen
-
-
-      Itu kompas tong nelayan di sini kalau tra bawa alat.'
-    - 'Kamu
-
-
-      Jadi kalian bisa tahu arah hanya dari bintang?'
-    - 'Epen
-
-
-      Iyo. Bintang itu tra pernah bohong soal arah pulang.'
-    - 'Kamu
-
-
-      Pemandangan ini mahal sekali harganya.'
+    lines:
+    - characterName: Epen
+      sentence: Kaka, coba ko lihat ke atas sebentar.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Wah, bintangnya banyak sekali, Pen. Jelas sekali galaksinya.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Itu kompas tong nelayan di sini kalau tra bawa alat.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Jadi kalian bisa tahu arah hanya dari bintang?
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Iyo. Bintang itu tra pernah bohong soal arah pulang.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Pemandangan ini mahal sekali harganya.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
   - topicName: Larangan Bom Ikan
-    sentences:
-    - 'Kamu
-
-
-      Kenapa laut di sini masih sangat terjaga, Pen?'
-    - 'Epen
-
-
-      Karena tong benci sekali orang pakai bom atau racun ikan.'
-    - 'Kamu
-
-
-      Benar, itu bisa menghancurkan karang dalam sekejap.'
-    - 'Epen
-
-
-      Betul! Kalau karang hancur, ikan tra mau datang lagi ratusan
-      tahun.'
-    - 'Kamu
-
-
-      Semoga semua orang punya kesadaran seperti warga di sini.'
-    - 'Epen
-
-
-      Harus itu! Laut ini tong punya harga diri.'
+    lines:
+    - characterName: ' '
+      sentence: Kenapa laut di sini masih sangat terjaga, Pen?
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Karena tong benci sekali orang pakai bom atau racun ikan.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Benar, itu bisa menghancurkan karang dalam sekejap.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Betul! Kalau karang hancur, ikan tra mau datang lagi ratusan tahun.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}
+    - characterName: ' '
+      sentence: Semoga semua orang punya kesadaran seperti warga di sini.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Epen
+      sentence: Harus itu! Laut ini tong punya harga diri.
+      characterSprite: {fileID: -310848372, guid: 4b3f1f9dc676fdc48a027b05a0c3dc02, type: 3}

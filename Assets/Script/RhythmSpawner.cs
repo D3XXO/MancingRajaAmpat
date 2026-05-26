@@ -9,6 +9,7 @@ public class RhythmSpawner : MonoBehaviour
     public Transform spawnPoint;
     public Transform laneParent;
     public float spawnInterval;
+    public Text countdownText;
 
     [Header("Systems")]
     public RhythmManager rhythmManager;
@@ -29,9 +30,17 @@ public class RhythmSpawner : MonoBehaviour
     private FishData _currentFish;
     private bool _isSpawning = false;
     private Coroutine _spawnRoutine;
+    private PlayerStateManager _manager;
+
+    void Start()
+    {
+        _manager = FindObjectOfType<PlayerStateManager>();
+    }
 
     public void StartSpawning(FishData fish)
     {
+        if (_manager == null) _manager = FindObjectOfType<PlayerStateManager>();
+
         if (_isSpawning) return;
         _currentFish = fish;
         _isSpawning = true;
@@ -51,7 +60,19 @@ public class RhythmSpawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        if (countdownText != null)
+        {
+            countdownText.gameObject.SetActive(true);
+            for (int i = 3; i > 0; i--)
+            {
+                countdownText.text = i.ToString();
+                yield return new WaitForSeconds(1f);
+            }
+
+            countdownText.gameObject.SetActive(false);
+        }
+
+        yield return new WaitForSeconds(3f);
 
         while (_isSpawning)
         {
@@ -61,7 +82,7 @@ public class RhythmSpawner : MonoBehaviour
             newNoteObj.transform.position = spawnPoint.position;
 
             RhythmNote noteComponent = newNoteObj.GetComponent<RhythmNote>();
-            noteComponent.moveSpeed = _currentFish.moveSpeed;
+            noteComponent.moveSpeed = _manager.GetDynamicMoveSpeed();
 
             Image noteImage = newNoteObj.GetComponent<Image>();
             if (noteImage != null)

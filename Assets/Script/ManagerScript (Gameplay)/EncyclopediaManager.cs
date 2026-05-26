@@ -14,6 +14,7 @@ public class EncyclopediaManager : MonoBehaviour
     public Text descriptionText;
     public Text nameText;
     public Image detailImage;
+    public AudioClip clickButton;
 
     [Header("Panel Detail & Konten")]
     public GameObject selectionButtonsPanel;
@@ -100,6 +101,11 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ShowGeneralDescription()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         CancelRecording();
 
         if (_selectedFish == null) return;
@@ -111,6 +117,11 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ShowFunFact()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         CancelRecording();
 
         if (_selectedFish == null) return;
@@ -122,6 +133,11 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void BackToSelection()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         selectionButtonsPanel.SetActive(true);
         contentTextPanel.SetActive(false);
     }
@@ -143,6 +159,11 @@ public class EncyclopediaManager : MonoBehaviour
 
     public void ToggleEncyclopedia()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         if (encyclopediaPanel == null) return;
         bool willBeActive = !encyclopediaPanel.activeSelf;
 

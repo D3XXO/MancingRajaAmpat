@@ -14,110 +14,88 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueGroups:
   - topicName: Welcome
-    sentences:
-    - 'Pace
-
-
-      Selamat datang di surga kecil, Kaka! Bagaimana? Mata su segar
-      lihat air biru begini?'
-    - 'Kamu
-
-
-      Luar biasa, Pace. Saya belum pernah lihat air sejernih ini sebelumnya.'
-    - 'Pace
-
-
-      Iyo to! Orang bilang ini jatuhannya potongan surga. Ko harus
-      keliling sampai ke Wayag sana.'
-    - 'Kamu
-
-
-      Pasti, Pace. Saya datang jauh-jauh memang untuk melihat keindahan
-      ini.'
-    - 'Pace
-
-
-      Bagus! Tapi ingat, hati senang boleh, tapi sampah jangan kasih
-      tinggal di laut e!'
+    lines:
+    - characterName: Pace
+      sentence: Selamat datang di surga kecil, Kaka! Bagaimana? Mata su segar lihat
+        air biru begini?
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Luar biasa, Pace. Saya belum pernah lihat air sejernih ini sebelumnya.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Iyo to! Orang bilang ini jatuhannya potongan surga. Ko harus keliling
+        sampai ke Wayag sana.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Pasti, Pace. Saya datang jauh-jauh memang untuk melihat keindahan
+        ini.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Bagus! Tapi ingat, hati senang boleh, tapi sampah jangan kasih tinggal
+        di laut e!
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
   - topicName: The Four King (Legenda)
-    sentences:
-    - 'Kamu
-
-
-      Pace, saya penasaran. Kenapa tempat ini dinamakan ''Raja Ampat''?'
-    - 'Pace
-
-
-      Ah, itu cerita tua, Kaka. Konon dulu ada orang tua temukan tujuh
-      telur naga.'
-    - 'Kamu
-
-
-      Tujuh telur? Lalu menetas jadi apa, Pace?'
-    - 'Pace
-
-
-      Empat jadi raja di pulau besar: Waigeo, Misool, Salawati, dan
-      Batanta. Itu makanya tong sebut Empat Raja.'
-    - 'Kamu
-
-
-      Wah, jadi itu asal mulanya. Lalu tiga telur sisanya?'
-    - 'Pace
-
-
-      Dong bilang jadi batu, hantu, dan wanita. Mistis to? Tapi itulah
-      sejarah tong punya tanah.'
+    lines:
+    - characterName: ' '
+      sentence: Pace, saya penasaran. Kenapa tempat ini dinamakan ''Raja Ampat''?
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Ah, itu cerita tua, Kaka. Konon dulu ada orang tua temukan tujuh
+        telur naga.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Tujuh telur? Lalu menetas jadi apa, Pace?
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: 'Empat jadi raja di pulau besar: Waigeo, Misool, Salawati, dan Batanta.
+        Itu makanya tong sebut Empat Raja.'
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Wah, jadi itu asal mulanya. Lalu tiga telur sisanya?
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: 
+      sentence: Dong bilang jadi batu, hantu, dan wanita. Mistis to? Tapi itulah
+        sejarah tong punya tanah.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
   - topicName: The Walking Shark
-    sentences:
-    - 'Pace
-
-
-      Kaka, Ko sudah pernah lihat ikan yang kalau jalan pakai kaki?'
-    - 'Kamu
-
-
-      Ikan jalan pakai kaki? Pace jangan bercanda, mana ada ikan begitu.'
-    - 'Pace
-
-
-      Hau! Sa tra bercanda. Tong di sini panggil dia Ikan Kalabia,
-      hiu yang suka jalan di dasar karang.'
-    - 'Kamu
-
-
-      Luar biasa! Apa dia berbahaya untuk manusia?'
-    - 'Pace
-
-
-      Traada! Dia kecil dan pemalu. Cuma ada di sini saja, traada di
-      tempat lain di dunia.'
+    lines:
+    - characterName: Pace
+      sentence: Kaka, Ko sudah pernah lihat ikan yang kalau jalan pakai kaki?
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Ikan jalan pakai kaki? Pace jangan bercanda, mana ada ikan begitu.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Hau! Sa tra bercanda. Tong di sini panggil dia Ikan Kalabia, hiu
+        yang suka jalan di dasar karang.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Luar biasa! Apa dia berbahaya untuk manusia?
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Traada! Dia kecil dan pemalu. Cuma ada di sini saja, traada di tempat
+        lain di dunia.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
   - topicName: Pesan Konservasi
-    sentences:
-    - 'Kamu
-
-
-      Pace, kenapa nelayan di sini sangat menjaga ikan-ikan tertentu?'
-    - 'Pace
-
-
-      Karena laut ini tong punya napas, Kaka. Kalau ikan habis, tong
-      anak cucu mau makan apa?'
-    - 'Kamu
-
-
-      Saya mengerti. Itu sebabnya saya hanya ingin mencatat data mereka
-      lalu melepasnya.'
-    - 'Pace
-
-
-      Itu baru namanya penjelajah jempol! Tangkap, pelajari, lalu kasih
-      pulang mereka ke laut.'
-    - 'Kamu
-
-
-      Iya Pace, supaya keindahan ini tetap ada sampai kapanpun.'
-    - 'Pace
-
-
-      Mantap! Laut jaga tong, tong jaga laut. Pegang itu kunci e!'
+    lines:
+    - characterName: ' '
+      sentence: Pace, kenapa nelayan di sini sangat menjaga ikan-ikan tertentu?
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Karena laut ini tong punya napas, Kaka. Kalau ikan habis, tong anak
+        cucu mau makan apa?
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Saya mengerti. Itu sebabnya saya hanya ingin mencatat data mereka
+        lalu melepasnya.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Itu baru namanya penjelajah jempol! Tangkap, pelajari, lalu kasih
+        pulang mereka ke laut.
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}
+    - characterName: ' '
+      sentence: Iya Pace, supaya keindahan ini tetap ada sampai kapanpun.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Pace
+      sentence: Mantap! Laut jaga tong, tong jaga laut. Pegang itu kunci e!
+      characterSprite: {fileID: -1062341636, guid: 42405165cf4950b4a8f837426235b79f, type: 3}

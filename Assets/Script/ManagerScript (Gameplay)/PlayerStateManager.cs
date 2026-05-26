@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject ensiklopediaButton;
     public GameObject pauseButton;
     public Animator PlayerAnimator;
+    public AudioClip clickButton;
 
     [Header("Fishing Minigame UI")]
     public GameObject fishingMinigamePanel;
@@ -95,6 +96,11 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnFishingButtonClicked()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         DialogueManager dialogue = FindObjectOfType<DialogueManager>();
         if (dialogue != null && dialogue.dialoguePanel != null && dialogue.dialoguePanel.activeSelf) return;
 
@@ -128,19 +134,32 @@ public class PlayerStateManager : MonoBehaviour
         caughtFishPanel.SetActive(false);
     }
 
-    public void AddValueScore(int amount)
+    public void AddValueScore(int amount, bool forceUpdate = false)
     {
         totalValueScore = Mathf.Max(0, totalValueScore + amount);
 
-        FishingZone[] allZones = FindObjectsOfType<FishingZone>();
-        foreach (FishingZone zone in allZones)
+        if (forceUpdate && IsInFishingZone)
         {
-            zone.ForceUpdateChances(totalValueScore, availableFish);
+            FishingZone[] allZones = FindObjectsOfType<FishingZone>();
+            foreach (FishingZone zone in allZones)
+            {
+                if (zone != null)
+                {
+                    zone.ForceUpdateChances(totalValueScore, availableFish);
+                }
+            }
         }
 
         PlayerPrefs.SetInt("TotalValueScore", totalValueScore);
         PlayerPrefs.Save();
         UpdateVSText();
+    }
+
+    public float GetDynamicMoveSpeed()
+    {
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 1000f);
+        float t = clampedScore / 1000f;
+        return Mathf.Lerp(4f, 12f, t);
     }
 
     private void UpdateVSText()

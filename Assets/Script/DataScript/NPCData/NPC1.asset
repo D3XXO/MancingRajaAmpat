@@ -14,85 +14,67 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueGroups:
   - topicName: Kehidupan Laut
-    sentences:
-    - 'Mace
-
-
-      Eee Kaka! Sa pikir siapa yang dayung jauh sampai sini, ternyata
-      penjelajah muda.'
-    - 'Kamu
-
-
-      Halo, Mace. Lagi sibuk apa hari ini di tengah laut?'
-    - 'Mace
-
-
-      Cuma lihat-lihat arus, Kaka. Perempuan di sini juga kuat melaut,
-      tra cuma laki-laki saja.'
-    - 'Kamu
-
-
-      Hebat sekali, Mace. Laut benar-benar jadi rumah kedua ya?'
-    - 'Mace
-
-
-      Rumah kedua? Tra, Kaka. Ini tong punya rumah pertama! Dari kecil
-      tong su kawan dengan ombak.'
+    lines:
+    - characterName: Mace
+      sentence: Eee Kaka! Sa pikir siapa yang dayung jauh sampai sini, ternyata penjelajah
+        muda.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Halo, Mace. Lagi sibuk apa hari ini di tengah laut?
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Cuma lihat-lihat arus, Kaka. Perempuan di sini juga kuat melaut,
+        tra cuma laki-laki saja.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Hebat sekali, Mace. Laut benar-benar jadi rumah kedua ya?
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Rumah kedua? Tra, Kaka. Ini tong punya rumah pertama! Dari kecil
+        tong su kawan dengan ombak.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
   - topicName: Kehidupan Bawah Laut
-    sentences:
-    - 'Mace
-
-
-      Kaka, jangan ko pikir bawah air itu kosong cuma karena gelap
-      e.'
-    - 'Kamu
-
-
-      Iya Mace, airnya dalam sekali di sini, saya tra bisa lihat dasarnya.'
-    - 'Mace
-
-
-      Di bawah situ, karang-karang lagi tidur. Dong itu yang kasih
-      makan semua ikan yang ko pancing.'
-    - 'Kamu
-
-
-      Jadi meskipun gelap, mereka tetap penting ya, Mace?'
-    - 'Mace
-
-
-      Penting sekali! Kalau karang rusak, ikan traada tempat tinggal,
-      nanti ko tra bisa pancing lagi.'
-    - 'Kamu
-
-
-      Saya mengerti. Laut yang sehat dimulai dari apa yang tra kelihatan
-      di permukaan.'
-    - 'Mace
-
-
-      Pintar ko! Jaga yang di bawah, supaya yang di atas tetap indah.'
+    lines:
+    - characterName: Mace
+      sentence: Kaka, jangan ko pikir bawah air itu kosong cuma karena gelap e.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Iya Mace, airnya dalam sekali di sini, saya tra bisa lihat dasarnya.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Di bawah situ, karang-karang lagi tidur. Dong itu yang kasih makan
+        semua ikan yang ko pancing.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Jadi meskipun gelap, mereka tetap penting ya, Mace?
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Penting sekali! Kalau karang rusak, ikan traada tempat tinggal, nanti
+        ko tra bisa pancing lagi.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Saya mengerti. Laut yang sehat dimulai dari apa yang tra kelihatan
+        di permukaan.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Pintar ko! Jaga yang di bawah, supaya yang di atas tetap indah.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
   - topicName: Warna Laut
-    sentences:
-    - 'Mace
-
-
-      Kaka, ko lihat gradasi air itu? traada bosannya sa lihat.'
-    - 'Kamu
-
-
-      Iya Mace, warnanya cantik sekali, apalagi saat malam begini.'
-    - 'Mace
-
-
-      Itu tanda lautnya dalam dan jernih. Kalau air su keruh, berarti
-      ada yang salah dengan alam.'
-    - 'Kamu
-
-
-      Saya beruntung bisa datang dan melihat langsung semua ini.'
-    - 'Mace
-
-
-      Ko jangan cuma lihat, Kaka. Simpan itu indah di dalam hati, baru
-      kasih tahu dunia kalau Papua itu hebat.'
+    lines:
+    - characterName: Mace
+      sentence: Kaka, ko lihat gradasi air itu? traada bosannya sa lihat.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Iya Mace, warnanya cantik sekali, apalagi saat malam begini.
+      characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Itu tanda lautnya dalam dan jernih. Kalau air su keruh, berarti ada
+        yang salah dengan alam.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}
+    - characterName: ' '
+      sentence: Kami beruntung bisa datang dan melihat langsung semua ini.
+      characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    - characterName: Mace
+      sentence: Ko jangan cuma lihat, Kaka. Simpan itu indah di dalam hati, baru
+        kasih tahu dunia kalau Papua itu hebat.
+      characterSprite: {fileID: -550749520, guid: c134bd37d44f89c4f916b878bf0db7fd, type: 3}

@@ -7,6 +7,7 @@ public class ShrinkingSpawner : MonoBehaviour
     [Header("Settings")]
     public GameObject notePrefab;
     public RectTransform spawnPanel;
+    public Text countdownText;
     
     [Header("Spacing Settings")]
     public float padding;
@@ -54,7 +55,17 @@ public class ShrinkingSpawner : MonoBehaviour
 
     private IEnumerator SpawnRoutine()
     {
-        yield return new WaitForSeconds(1f);
+        if (countdownText != null)
+        {
+            countdownText.gameObject.SetActive(true);
+            for (int i = 3; i > 0; i--)
+            {
+                countdownText.text = i.ToString();
+                yield return new WaitForSeconds(1f);
+            }
+
+            countdownText.gameObject.SetActive(false);
+        }
 
         while (_isSpawning)
         {
@@ -140,7 +151,7 @@ public class ShrinkingSpawner : MonoBehaviour
                         if (colorIndex == 4) noteComp.isRedNote = true;
                     }
 
-                    noteComp.shrinkSpeed = _currentFish.moveSpeed;
+                    noteComp.shrinkSpeed = _manager.GetDynamicMoveSpeed();
 
                     if (noteComp.labelText != null)
                     {

@@ -13,6 +13,7 @@ public class PauseManager : MonoBehaviour
     public GameObject interactButton;
     public GameObject pauseButton;
     public GameObject muteIcon;
+    public AudioClip clickButton;
 
     private PlayerStateManager _player;
     public LoadingScreen loadingScreen;
@@ -20,10 +21,20 @@ public class PauseManager : MonoBehaviour
     void Start()
     {
         _player = FindObjectOfType<PlayerStateManager>();
+
+        if (AudioManager.Instance != null && muteIcon != null)
+        {
+            muteIcon.SetActive(AudioManager.Instance.IsMuted);
+        }
     }
 
     public void PauseGame()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
         if (player != null && player.movementComponent != null)
         {
@@ -33,18 +44,7 @@ public class PauseManager : MonoBehaviour
         pauseGamePanel.SetActive(true);
         pauseButton.SetActive(false);
 
-        if (AudioManager.Instance != null)
-        {
-            muteIcon.SetActive(AudioManager.Instance.IsMuted);
-            AudioManager.Instance.PauseAllAudio();
-        }
-
         Time.timeScale = 0f;
-
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PauseAllAudio();
-        }
 
         if (movementButtons != null) movementButtons.SetActive(false);
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
@@ -54,6 +54,11 @@ public class PauseManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         pauseGamePanel.SetActive(false);
         Time.timeScale = 1f;
 
@@ -80,6 +85,11 @@ public class PauseManager : MonoBehaviour
 
     public void MainMenu()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         Time.timeScale = 1f;
 
         if (AudioManager.Instance != null)

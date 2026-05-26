@@ -7,22 +7,33 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     public GameObject dialoguePanel;
     public Text dialogueText;
+    
+    public Text nameText;
+    public Image characterImage;
+    
     public PlayerStateManager playerManager;
+    public AudioClip clickButton;
 
-    private Queue<string> _sentences = new Queue<string>();
+    private Queue<DialogueLine> _dialogueLines = new Queue<DialogueLine>();
 
     public void StartDialogue(DialogueData data)
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         dialoguePanel.SetActive(true);
         TogglePlayerUI(false);
 
         int randomIndex = Random.Range(0, data.dialogueGroups.Length);
         DialogueTopic selectedTopic = data.dialogueGroups[randomIndex];
 
-        _sentences.Clear();
-        foreach (string sentence in selectedTopic.sentences)
+        _dialogueLines.Clear();
+        
+        foreach (DialogueLine line in selectedTopic.lines)
         {
-            _sentences.Enqueue(sentence);
+            _dialogueLines.Enqueue(line);
         }
 
         DisplayNextSentence();
@@ -30,14 +41,33 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (_sentences.Count == 0)
+        if (_dialogueLines.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        string sentence = _sentences.Dequeue();
-        dialogueText.text = sentence;
+        DialogueLine currentLine = _dialogueLines.Dequeue();
+        
+        dialogueText.text = currentLine.sentence;
+
+        if (nameText != null)
+        {
+            nameText.text = currentLine.characterName;
+        }
+
+        if (characterImage != null)
+        {
+            if (currentLine.characterSprite != null)
+            {
+                characterImage.sprite = currentLine.characterSprite;
+                characterImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                characterImage.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void EndDialogue()

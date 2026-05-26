@@ -17,9 +17,6 @@ public class FishData : ScriptableObject
     [TextArea(3, 10)]
     public string funFact;
 
-    [Header("Rhythm Settings")]
-    public float moveSpeed;
-
     [Header("Spawn Interval Range")]
     public float minSpawnInterval;
     public float maxSpawnInterval;

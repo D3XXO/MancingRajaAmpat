@@ -121,7 +121,7 @@ public class FishingState : IPlayerState
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
             PlayerPrefs.Save();
 
-            _manager.AddValueScore(_activeFish.vsValue);
+            _manager.AddValueScore(_activeFish.vsValue, true);
 
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
@@ -172,11 +172,11 @@ public class FishingState : IPlayerState
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
             {
-                floatScript.TriggerText(_activeFish.minusScore.ToString(), Color.red);
+                floatScript.TriggerText(_activeFish.minusScore.ToString(), Color.white);
             }
         }
 
-        _manager.AddValueScore(_activeFish.minusScore);
+        _manager.AddValueScore(_activeFish.minusScore, true);
 
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);
