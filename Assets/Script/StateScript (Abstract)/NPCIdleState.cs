@@ -20,12 +20,6 @@ public class NPCIdleState : INPCState
     {
         if (_npc.IsInteracting) return;
 
-        if (_npc.isPlayerFishing)
-        {
-            _npc.SwitchState(_npc.MoveState);
-            return;
-        }
-
         _timer += Time.deltaTime;
         if (_timer >= _waitDuration)
         {

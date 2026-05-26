@@ -139,7 +139,7 @@ TextureImporter:
       name: Perahu-Sheet 1_0
       rect:
         serializedVersion: 2
-        x: 76
+        x: 69
         y: 1095
         width: 48
         height: 48
@@ -160,7 +160,7 @@ TextureImporter:
       name: Perahu-Sheet 1_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 34
         y: 1095
         width: 48
         height: 48

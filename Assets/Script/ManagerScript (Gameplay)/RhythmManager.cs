@@ -13,6 +13,8 @@ public class RhythmManager : MonoBehaviour
 
     public void OnButtonPressed(int buttonID)
     {
+        if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
+
         RhythmNote noteToHit = null;
         float hitThreshold = 80f;
         float distance = 0f;
@@ -50,7 +52,7 @@ public class RhythmManager : MonoBehaviour
                 {
                     stateManager.FishingState.ChangeProgress(0.05f);
                 }
-                else 
+                else
                 {
                     stateManager.FishingState.ChangeProgress(-0.1f);
                     stateManager.TriggerShake(2.0f, 0.5f);

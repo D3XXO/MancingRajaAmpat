@@ -184,7 +184,7 @@ RectTransform:
   m_GameObject: {fileID: 7555589860913949388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4611086964454791785}
@@ -291,7 +291,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRedNote: 0
   shrinkSpeed: 0
-  sfxKlikTombol: {fileID: 8300000, guid: cfdbea779eb599f4089cd55aadf57b21, type: 3}
   labelText: {fileID: 7302413428127372361}
   visualTransform: {fileID: 4611086964454791785}
   minHitboxScale: 10

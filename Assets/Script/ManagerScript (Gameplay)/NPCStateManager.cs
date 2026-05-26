@@ -77,6 +77,7 @@ public class NPCStateManager : MonoBehaviour
             {
                 float distance = Vector2.Distance(transform.position, _playerTransform.position);
                 bool wasActive = _isActive;
+                
                 _isActive = (distance <= activationDistance);
 
                 if (animator != null && wasActive != _isActive)
@@ -85,6 +86,24 @@ public class NPCStateManager : MonoBehaviour
                 }
             }
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    public void ForceMoveAwayFrom(Vector3 playerPos)
+    {
+        int moveDirection = transform.position.x >= playerPos.x ? 1 : -1;
+
+        MoveState.SetDirection(moveDirection);
+
+        SetInteracting(false);
+
+        if (_currentState != MoveState)
+        {
+            SwitchState(MoveState);
+        }
+        else
+        {
+            FlipSprite(moveDirection);
         }
     }
 

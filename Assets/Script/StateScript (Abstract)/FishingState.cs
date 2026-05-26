@@ -75,12 +75,6 @@ public class FishingState : IPlayerState
                 _manager.SwitchState(_manager.MovementState);
             }
         }
-
-        NPCStateManager[] npcs = Object.FindObjectsOfType<NPCStateManager>();
-        foreach(var npc in npcs)
-        {
-            npc.isPlayerFishing = true;
-        }
     }
 
     private FishRarity RollRarity(FishingZoneData zone)
@@ -225,11 +219,5 @@ public class FishingState : IPlayerState
             _manager.shrinkingSpawner.gameObject.SetActive(false);
 
         _activeFish = null;
-
-        NPCStateManager[] npcs = Object.FindObjectsOfType<NPCStateManager>();
-        foreach(var npc in npcs)
-        {
-            npc.isPlayerFishing = false;
-        }
     }
 }

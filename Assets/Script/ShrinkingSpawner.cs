@@ -25,7 +25,6 @@ public class ShrinkingSpawner : MonoBehaviour
         new Color(1f, 0.2f, 0.2f)    // Merah
     };
 
-    private FishData _currentFish;
     private bool _isSpawning;
     private Coroutine _spawnRoutine;
     private PlayerStateManager _manager;
@@ -40,7 +39,6 @@ public class ShrinkingSpawner : MonoBehaviour
         if (_manager == null) _manager = FindObjectOfType<PlayerStateManager>();
         if (_isSpawning) return;
         
-        _currentFish = fish;
         _isSpawning = true;
         _spawnRoutine = StartCoroutine(SpawnRoutine());
     }

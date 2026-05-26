@@ -111,6 +111,21 @@ public class PlayerStateManager : MonoBehaviour
                 movementComponent.StopMoving();
             }
 
+            float pushRadius = 15f;
+            NPCStateManager[] allNPCs = FindObjectsOfType<NPCStateManager>();
+            
+            foreach (NPCStateManager npc in allNPCs)
+            {
+                if (npc != null)
+                {
+                    float distanceToPlayer = Vector2.Distance(transform.position, npc.transform.position);
+                    if (distanceToPlayer <= pushRadius)
+                    {
+                        npc.ForceMoveAwayFrom(transform.position);
+                    }
+                }
+            }
+
             SwitchState(WaitingState);
         }
         else if (_currentState == WaitingState)
@@ -159,7 +174,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
         float t = clampedScore / 500f;
-        return Mathf.Lerp(4f, 12f, t);
+        return Mathf.Lerp(4f, 15f, t);
     }
 
     public float GetDynamicMinSpawnInterval()

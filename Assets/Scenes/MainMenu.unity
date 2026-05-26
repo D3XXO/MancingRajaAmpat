@@ -650,6 +650,7 @@ GameObject:
   - component: {fileID: 380983935}
   - component: {fileID: 380983934}
   - component: {fileID: 380983937}
+  - component: {fileID: 380983938}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -784,6 +785,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &380983938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380983932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.72156864, g: 0.7019608, b: 0.7058824, a: 1}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &611268816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,6 +1346,7 @@ GameObject:
   - component: {fileID: 959362624}
   - component: {fileID: 959362623}
   - component: {fileID: 959362626}
+  - component: {fileID: 959362627}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -1464,6 +1481,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &959362627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959362621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.72156864, g: 0.7019608, b: 0.7058824, a: 1}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &984708605
 GameObject:
   m_ObjectHideFlags: 0
@@ -6538,6 +6570,7 @@ GameObject:
   - component: {fileID: 1297433657}
   - component: {fileID: 1297433656}
   - component: {fileID: 1297433659}
+  - component: {fileID: 1297433660}
   m_Layer: 5
   m_Name: MusicButton
   m_TagString: Untagged
@@ -6672,6 +6705,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &1297433660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297433654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.72156864, g: 0.7019608, b: 0.7058824, a: 1}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1374299984
 GameObject:
   m_ObjectHideFlags: 0

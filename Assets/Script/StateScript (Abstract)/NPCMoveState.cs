@@ -7,6 +7,11 @@ public class NPCMoveState : INPCState
 
     public NPCMoveState(NPCStateManager npc) => _npc = npc;
 
+    public void SetDirection(int newDirection)
+    {
+        _direction = newDirection;
+    }
+
     public void Enter()
     {
         _npc.animator.SetBool("npcDayung", true);
@@ -27,14 +32,7 @@ public class NPCMoveState : INPCState
             _npc.transform.position = new Vector3(clampedX, _npc.transform.position.y, _npc.transform.position.z);
 
             _direction *= -1;
-            if (_npc.isPlayerFishing)
-            {
-                _npc.FlipSprite(_direction);
-            }
-            else
-            {
-                _npc.SwitchState(_npc.IdleState);
-            }
+            _npc.FlipSprite(_direction);
         }
     }
 

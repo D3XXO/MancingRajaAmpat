@@ -27,10 +27,10 @@ public class RhythmSpawner : MonoBehaviour
         new Color(1f, 0.2f, 0.2f)    // Merah
     };
 
-    private FishData _currentFish;
     private bool _isSpawning = false;
     private Coroutine _spawnRoutine;
     private PlayerStateManager _manager;
+    public bool isCountingDown = false;
 
     void Start()
     {
@@ -42,7 +42,6 @@ public class RhythmSpawner : MonoBehaviour
         if (_manager == null) _manager = FindObjectOfType<PlayerStateManager>();
 
         if (_isSpawning) return;
-        _currentFish = fish;
         _isSpawning = true;
         _spawnRoutine = StartCoroutine(SpawnRoutine());
     }
@@ -62,6 +61,7 @@ public class RhythmSpawner : MonoBehaviour
     {
         if (countdownText != null)
         {
+            isCountingDown = true;
             countdownText.gameObject.SetActive(true);
             for (int i = 3; i > 0; i--)
             {
@@ -70,9 +70,8 @@ public class RhythmSpawner : MonoBehaviour
             }
 
             countdownText.gameObject.SetActive(false);
+            isCountingDown = false;
         }
-
-        yield return new WaitForSeconds(3f);
 
         while (_isSpawning)
         {
