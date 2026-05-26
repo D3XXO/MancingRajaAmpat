@@ -65,7 +65,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
-        totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
+        totalValueScore = 0;
         UpdateVSText();
 
         SwitchState(MovementState);
@@ -111,7 +111,7 @@ public class PlayerStateManager : MonoBehaviour
                 movementComponent.StopMoving();
             }
 
-            float pushRadius = 15f;
+            float pushRadius = 20f;
             NPCStateManager[] allNPCs = FindObjectsOfType<NPCStateManager>();
             
             foreach (NPCStateManager npc in allNPCs)

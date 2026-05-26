@@ -16,7 +16,7 @@ public class RhythmManager : MonoBehaviour
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
 
         RhythmNote noteToHit = null;
-        float hitThreshold = 80f;
+        float hitThreshold = 100f;
         float distance = 0f;
 
         for (int i = allActiveNotes.Count - 1; i >= 0; i--)
@@ -52,7 +52,7 @@ public class RhythmManager : MonoBehaviour
                 {
                     stateManager.FishingState.ChangeProgress(0.05f);
                 }
-                else
+                else if (distance <= 80)
                 {
                     stateManager.FishingState.ChangeProgress(-0.1f);
                     stateManager.TriggerShake(2.0f, 0.5f);
