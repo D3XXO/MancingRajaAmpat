@@ -13,7 +13,7 @@ public class ShrinkingNote : MonoBehaviour
     public RectTransform visualTransform;
     public float minHitboxScale;
 
-    private float _currentScale = 10f;
+    private float _currentScale = 15;
     private PlayerStateManager _stateManager;
 
     void Start()
@@ -35,7 +35,8 @@ public class ShrinkingNote : MonoBehaviour
         float speedMultiplier = shrinkSpeed / 60f;
         
         _currentScale -= speedMultiplier;
-        transform.localScale = Vector3.one * Mathf.Max(0, _currentScale);
+        
+        UpdateScale();
 
         if (_currentScale <= 0)
         {

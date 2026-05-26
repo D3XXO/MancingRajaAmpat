@@ -179,15 +179,15 @@ public class PlayerStateManager : MonoBehaviour
 
     public float GetDynamicMinSpawnInterval()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 300f);
+        float t = clampedScore / 300f;
         return Mathf.Lerp(0.5f, 0.2f, t);
     }
 
     public float GetDynamicMaxSpawnInterval()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 300f);
+        float t = clampedScore / 300f;
         return Mathf.Lerp(1.0f, 0.5f, t);
     }
 
