@@ -65,7 +65,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
-        totalValueScore = 0;
+        totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
         UpdateVSText();
 
         SwitchState(MovementState);
