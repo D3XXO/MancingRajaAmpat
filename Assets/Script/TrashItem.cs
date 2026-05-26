@@ -32,5 +32,14 @@ public class TrashItem : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else if (other.CompareTag("NPC"))
+        {
+            if (spawnerParent != null)
+            {
+                spawnerParent.OnTrashCollected(gameObject);
+            }
+
+            Destroy(gameObject);
+        }
     }
 }

@@ -7,13 +7,15 @@ public class NPCStateManager : MonoBehaviour
     
     [Header("Patrol Settings")]
     public float moveSpeed;
-    public float patrolRange;
+    public float minX;
+    public float maxX;
     public float waitTimeMin;
     public float waitTimeMax;
     
     [Header("References")]
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+    public bool isPlayerFishing = false;
 
     [Header("Optimization")]
     public float activationDistance;
@@ -84,5 +86,11 @@ public class NPCStateManager : MonoBehaviour
             }
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(new Vector3(minX, transform.position.y, 0), new Vector3(maxX, transform.position.y, 0));
     }
 }

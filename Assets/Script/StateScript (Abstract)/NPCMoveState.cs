@@ -16,15 +16,25 @@ public class NPCMoveState : INPCState
     public void Update()
     {
         float currentX = _npc.transform.position.x;
-        float limitKanan = _npc.StartPosition.x + _npc.patrolRange;
-        float limitKiri = _npc.StartPosition.x - _npc.patrolRange;
+        float limitKanan = _npc.maxX;
+        float limitKiri = _npc.minX;
 
         _npc.transform.Translate(Vector2.right * _direction * _npc.moveSpeed * Time.deltaTime);
 
         if ((_direction > 0 && currentX >= limitKanan) || (_direction < 0 && currentX <= limitKiri))
         {
+            float clampedX = Mathf.Clamp(currentX, limitKiri, limitKanan);
+            _npc.transform.position = new Vector3(clampedX, _npc.transform.position.y, _npc.transform.position.z);
+
             _direction *= -1;
-            _npc.SwitchState(_npc.IdleState);
+            if (_npc.isPlayerFishing)
+            {
+                _npc.FlipSprite(_direction);
+            }
+            else
+            {
+                _npc.SwitchState(_npc.IdleState);
+            }
         }
     }
 

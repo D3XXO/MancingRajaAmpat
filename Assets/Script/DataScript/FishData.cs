@@ -17,10 +17,6 @@ public class FishData : ScriptableObject
     [TextArea(3, 10)]
     public string funFact;
 
-    [Header("Spawn Interval Range")]
-    public float minSpawnInterval;
-    public float maxSpawnInterval;
-
     [Header("Value Score Mechanics")]
     public int minVSRequirement;
     public int vsValue;

@@ -115,7 +115,7 @@ public class RhythmSpawner : MonoBehaviour
                 rhythmManager.allActiveNotes.Add(noteComponent);
             }
 
-            float randomInterval = Random.Range(_currentFish.minSpawnInterval, _currentFish.maxSpawnInterval);
+            float randomInterval = Random.Range(_manager.GetDynamicMinSpawnInterval(), _manager.GetDynamicMaxSpawnInterval());
             yield return new WaitForSeconds(randomInterval);
         }
     }

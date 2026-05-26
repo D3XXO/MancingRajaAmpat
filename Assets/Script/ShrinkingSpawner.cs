@@ -173,7 +173,7 @@ public class ShrinkingSpawner : MonoBehaviour
                 Destroy(newNote);
             }
 
-            float randomInterval = Random.Range(_currentFish.minSpawnInterval, _currentFish.maxSpawnInterval);
+            float randomInterval = Random.Range(_manager.GetDynamicMinSpawnInterval(), _manager.GetDynamicMaxSpawnInterval());
             yield return new WaitForSeconds(randomInterval);
         }
     }

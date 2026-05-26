@@ -75,6 +75,12 @@ public class FishingState : IPlayerState
                 _manager.SwitchState(_manager.MovementState);
             }
         }
+
+        NPCStateManager[] npcs = Object.FindObjectsOfType<NPCStateManager>();
+        foreach(var npc in npcs)
+        {
+            npc.isPlayerFishing = true;
+        }
     }
 
     private FishRarity RollRarity(FishingZoneData zone)
@@ -102,7 +108,7 @@ public class FishingState : IPlayerState
         UpdateUI();
 
         if (_currentProgress == 1f) WinFishing();
-        else if (_currentProgress <= 0f) LoseFishing();
+        else if (_currentProgress == 0f) LoseFishing();
     }
 
     private void UpdateUI()
@@ -219,5 +225,11 @@ public class FishingState : IPlayerState
             _manager.shrinkingSpawner.gameObject.SetActive(false);
 
         _activeFish = null;
+
+        NPCStateManager[] npcs = Object.FindObjectsOfType<NPCStateManager>();
+        foreach(var npc in npcs)
+        {
+            npc.isPlayerFishing = false;
+        }
     }
 }

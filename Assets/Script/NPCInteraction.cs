@@ -16,6 +16,16 @@ public class NPCInteraction : MonoBehaviour
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _npcAI = GetComponent<NPCStateManager>();
 
+        if (interactButton == null)
+        {
+            GameObject foundButton = GameObject.Find("InteractButton");
+            
+            if (foundButton != null)
+            {
+                interactButton = foundButton;
+            }
+        }
+
         if (interactButton != null) interactButton.SetActive(false);
     }
 
