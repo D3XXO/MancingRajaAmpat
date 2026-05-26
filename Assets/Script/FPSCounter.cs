@@ -1,11 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FPSCounter : MonoBehaviour
 {
-    void Start()
+    private static FPSCounter _instance;
+
+    void Awake()
     {
-        Application.targetFrameRate = 60;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            Application.targetFrameRate = 60;
+            Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

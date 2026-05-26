@@ -3177,7 +3177,6 @@ GameObject:
   - component: {fileID: 562582764}
   - component: {fileID: 562582763}
   - component: {fileID: 562582766}
-  - component: {fileID: 562582765}
   - component: {fileID: 562582768}
   - component: {fileID: 562582767}
   m_Layer: 0
@@ -3258,18 +3257,6 @@ MonoBehaviour:
   characterImage: {fileID: 280276518}
   playerManager: {fileID: 1670303218}
   clickButton: {fileID: 8300000, guid: cfdbea779eb599f4089cd55aadf57b21, type: 3}
---- !u!114 &562582765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562582759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e1d4bc52c1d6c4b8031a3637b75c87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &562582766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,7 +4834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92156863, g: 0.8980392, b: 0.9019608, a: 1}
+  m_Color: {r: 0.9411765, g: 0.91764706, b: 0.8509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14286,7 +14273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.92156863, g: 0.8980392, b: 0.9019608, a: 1}
+  m_EffectColor: {r: 0.9411765, g: 0.91764706, b: 0.8509804, a: 1}
   m_EffectDistance: {x: 12, y: 12}
   m_UseGraphicAlpha: 1
 --- !u!1 &1485121955

@@ -5,6 +5,7 @@ public class ButtonFeedback : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 {
     private Vector3 _originalScale;
     public float shrinkFactor;
+    private bool _isInitialized = false;
 
     void Awake()
     {
@@ -19,5 +20,13 @@ public class ButtonFeedback : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnPointerUp(PointerEventData eventData)
     {
         transform.localScale = _originalScale;
+    }
+
+    void OnDisable()
+    {
+        if (_isInitialized)
+        {
+            transform.localScale = _originalScale;
+        }
     }
 }
