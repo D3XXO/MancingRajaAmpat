@@ -547,8 +547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  minX: 50
-  maxX: 150
+  minX: 150
+  maxX: 180
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 100663280}
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   minX: 10
-  maxX: 100
+  maxX: 40
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 400481924}
@@ -5277,8 +5277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  minX: 30
-  maxX: 100
+  minX: 50
+  maxX: 80
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 773183250}
@@ -11338,7 +11338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   minX: 100
-  maxX: 180
+  maxX: 130
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 999906002}
@@ -23164,7 +23164,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 15}
+  m_SizeDelta: {x: 150, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2079312979
 MonoBehaviour:

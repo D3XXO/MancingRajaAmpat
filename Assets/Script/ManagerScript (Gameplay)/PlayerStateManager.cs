@@ -171,8 +171,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public float GetDynamicMoveSpeed()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 750f);
+        float t = clampedScore / 750f;
         return Mathf.Lerp(4f, 12f, t);
     }
 
