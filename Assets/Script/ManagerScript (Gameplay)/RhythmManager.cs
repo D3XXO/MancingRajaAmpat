@@ -51,11 +51,11 @@ public class RhythmManager : MonoBehaviour
                     {
                         stateManager.FishingState.ChangeProgress(0.1f);
                     }
-                    else if (minDistance <= 50f)
+                    else if (minDistance <= 80f)
                     {
                         stateManager.FishingState.ChangeProgress(0.05f);
                     }
-                    else if (minDistance >= 120f)
+                    else
                     {
                         stateManager.FishingState.ChangeProgress(-0.1f);
                         stateManager.TriggerShake(2.0f, 0.5f);
