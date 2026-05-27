@@ -171,23 +171,23 @@ public class PlayerStateManager : MonoBehaviour
 
     public float GetDynamicMoveSpeed()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 750f);
-        float t = clampedScore / 750f;
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
+        float t = clampedScore / 500f;
         return Mathf.Lerp(4f, 12f, t);
     }
 
     public float GetDynamicMinSpawnInterval()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 300f);
-        float t = clampedScore / 300f;
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
+        float t = clampedScore / 500f;
         return Mathf.Lerp(0.5f, 0.2f, t);
     }
 
     public float GetDynamicMaxSpawnInterval()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 300f);
-        float t = clampedScore / 300f;
-        return Mathf.Lerp(1.0f, 0.4f, t);
+        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
+        float t = clampedScore / 500f;
+        return Mathf.Lerp(1.0f, 0.5f, t);
     }
 
     private void UpdateVSText()

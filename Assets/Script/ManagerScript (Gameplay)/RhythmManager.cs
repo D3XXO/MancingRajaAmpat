@@ -15,20 +15,25 @@ public class RhythmManager : MonoBehaviour
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
 
         RhythmNote targetNote = null;
-        float hitThreshold = 400f;
         float targetDistance = 0f;
+
+        float rightThreshold = 300f;
+        float leftThreshold = 60f;
 
         for (int i = 0; i < allActiveNotes.Count; i++)
         {
             RhythmNote note = allActiveNotes[i];
             if (note != null)
             {
-                float distance = Mathf.Abs(note.GetComponent<RectTransform>().anchoredPosition.x - targetZoneRect.anchoredPosition.x);
+                float noteX = note.GetComponent<RectTransform>().anchoredPosition.x;
+                float targetX = targetZoneRect.anchoredPosition.x;
                 
-                if (distance <= hitThreshold)
+                float offset = noteX - targetX;
+                
+                if (offset >= -leftThreshold && offset <= rightThreshold)
                 {
                     targetNote = note;
-                    targetDistance = distance;
+                    targetDistance = Mathf.Abs(offset);
                     break;
                 }
             }
@@ -36,32 +41,29 @@ public class RhythmManager : MonoBehaviour
 
         if (targetNote != null)
         {
+            if (targetNote.isRedNote)
+            {
+                ShowFeedback(999f);
+                stateManager.FishingState.ChangeProgress(-0.1f);
+                stateManager.TriggerShake(2.0f, 0.5f);
+
+                allActiveNotes.Remove(targetNote);
+                Destroy(targetNote.gameObject);
+                return;
+            }
+
             bool isCorrectButton = (targetNote.noteID == buttonID);
 
             if (isCorrectButton)
             {
-                ShowFeedback(targetNote.isRedNote ? 999f : targetDistance);
+                ShowFeedback(targetDistance);
 
-                if (targetNote.isRedNote)
+                if (targetDistance <= 20f) stateManager.FishingState.ChangeProgress(0.1f);
+                else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.05f);
+                else
                 {
                     stateManager.FishingState.ChangeProgress(-0.1f);
                     stateManager.TriggerShake(2.0f, 0.5f);
-                }
-                else
-                {
-                    if (targetDistance <= 20f)
-                    {
-                        stateManager.FishingState.ChangeProgress(0.1f);
-                    }
-                    else if (targetDistance <= 80f)
-                    {
-                        stateManager.FishingState.ChangeProgress(0.05f);
-                    }
-                    else
-                    {
-                        stateManager.FishingState.ChangeProgress(-0.1f);
-                        stateManager.TriggerShake(2.0f, 0.5f);
-                    }
                 }
             }
             else
@@ -90,7 +92,7 @@ public class RhythmManager : MonoBehaviour
         if (distance >= 999f) { message = "BAD"; color = Color.red; }
         else if (distance <= 20f) { message = "PERFECT"; color = Color.green; }
         else if (distance <= 80f) { message = "GOOD"; color = Color.yellow; }
-        else { message = "MISS"; color = Color.red; }
+        else { message = "BAD"; color = Color.red; }
 
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         
