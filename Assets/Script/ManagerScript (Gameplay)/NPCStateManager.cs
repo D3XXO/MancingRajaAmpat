@@ -91,10 +91,11 @@ public class NPCStateManager : MonoBehaviour
 
     public void ForceMoveAwayFrom(Vector3 playerPos)
     {
-        int moveDirection = transform.position.x >= playerPos.x ? 1 : -1;
+        float distanceToMinX = Mathf.Abs(transform.position.x - minX);
+        float distanceToMaxX = Mathf.Abs(transform.position.x - maxX);
 
+        int moveDirection = (distanceToMaxX > distanceToMinX) ? 1 : -1;
         MoveState.SetDirection(moveDirection);
-
         SetInteracting(false);
 
         if (_currentState != MoveState)

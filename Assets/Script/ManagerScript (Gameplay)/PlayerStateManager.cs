@@ -187,7 +187,7 @@ public class PlayerStateManager : MonoBehaviour
     {
         float clampedScore = Mathf.Clamp(totalValueScore, 0f, 300f);
         float t = clampedScore / 300f;
-        return Mathf.Lerp(1.0f, 0.5f, t);
+        return Mathf.Lerp(1.0f, 0.4f, t);
     }
 
     private void UpdateVSText()

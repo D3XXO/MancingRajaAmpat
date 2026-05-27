@@ -88,7 +88,7 @@ public class RhythmManager : MonoBehaviour
         if (distance >= 999f) { message = "BAD"; color = Color.red; }
         else if (distance <= 20f) { message = "PERFECT"; color = Color.green; }
         else if (distance <= 50f) { message = "GOOD"; color = Color.yellow; }
-        else { message = "BAD"; color = Color.red; } 
+        else { message = "BAD"; color = Color.red; }
 
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         
