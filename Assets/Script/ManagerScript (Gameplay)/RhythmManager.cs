@@ -15,7 +15,7 @@ public class RhythmManager : MonoBehaviour
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
 
         RhythmNote closestNote = null;
-        float hitThreshold = 400f;
+        float hitThreshold = 125f;
         float minDistance = float.MaxValue;
 
         for (int i = allActiveNotes.Count - 1; i >= 0; i--)
