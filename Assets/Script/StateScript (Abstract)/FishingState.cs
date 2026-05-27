@@ -118,10 +118,20 @@ public class FishingState : IPlayerState
     {
         if (_activeFish != null)
         {
+            _manager.currentWinStreak++;
+            
+            int multiplier = 1;
+            if (_manager.currentWinStreak >= 2)
+            {
+                multiplier = (_manager.currentWinStreak - 1) * 2;
+            }
+
+            int finalScore = _activeFish.vsValue * multiplier;
+
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
             PlayerPrefs.Save();
 
-            _manager.AddValueScore(_activeFish.vsValue, true);
+            _manager.AddValueScore(finalScore, true);
 
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
@@ -129,7 +139,7 @@ public class FishingState : IPlayerState
                 floatScript.TriggerText("+" + _activeFish.vsValue, Color.white);
             }
 
-            _manager.ShowCaughtFish(_activeFish);
+            _manager.ShowCaughtFish(_activeFish, multiplier);
             _manager.StartCoroutine(PlayRecordAudioRoutine(_activeFish.fishID));
         }
 
@@ -167,6 +177,8 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
+        _manager.currentWinStreak = 0;
+
         if (_manager.totalValueScore > 0)
         {
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);

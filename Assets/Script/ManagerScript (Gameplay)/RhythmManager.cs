@@ -10,15 +10,38 @@ public class RhythmManager : MonoBehaviour
     public RectTransform feedbackPanel;
     public List<RhythmNote> allActiveNotes = new List<RhythmNote>();
 
+    [Header("Threshold Settings")]
+    public float rightThreshold;
+    public float leftThreshold;
+
+    void Update()
+    {
+        if (targetZoneRect == null) return;
+        
+        float targetX = targetZoneRect.anchoredPosition.x;
+
+        for (int i = 0; i < allActiveNotes.Count; i++)
+        {
+            RhythmNote note = allActiveNotes[i];
+            if (note != null)
+            {
+                float noteX = note.GetComponent<RectTransform>().anchoredPosition.x;
+                float offset = noteX - targetX;
+
+                if (offset < -leftThreshold)
+                {
+                    note.SetToTransparent();
+                }
+            }
+        }
+    }
+
     public void OnButtonPressed(int buttonID)
     {
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
 
         RhythmNote targetNote = null;
         float targetDistance = 0f;
-
-        float rightThreshold = 300f;
-        float leftThreshold = 60f;
 
         for (int i = 0; i < allActiveNotes.Count; i++)
         {
@@ -92,7 +115,7 @@ public class RhythmManager : MonoBehaviour
         if (distance >= 999f) { message = "BAD"; color = Color.red; }
         else if (distance <= 20f) { message = "PERFECT"; color = Color.green; }
         else if (distance <= 80f) { message = "GOOD"; color = Color.yellow; }
-        else { message = "BAD"; color = Color.red; }
+        else { message = "MISS"; color = Color.red; }
 
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         

@@ -76,7 +76,7 @@ public class ShrinkingNote : MonoBehaviour
             }
             else
             {
-                _stateManager.FishingState.ChangeProgress(0.025f);
+                _stateManager.FishingState.ChangeProgress(0.05f);
             }
         }
         

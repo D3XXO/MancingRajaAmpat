@@ -31,10 +31,12 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject caughtFishPanel;
     public Image caughtFishImage;
     public Text caughtFishText;
+    public Text streakText;
 
     [Header("Value Score")]
     public int totalValueScore;
     public Text valueScoreText;
+    public int currentWinStreak;
 
     [Header("Camera Settings")]
     public CinemachineVirtualCamera virtualCamera;
@@ -133,15 +135,28 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-    public void ShowCaughtFish(FishData fish)
+    public void ShowCaughtFish(FishData fish, int multiplier)
     {
-        StartCoroutine(DisplayFishRoutine(fish));
+        StartCoroutine(DisplayFishRoutine(fish, multiplier));
     }
 
-    private IEnumerator DisplayFishRoutine(FishData fish)
+    private IEnumerator DisplayFishRoutine(FishData fish, int multiplier)
     {
         caughtFishImage.sprite = fish.fishIcon;
         caughtFishText.text = fish.fishName;
+
+        if (streakText != null)
+        {
+            if (multiplier > 1)
+            {
+                streakText.text = "STREAK!! Score X" + multiplier;
+                streakText.gameObject.SetActive(true);
+            }
+            else
+            {
+                streakText.gameObject.SetActive(false);
+            }
+        }
 
         caughtFishPanel.SetActive(true);
         yield return new WaitForSeconds(3f);
