@@ -12,7 +12,7 @@ public class RhythmNote : MonoBehaviour
     {
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
 
-        if (transform.localPosition.x < -540f)
+        if (transform.localPosition.x < -500f)
         {
             if (!isRedNote)
             {
