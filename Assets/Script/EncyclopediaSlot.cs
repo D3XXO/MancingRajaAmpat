@@ -8,6 +8,7 @@ public class EncyclopediaSlot : MonoBehaviour
     private FishData _data;
     private EncyclopediaManager _manager;
     private Outline _outline;
+    private bool _isCaught;
 
     public void Setup(FishData data, bool isCaught, EncyclopediaManager manager)
     {
@@ -22,10 +23,11 @@ public class EncyclopediaSlot : MonoBehaviour
 
         _data = data;
         _manager = manager;
+        _isCaught = isCaught;
         fishImage.sprite = data.fishIcon;
 
         fishImage.color = isCaught ? Color.white : Color.black;
-        GetComponent<Button>().interactable = isCaught;
+        GetComponent<Button>().interactable = true;
 
         Color bgColor = Color.white;
         Color outlineColor = Color.black;
@@ -37,7 +39,6 @@ public class EncyclopediaSlot : MonoBehaviour
         }
         else
         {
-            // Sudah tertangkap
             switch (data.rarity)
             {
                 case FishRarity.Normal:
@@ -65,6 +66,13 @@ public class EncyclopediaSlot : MonoBehaviour
 
     public void OnClick()
     {
-        _manager.DisplayFishDetails(_data);
+        if (_isCaught)
+        {
+            _manager.DisplayFishDetails(_data);
+        }
+        else
+        {
+            _manager.DisplayUncaughtFishInfo(_data);
+        }
     }
 }

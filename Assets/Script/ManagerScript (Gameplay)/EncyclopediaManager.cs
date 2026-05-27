@@ -20,6 +20,7 @@ public class EncyclopediaManager : MonoBehaviour
     public GameObject selectionButtonsPanel;
     public GameObject contentTextPanel;
     public Text detailContentText;
+    public Text uncaughtInfoText;
     private FishData _selectedFish;
 
     [Header("Controls to Toggle")]
@@ -68,6 +69,7 @@ public class EncyclopediaManager : MonoBehaviour
 
         selectionButtonsPanel.SetActive(true);
         contentTextPanel.SetActive(false);
+        if (uncaughtInfoText != null) uncaughtInfoText.gameObject.SetActive(false);
 
         string savedPath = Path.Combine(Application.persistentDataPath, _selectedFish.fishID + ".wav");
         
@@ -96,6 +98,31 @@ public class EncyclopediaManager : MonoBehaviour
             {
                 fishAudioSource.Stop();
             }
+        }
+    }
+
+    public void DisplayUncaughtFishInfo(FishData data)
+    {
+        CancelRecording();
+
+        _selectedFish = data;
+
+        selectionButtonsPanel.SetActive(false);
+        contentTextPanel.SetActive(false);
+        
+        if (uncaughtInfoText != null)
+        {
+            uncaughtInfoText.gameObject.SetActive(true);
+            uncaughtInfoText.text = "Peluang ditemukan saat score mencapai " + data.minVSRequirement;
+        }
+
+        _selectedFish.customAudioPath = "";
+        _selectedFish.customAudioClip = null;
+        if (recordingStatusText != null) recordingStatusText.text = "Suara Terkunci";
+
+        if (fishAudioSource != null && fishAudioSource.isPlaying)
+        {
+            fishAudioSource.Stop();
         }
     }
 
@@ -155,6 +182,7 @@ public class EncyclopediaManager : MonoBehaviour
 
         selectionButtonsPanel.SetActive(false);
         contentTextPanel.SetActive(false);
+        if (uncaughtInfoText != null) uncaughtInfoText.gameObject.SetActive(false);
     }
 
     public void ToggleEncyclopedia()
