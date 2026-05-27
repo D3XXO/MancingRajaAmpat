@@ -13,29 +13,33 @@ public class ShrinkingNote : MonoBehaviour
     public RectTransform visualTransform;
     public float minHitboxScale;
 
-    private float _currentScale = 15;
+    private float _currentScale;
     private PlayerStateManager _stateManager;
 
     void Start()
     {
         _stateManager = FindObjectOfType<PlayerStateManager>();
-        transform.localScale = Vector3.one * _currentScale;
 
         Button btn = GetComponent<Button>();
         if (btn != null)
         {
             btn.onClick.AddListener(OnClick);
         }
+    }
 
+    public void SetupNote(float startScale, float speed)
+    {
+        _currentScale = startScale;
+        shrinkSpeed = speed;
+        transform.localScale = Vector3.one * _currentScale;
         UpdateScale();
     }
 
     void Update()
     {
-        float speedMultiplier = shrinkSpeed / 60f;
+        float speedMultiplier = (shrinkSpeed / 40f);
         
         _currentScale -= speedMultiplier;
-        
         UpdateScale();
 
         if (_currentScale <= 0)
@@ -43,7 +47,7 @@ public class ShrinkingNote : MonoBehaviour
             if (!isRedNote)
             {
                 if (_stateManager != null) _stateManager.FishingState.ChangeProgress(-0.1f);
-                _stateManager.TriggerShake(2.0f, 0.5f);
+                if (_stateManager != null) _stateManager.TriggerShake(2.0f, 0.5f);
             }
             Destroy(gameObject);
         }

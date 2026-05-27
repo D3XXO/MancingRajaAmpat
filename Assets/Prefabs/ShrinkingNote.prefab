@@ -293,4 +293,4 @@ MonoBehaviour:
   shrinkSpeed: 0
   labelText: {fileID: 7302413428127372361}
   visualTransform: {fileID: 4611086964454791785}
-  minHitboxScale: 10
+  minHitboxScale: 5

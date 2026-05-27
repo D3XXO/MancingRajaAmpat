@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class RhythmManager : MonoBehaviour
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
 
         RhythmNote closestNote = null;
-        float hitThreshold = 120f;
+        float hitThreshold = 400f;
         float minDistance = float.MaxValue;
 
         for (int i = allActiveNotes.Count - 1; i >= 0; i--)
@@ -56,7 +55,7 @@ public class RhythmManager : MonoBehaviour
                     {
                         stateManager.FishingState.ChangeProgress(0.05f);
                     }
-                    else
+                    else if (minDistance >= 120f)
                     {
                         stateManager.FishingState.ChangeProgress(-0.1f);
                         stateManager.TriggerShake(2.0f, 0.5f);

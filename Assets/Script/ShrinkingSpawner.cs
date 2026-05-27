@@ -149,7 +149,7 @@ public class ShrinkingSpawner : MonoBehaviour
                         if (colorIndex == 4) noteComp.isRedNote = true;
                     }
 
-                    noteComp.shrinkSpeed = _manager.GetDynamicMoveSpeed();
+                    noteComp.SetupNote(startScale, _manager.GetDynamicMoveSpeed());
 
                     if (noteComp.labelText != null)
                     {
