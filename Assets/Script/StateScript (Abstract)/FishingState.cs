@@ -125,12 +125,7 @@ public class FishingState : IPlayerState
         {
             _manager.currentWinStreak++;
             
-            int multiplier = 1;
-            if (_manager.currentWinStreak >= 2)
-            {
-                multiplier = (_manager.currentWinStreak - 1) * 2;
-            }
-
+            int multiplier = _manager.currentWinStreak;
             int finalScore = _activeFish.vsValue * multiplier;
 
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
@@ -141,7 +136,7 @@ public class FishingState : IPlayerState
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
             {
-                floatScript.TriggerText("+" + _activeFish.vsValue, Color.white);
+                floatScript.TriggerText("+" + finalScore, Color.white);
             }
 
             _manager.ShowCaughtFish(_activeFish, multiplier);
@@ -183,18 +178,18 @@ public class FishingState : IPlayerState
     private void LoseFishing()
     {
         _manager.ResetStreak();
+        int penalty = Mathf.RoundToInt(_manager.totalValueScore / 10f);
 
         if (_manager.totalValueScore > 0)
         {
             FloatingText floatScript = _manager.GetComponentInChildren<FloatingText>(true);
             if (floatScript != null)
             {
-                floatScript.TriggerText(_activeFish.minusScore.ToString(), Color.white);
+                floatScript.TriggerText("-" + penalty, Color.red);
             }
         }
 
-        _manager.AddValueScore(_activeFish.minusScore, true);
-
+        _manager.AddValueScore(-penalty, true);
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);
     }

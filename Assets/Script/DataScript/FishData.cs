@@ -20,7 +20,6 @@ public class FishData : ScriptableObject
     [Header("Value Score Mechanics")]
     public int minVSRequirement;
     public int vsValue;
-    public int minusScore;
 
     [HideInInspector]
     public string customAudioPath;

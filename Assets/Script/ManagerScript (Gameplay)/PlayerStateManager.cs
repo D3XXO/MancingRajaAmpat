@@ -190,9 +190,18 @@ public class PlayerStateManager : MonoBehaviour
 
     public float GetDynamicMoveSpeed()
     {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
-        return Mathf.Lerp(4f, 12f, t);
+        if (totalValueScore <= 500)
+        {
+            float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
+            float t = clampedScore / 500f;
+            return Mathf.Lerp(4f, 12f, t);
+        }
+        else
+        {
+            int excessScore = totalValueScore - 500;
+            int multiplier = excessScore / 50;
+            return 12f + (multiplier * 0.2f);
+        }
     }
 
     public float GetDynamicMinSpawnInterval()
