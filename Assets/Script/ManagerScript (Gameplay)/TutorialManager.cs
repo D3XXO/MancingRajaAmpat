@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class TutorialManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class TutorialManager : MonoBehaviour
     public Text tutorialText;
     public Image characterImage;
     public Image hintImage;
+    public Image fishTutorImage;
+    public Image tutorImageFrame;
 
     [Header("Data & References")]
     public TutorialData tutorialData;
@@ -17,8 +20,10 @@ public class TutorialManager : MonoBehaviour
 
     private Queue<TutorialStep> _tutorialSteps = new Queue<TutorialStep>();
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return null;
+
         if (PlayerPrefs.GetInt("HasPlayedTutorial", 0) == 0)
         {
             StartTutorial();
@@ -88,6 +93,21 @@ public class TutorialManager : MonoBehaviour
                 hintImage.gameObject.SetActive(false);
             }
         }
+
+        if (fishTutorImage != null)
+        {
+            if (currentStep.fishingTutorImage != null)
+            {
+                fishTutorImage.sprite = currentStep.fishingTutorImage;
+                fishTutorImage.gameObject.SetActive(true);
+                tutorImageFrame.gameObject.SetActive(true);
+            }
+            else
+            {
+                fishTutorImage.gameObject.SetActive(false);
+                tutorImageFrame.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void EndTutorial()
@@ -103,8 +123,25 @@ public class TutorialManager : MonoBehaviour
     {
         if (playerManager == null) return;
 
-        playerManager.movementButtonsParent.SetActive(status);
-        playerManager.ensiklopediaButton.SetActive(status);
+        if (playerManager.movementButtonsParent != null)
+        {
+            playerManager.movementButtonsParent.SetActive(status);
+        }
+
+        if (playerManager.ensiklopediaButton != null)
+        {
+            playerManager.ensiklopediaButton.SetActive(status);
+        }
+
+        if (playerManager.valueScoreText != null)
+        {
+            playerManager.valueScoreText.gameObject.SetActive(status);
+        }
+
+        if (playerManager.pauseButton != null)
+        {
+            playerManager.pauseButton.SetActive(status);
+        }
 
         if (playerManager.fishingButton != null)
         {
@@ -121,12 +158,6 @@ public class TutorialManager : MonoBehaviour
         if (!status && playerManager.movementComponent != null)
         {
             playerManager.movementComponent.StopMoving();
-        }
-
-        PauseManager pm = FindObjectOfType<PauseManager>();
-        if (pm != null && pm.pauseButton != null)
-        {
-            pm.pauseButton.SetActive(status);
         }
     }
 }

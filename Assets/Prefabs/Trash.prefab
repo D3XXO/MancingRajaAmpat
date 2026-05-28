@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092b6db01db6fb74eb70dee7fc870149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreReward: 1
+  scoreReward: 5
   spawnerParent: {fileID: 0}
 --- !u!61 &1800845586330694314
 BoxCollider2D:

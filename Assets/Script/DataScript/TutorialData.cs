@@ -7,6 +7,7 @@ public struct TutorialStep
     public string sentence;
     public Sprite characterSprite;
     public Sprite tutorialImage;
+    public Sprite fishingTutorImage;
 }
 
 [CreateAssetMenu(fileName = "New Tutorial Data")]
