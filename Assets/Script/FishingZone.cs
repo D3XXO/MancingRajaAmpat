@@ -11,6 +11,11 @@ public class FishingZone : MonoBehaviour
     public GameObject textPrefab;
     public Vector3 uiOffset;
 
+    [Header("Streak UI Setup")]
+    public GameObject streakTextPrefab;
+    public Vector3 streakUiOffset;
+    private GameObject _instantiatedStreakUI;
+
     [HideInInspector] public FishingZoneData zoneSettings = new FishingZoneData();
     [HideInInspector] public bool isPlayerInside = false;
     [HideInInspector] public FishingZoneSpawner spawnerParent;
@@ -50,6 +55,8 @@ public class FishingZone : MonoBehaviour
             {
                 _currentPlayer.IsInFishingZone = true;
                 _currentPlayer.fishingButton.SetActive(true);
+
+                _currentPlayer.currentFishingZone = this;
                 
                 if (!_hasGeneratedBefore)
                 {
@@ -74,8 +81,10 @@ public class FishingZone : MonoBehaviour
                 _currentPlayer.IsInFishingZone = false;
                 _currentPlayer.fishingButton.SetActive(false);
                 _currentPlayer.currentZoneData = null;
+                _currentPlayer.currentFishingZone = null;
 
                 if (_instantiatedUI != null) Destroy(_instantiatedUI);
+                if (_instantiatedStreakUI != null) Destroy(_instantiatedStreakUI);
             }
 
             _currentPlayer = null;
@@ -99,6 +108,13 @@ public class FishingZone : MonoBehaviour
 
         _hasGeneratedBefore = false;
         _currentCooldownTimer = 0f;
+
+        PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+        if (player != null && player.activeStreakZone == this)
+        {
+            player.ResetStreak();
+            player.activeStreakZone = null;
+        }
     }
 
     private void GenerateDynamicChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
@@ -140,16 +156,56 @@ public class FishingZone : MonoBehaviour
 
         if (_instantiatedUI != null)
         {
-            string ritemMode = zoneSettings.selectedMinigame == 0 ? "Rhythm" : "Shrinking";
+            string ritemMode = zoneSettings.selectedMinigame == 0 ? "Flow" : "Catch";
 
             Text txt = _instantiatedUI.GetComponentInChildren<Text>();
             if (txt != null)
             {
-                txt.text = $"({ritemMode} Mode)\n\n" +
+                txt.text = $"(Ritem {ritemMode} Mode)\n\n" +
                         $"Normal: {zoneSettings.normalChance}%\n" +
                         $"Endemic: {zoneSettings.endemicChance}%\n" +
                         $"Rare: {zoneSettings.rareChance}%";
             }
+        }
+
+        PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+        
+        bool hasStreak = (player != null && player.activeStreakZone == this && player.currentWinStreak >= 2);
+
+        if (hasStreak)
+        {
+            if (_instantiatedStreakUI == null && streakTextPrefab != null)
+            {
+                _instantiatedStreakUI = Instantiate(streakTextPrefab, transform.position + streakUiOffset, streakTextPrefab.transform.rotation, transform);
+            }
+
+            if (_instantiatedStreakUI != null)
+            {
+                Text streakTxt = _instantiatedStreakUI.GetComponentInChildren<Text>();
+                if (streakTxt != null)
+                {
+                    int multiplier = (player.currentWinStreak - 1) * 2;
+                    streakTxt.text = $"STREAK!! Score X{multiplier}";
+                }
+            }
+        }
+        else
+        {
+            if (_instantiatedStreakUI != null)
+            {
+                Destroy(_instantiatedStreakUI);
+                _instantiatedStreakUI = null;
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+        if (player != null && player.activeStreakZone == this)
+        {
+            player.ResetStreak();
+            player.activeStreakZone = null;
         }
     }
 }

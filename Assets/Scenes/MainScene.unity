@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
-  minX: 150
+  minX: 160
   maxX: 180
   waitTimeMin: 3
   waitTimeMax: 5
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   minX: 10
-  maxX: 40
+  maxX: 20
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 400481924}
@@ -5279,7 +5279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
   minX: 50
-  maxX: 80
+  maxX: 70
   waitTimeMin: 3
   waitTimeMax: 5
   animator: {fileID: 773183250}
@@ -12226,11 +12226,6 @@ MonoBehaviour:
   - GO
   - OK
   - SAFE
-  dangerLabels:
-  - DONT
-  - NO
-  - BAD
-  - AVOID
 --- !u!1 &1127572894
 GameObject:
   m_ObjectHideFlags: 0
@@ -20800,6 +20795,8 @@ MonoBehaviour:
     endemicChance: 0
     rareChance: 0
     selectedMinigame: 0
+  currentFishingZone: {fileID: 0}
+  activeStreakZone: {fileID: 0}
 --- !u!1 &1689880001
 GameObject:
   m_ObjectHideFlags: 0
@@ -21029,7 +21026,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Ikan Text
 --- !u!222 &1691137900
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22138,7 +22135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92156863, g: 0.8980392, b: 0.9019608, a: 1}
+  m_Color: {r: 1, g: 0.84313726, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22158,7 +22155,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Streak Text
 --- !u!222 &1810116651
 CanvasRenderer:
   m_ObjectHideFlags: 0

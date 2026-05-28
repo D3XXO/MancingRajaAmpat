@@ -13,6 +13,12 @@ public class FishingState : IPlayerState
 
     public void Enter()
     {
+        if (_manager.currentFishingZone != _manager.activeStreakZone)
+        {
+            _manager.ResetStreak();
+            _manager.activeStreakZone = _manager.currentFishingZone;
+        }
+
         _currentProgress = 0.2f;
         UpdateUI();
 
@@ -56,7 +62,6 @@ public class FishingState : IPlayerState
                 _activeFish = finalPool[Random.Range(0, finalPool.Count)];
 
                 int gachaMinigame = _manager.currentZoneData.selectedMinigame;
-
                 if (gachaMinigame == 0 && _manager.rhythmSpawner != null)
                 {
                     if (_manager.shrinkingSpawner != null) _manager.shrinkingSpawner.gameObject.SetActive(false);
@@ -177,7 +182,7 @@ public class FishingState : IPlayerState
 
     private void LoseFishing()
     {
-        _manager.currentWinStreak = 0;
+        _manager.ResetStreak();
 
         if (_manager.totalValueScore > 0)
         {

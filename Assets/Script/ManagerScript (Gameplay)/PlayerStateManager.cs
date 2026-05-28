@@ -55,6 +55,10 @@ public class PlayerStateManager : MonoBehaviour
 
     [HideInInspector]
     public FishingZoneData currentZoneData;
+    [HideInInspector]
+    public FishingZone currentFishingZone;
+    [HideInInspector]
+    public FishingZone activeStreakZone;
 
     void Awake()
     {
@@ -211,6 +215,11 @@ public class PlayerStateManager : MonoBehaviour
         {
             valueScoreText.text = "Score: " + totalValueScore;
         }
+    }
+
+    public void ResetStreak()
+    {
+        currentWinStreak = 0;
     }
 
     public void StartZoom(float targetSize)

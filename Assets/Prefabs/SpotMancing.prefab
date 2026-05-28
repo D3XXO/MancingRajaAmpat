@@ -178,9 +178,12 @@ MonoBehaviour:
   gachaCooldown: 180
   textPrefab: {fileID: 226045984561703626, guid: 044ee5ef355193349a0e53c7280c6b94, type: 3}
   uiOffset: {x: 0, y: 2, z: 0}
+  streakTextPrefab: {fileID: 226045984561703626, guid: 81b5e9b0840b5b64aabdc4644812c7f4, type: 3}
+  streakUiOffset: {x: 1, y: 3.25, z: 0}
   zoneSettings:
     normalChance: 0
     endemicChance: 0
     rareChance: 0
+    selectedMinigame: 0
   isPlayerInside: 0
   spawnerParent: {fileID: 0}
