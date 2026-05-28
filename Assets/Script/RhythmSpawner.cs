@@ -16,7 +16,6 @@ public class RhythmSpawner : MonoBehaviour
 
     [Header("Accessibility Settings")]
     public string[] safeLabels;
-    public string[] dangerLabels;
 
     private Color[] _noteColors = new Color[]
     {
@@ -99,7 +98,7 @@ public class RhythmSpawner : MonoBehaviour
             {
                 if (noteComponent.isRedNote)
                 {
-                    noteComponent.labelText.text = dangerLabels[Random.Range(0, dangerLabels.Length)];
+                    noteComponent.labelText.text = "x";
                     noteComponent.labelText.color = Color.red;
                 }
                 else

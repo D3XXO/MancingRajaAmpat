@@ -55,7 +55,7 @@ public class FishingState : IPlayerState
 
                 _activeFish = finalPool[Random.Range(0, finalPool.Count)];
 
-                int gachaMinigame = Random.Range(0, 2);
+                int gachaMinigame = _manager.currentZoneData.selectedMinigame;
 
                 if (gachaMinigame == 0 && _manager.rhythmSpawner != null)
                 {

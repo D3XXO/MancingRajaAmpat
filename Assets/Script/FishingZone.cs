@@ -127,6 +127,8 @@ public class FishingZone : MonoBehaviour
         zoneSettings.normalChance = Mathf.Round(normalChance);
         zoneSettings.endemicChance = Mathf.Round(endemicChance);
         zoneSettings.rareChance = Mathf.Round(rareChance);
+
+        zoneSettings.selectedMinigame = Random.Range(0, 2);
     }
 
     private void UpdateZoneInfoUI()
@@ -138,10 +140,13 @@ public class FishingZone : MonoBehaviour
 
         if (_instantiatedUI != null)
         {
+            string ritemMode = zoneSettings.selectedMinigame == 0 ? "Rhythm" : "Shrinking";
+
             Text txt = _instantiatedUI.GetComponentInChildren<Text>();
             if (txt != null)
             {
-                txt.text = $"Normal: {zoneSettings.normalChance}%\n" +
+                txt.text = $"({ritemMode} Mode)\n\n" +
+                        $"Normal: {zoneSettings.normalChance}%\n" +
                         $"Endemic: {zoneSettings.endemicChance}%\n" +
                         $"Rare: {zoneSettings.rareChance}%";
             }

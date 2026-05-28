@@ -3230,12 +3230,12 @@ MonoBehaviour:
   fishAudioSource: {fileID: 562582767}
   recordingStatusText: {fileID: 1634500401}
   allFish:
+  - {fileID: 11400000, guid: e2851c18d9eb38b4abd4688b1bd5d568, type: 2}
   - {fileID: 11400000, guid: ca1def5ef044eda4592f30a5d7d6a064, type: 2}
   - {fileID: 11400000, guid: 739d844fb9e42214387fce850bb65070, type: 2}
   - {fileID: 11400000, guid: 58f5d76205581a7498a7fcb3441ba6fc, type: 2}
-  - {fileID: 11400000, guid: e2851c18d9eb38b4abd4688b1bd5d568, type: 2}
-  - {fileID: 11400000, guid: 8a682860d6b4d2c44b64d10db8d56e9d, type: 2}
   - {fileID: 11400000, guid: 2b0b9e212c6e4b04ea142ab4c2321b34, type: 2}
+  - {fileID: 11400000, guid: 8a682860d6b4d2c44b64d10db8d56e9d, type: 2}
   - {fileID: 11400000, guid: 62a2e21883a952741b635c0a593a5aad, type: 2}
   - {fileID: 11400000, guid: daeabdc17f49cfe4d9ecfc7c2d02af10, type: 2}
   - {fileID: 11400000, guid: 3367e75b360bd86488eb50491a060dc0, type: 2}
@@ -12385,11 +12385,6 @@ MonoBehaviour:
   - GO
   - OK
   - SAFE
-  dangerLabels:
-  - DONT
-  - NO
-  - BAD
-  - AVOID
   isCountingDown: 0
 --- !u!1 &1132588832
 GameObject:
@@ -20804,6 +20799,7 @@ MonoBehaviour:
     normalChance: 0
     endemicChance: 0
     rareChance: 0
+    selectedMinigame: 0
 --- !u!1 &1689880001
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class ShrinkingSpawner : MonoBehaviour
 
     [Header("Accessibility Settings")]
     public string[] safeLabels;
-    public string[] dangerLabels;
 
     private Color[] _noteColors = new Color[]
     {
@@ -155,7 +154,7 @@ public class ShrinkingSpawner : MonoBehaviour
                     {
                         if (noteComp.isRedNote)
                         {
-                            noteComp.labelText.text = dangerLabels[Random.Range(0, dangerLabels.Length)];
+                            noteComp.labelText.text = "x";
                             noteComp.labelText.color = Color.black;
                         }
                         else
