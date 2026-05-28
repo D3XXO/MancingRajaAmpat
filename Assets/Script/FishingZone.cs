@@ -184,8 +184,8 @@ public class FishingZone : MonoBehaviour
                 Text streakTxt = _instantiatedStreakUI.GetComponentInChildren<Text>();
                 if (streakTxt != null)
                 {
-                    int multiplier = (player.currentWinStreak - 1) * 2;
-                    streakTxt.text = $"STREAK!! Score X{multiplier}";
+                    int multiplier = player.currentWinStreak + 1;
+                    streakTxt.text = $"Streak berikutnya X{multiplier}";
                 }
             }
         }
