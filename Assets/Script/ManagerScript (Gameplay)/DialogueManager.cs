@@ -7,10 +7,10 @@ public class DialogueManager : MonoBehaviour
     [Header("UI References")]
     public GameObject dialoguePanel;
     public Text dialogueText;
-    
+
     public Text nameText;
     public Image characterImage;
-    
+
     public PlayerStateManager playerManager;
     public AudioClip clickButton;
 
@@ -41,6 +41,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(clickButton);
+        }
+
         if (_dialogueLines.Count == 0)
         {
             EndDialogue();
