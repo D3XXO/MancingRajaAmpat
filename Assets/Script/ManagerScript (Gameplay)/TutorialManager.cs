@@ -22,7 +22,6 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator Start()
     {
-        PlayerPrefs.DeleteAll();
         yield return null;
 
         if (PlayerPrefs.GetInt("HasPlayedTutorial", 0) == 0)
