@@ -36,6 +36,8 @@ public class PlayerStateManager : MonoBehaviour
     [Header("Value Score")]
     public int totalValueScore;
     public Text valueScoreText;
+    public int highScore;
+    public Text highScoreText;
     public int currentWinStreak;
 
     [Header("Camera Settings")]
@@ -72,6 +74,7 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         UpdateVSText();
 
         SwitchState(MovementState);
@@ -171,6 +174,12 @@ public class PlayerStateManager : MonoBehaviour
     {
         totalValueScore = Mathf.Max(0, totalValueScore + amount);
 
+        if (totalValueScore > highScore)
+        {
+            highScore = totalValueScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+
         if (forceUpdate && IsInFishingZone)
         {
             FishingZone[] allZones = FindObjectsOfType<FishingZone>();
@@ -223,6 +232,11 @@ public class PlayerStateManager : MonoBehaviour
         if (valueScoreText != null)
         {
             valueScoreText.text = "Score: " + totalValueScore;
+        }
+
+        if (highScoreText != null)
+        {
+            highScoreText.text = "High Score: " + highScore;
         }
     }
 
