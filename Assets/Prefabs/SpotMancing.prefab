@@ -175,11 +175,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da037a034d55c2a40b3e7e0fe3ce2046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaCooldown: 180
+  gachaCooldown: 120
   textPrefab: {fileID: 226045984561703626, guid: 044ee5ef355193349a0e53c7280c6b94, type: 3}
   uiOffset: {x: 0, y: 2, z: 0}
   streakTextPrefab: {fileID: 226045984561703626, guid: 81b5e9b0840b5b64aabdc4644812c7f4, type: 3}
   streakUiOffset: {x: 1, y: 3.25, z: 0}
+  leftIndicatorPrefab: {fileID: 3850687068072876189, guid: 7ccad4657672f74418a68afa772ee9c8, type: 3}
+  rightIndicatorPrefab: {fileID: 3850687068072876189, guid: 3796a3b13763e5e418892fce31fd4de5, type: 3}
+  hasBeenVisited: 0
   zoneSettings:
     normalChance: 0
     endemicChance: 0

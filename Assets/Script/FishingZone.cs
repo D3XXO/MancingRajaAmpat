@@ -16,6 +16,20 @@ public class FishingZone : MonoBehaviour
     public Vector3 streakUiOffset;
     private GameObject _instantiatedStreakUI;
 
+    [Header("UI Off-Screen Indicator Setup")]
+    public GameObject leftIndicatorPrefab; 
+    public GameObject rightIndicatorPrefab; 
+    [HideInInspector] public bool hasBeenVisited = false;
+    
+    private GameObject _leftIndicator;
+    private GameObject _rightIndicator;
+    private Image _leftIndicatorImage;
+    private Image _rightIndicatorImage;
+    private Transform _leftContainer;
+    private Transform _rightContainer;
+    private Camera _mainCamera;
+    private Color _indicatorGoldColor;
+
     [HideInInspector] public FishingZoneData zoneSettings = new FishingZoneData();
     [HideInInspector] public bool isPlayerInside = false;
     [HideInInspector] public FishingZoneSpawner spawnerParent;
@@ -39,6 +53,71 @@ public class FishingZone : MonoBehaviour
     private float _endemicDecayRate = 0f;
     private float _rareDecayRate = 0f;
 
+    void Start()
+    {
+        _mainCamera = Camera.main;
+        ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
+
+        GameObject leftObj = GameObject.Find("LeftIndicatorContainer");
+        GameObject rightObj = GameObject.Find("RightIndicatorContainer");
+
+        if (leftObj != null) _leftContainer = leftObj.transform;
+        if (rightObj != null) _rightContainer = rightObj.transform;
+
+        if (leftIndicatorPrefab != null && _leftContainer != null)
+        {
+            _leftIndicator = Instantiate(leftIndicatorPrefab, _leftContainer);
+            _leftIndicatorImage = _leftIndicator.GetComponent<Image>();
+            _leftIndicator.SetActive(false); // Sembunyikan default
+        }
+
+        if (rightIndicatorPrefab != null && _rightContainer != null)
+        {
+            _rightIndicator = Instantiate(rightIndicatorPrefab, _rightContainer);
+            _rightIndicatorImage = _rightIndicator.GetComponent<Image>();
+            _rightIndicator.SetActive(false); // Sembunyikan default
+        }
+    }
+
+    void Update()
+    {
+        if (_mainCamera != null)
+        {
+            Vector3 viewportPos = _mainCamera.WorldToViewportPoint(transform.position);
+            
+            bool isVisible = viewportPos.x >= 0 && viewportPos.x <= 1 && viewportPos.y >= 0 && viewportPos.y <= 1 && viewportPos.z > 0;
+
+            if (isVisible)
+            {
+                if (_leftIndicator != null && _leftIndicator.activeSelf) _leftIndicator.SetActive(false);
+                if (_rightIndicator != null && _rightIndicator.activeSelf) _rightIndicator.SetActive(false);
+            }
+            else
+            {
+                Color targetColor = hasBeenVisited ? Color.white : _indicatorGoldColor;
+
+                if (viewportPos.x < 0f)
+                {
+                    if (_leftIndicator != null)
+                    {
+                        if (!_leftIndicator.activeSelf) _leftIndicator.SetActive(true);
+                        if (_leftIndicatorImage != null) _leftIndicatorImage.color = targetColor;
+                    }
+                    if (_rightIndicator != null && _rightIndicator.activeSelf) _rightIndicator.SetActive(false);
+                }
+                else if (viewportPos.x > 1f)
+                {
+                    if (_rightIndicator != null)
+                    {
+                        if (!_rightIndicator.activeSelf) _rightIndicator.SetActive(true);
+                        if (_rightIndicatorImage != null) _rightIndicatorImage.color = targetColor;
+                    }
+                    if (_leftIndicator != null && _leftIndicator.activeSelf) _leftIndicator.SetActive(false);
+                }
+            }
+        }
+    }
+
     public void ForceUpdateChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
     {
         GenerateDynamicChances(playerScore, allFish);
@@ -55,6 +134,7 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = true;
+            hasBeenVisited = true;
             _currentPlayer = other.GetComponent<PlayerStateManager>();
 
             if (_cooldownCoroutine != null)
@@ -130,6 +210,7 @@ public class FishingZone : MonoBehaviour
 
         _hasGeneratedBefore = false;
         _currentCooldownTimer = 0f;
+        hasBeenVisited = false;
 
         PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
         if (player != null && player.activeStreakZone == this)
@@ -159,16 +240,16 @@ public class FishingZone : MonoBehaviour
         {
             _unlockedEndemicInZone = true;
             _endemicAttempts = 0;
-            _baseEndemicChance = Random.Range(0f, 50f);
-            _endemicDecayRate = Random.Range(4f, 12f);
+            _baseEndemicChance = Random.Range(10f, 50f);
+            _endemicDecayRate = Random.Range(5f, 12f);
         }
 
         if (meetsRare && !_unlockedRareInZone)
         {
             _unlockedRareInZone = true;
             _rareAttempts = 0;
-            _baseRareChance = Random.Range(0f, 30f);
-            _rareDecayRate = Random.Range(2f, 7f);
+            _baseRareChance = Random.Range(5f, 35f);
+            _rareDecayRate = Random.Range(3f, 8f);
         }
 
         float endemicChance = 0f;
@@ -269,6 +350,9 @@ public class FishingZone : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_leftIndicator != null) Destroy(_leftIndicator);
+        if (_rightIndicator != null) Destroy(_rightIndicator);
+
         PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
         if (player != null && player.activeStreakZone == this)
         {

@@ -32,7 +32,8 @@ public class NPCMoveState : INPCState
             _npc.transform.position = new Vector3(clampedX, _npc.transform.position.y, _npc.transform.position.z);
 
             _direction *= -1;
-            _npc.FlipSprite(_direction);
+            
+            _npc.SwitchState(_npc.IdleState);
         }
     }
 

@@ -64,7 +64,7 @@ MonoBehaviour:
   - sentence: 'Ritem game 1, namanya Ritem Flow Mode.
 
       Kamu harus menekan tombol
-      panah yang sesuai dengan note, tepat pada lingkaran putih di lintasan.'
+      yang sesuai dengan note tepat pada lingkaran putih.'
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 21300000, guid: d59fc54e3169fad4785b588e6a2d0f95, type: 3}

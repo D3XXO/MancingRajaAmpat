@@ -18,9 +18,13 @@ public class FishingZoneSpawner : MonoBehaviour
 
     [Header("References")]
     public Transform playerTransform;
+    public GameObject notificationTextObj;
     private List<GameObject> _spawnedZones = new List<GameObject>();
     private EncyclopediaManager _encyclopediaManager;
     private DialogueManager _dialogueManager;
+
+    private Dictionary<GameObject, float> _zoneTimers = new Dictionary<GameObject, float>();
+    private bool _isInitialSpawnDone = false;
 
     void Start()
     {
@@ -32,66 +36,114 @@ public class FishingZoneSpawner : MonoBehaviour
         _encyclopediaManager = FindObjectOfType<EncyclopediaManager>();
         _dialogueManager = FindObjectOfType<DialogueManager>();
 
+        _isInitialSpawnDone = false;
+
         for (int i = 0; i < totalZonesToSpawn; i++)
         {
-            Vector3 spawnPos = GetRandomValidPosition();
-            if (spawnPos != Vector3.zero)
-            {
-                GameObject zone = Instantiate(fishingZonePrefab, spawnPos, Quaternion.identity, transform);
-                
-                FishingZone zoneScript = zone.GetComponent<FishingZone>();
-                if (zoneScript != null) zoneScript.spawnerParent = this;
+            SpawnNewZone();
+        }
 
-                _spawnedZones.Add(zone);
+        _isInitialSpawnDone = true;
+
+        if (notificationTextObj != null)
+        {
+            notificationTextObj.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        List<GameObject> zonesToDestroy = new List<GameObject>();
+
+        foreach (GameObject zone in _spawnedZones)
+        {
+            if (zone == null) continue;
+
+            FishingZone zoneScript = zone.GetComponent<FishingZone>();
+            if (zoneScript == null) continue;
+
+            bool isUIActive = false;
+            if (_encyclopediaManager != null && _encyclopediaManager.encyclopediaPanel != null && _encyclopediaManager.encyclopediaPanel.activeSelf) isUIActive = true;
+            if (_dialogueManager != null && _dialogueManager.dialoguePanel != null && _dialogueManager.dialoguePanel.activeSelf) isUIActive = true;
+
+            if (!zoneScript.isPlayerInside && !isUIActive)
+            {
+                if (!_zoneTimers.ContainsKey(zone))
+                {
+                    _zoneTimers[zone] = 0f;
+                }
+
+                _zoneTimers[zone] += Time.deltaTime;
+
+                if (_zoneTimers[zone] >= waitDuration)
+                {
+                    float distanceToPlayer = Mathf.Abs(zone.transform.position.x - playerTransform.position.x);
+
+                    if (distanceToPlayer > minDistanceToMove)
+                    {
+                        zonesToDestroy.Add(zone);
+                    }
+                }
             }
+        }
+
+        foreach (GameObject zoneToDestroy in zonesToDestroy)
+        {
+            _spawnedZones.Remove(zoneToDestroy);
+            _zoneTimers.Remove(zoneToDestroy);
+
+            FishingZone script = zoneToDestroy.GetComponent<FishingZone>();
+            if (script != null) script.DestroyZoneUI();
+
+            Destroy(zoneToDestroy);
+            SpawnNewZone();
+        }
+    }
+
+    private void SpawnNewZone()
+    {
+        Vector3 newPos = GetRandomValidPosition();
+        if (newPos != Vector3.zero)
+        {
+            GameObject newZone = Instantiate(fishingZonePrefab, newPos, Quaternion.identity, transform);
+            
+            FishingZone newZoneScript = newZone.GetComponent<FishingZone>();
+            if (newZoneScript != null) newZoneScript.spawnerParent = this;
+
+            _spawnedZones.Add(newZone);
+            _zoneTimers[newZone] = 0f;
+
+            if (_isInitialSpawnDone)
+            {
+                TriggerSpawnNotification();
+            }
+        }
+    }
+
+    private void TriggerSpawnNotification()
+    {
+        if (notificationTextObj != null)
+        {
+            notificationTextObj.SetActive(true);
+
+            StopAllCoroutines();
+            StartCoroutine(HideNotificationRoutine());
+        }
+    }
+
+    private IEnumerator HideNotificationRoutine()
+    {
+        yield return new WaitForSecondsRealtime(2.0f);
+        
+        if (notificationTextObj != null)
+        {
+            notificationTextObj.SetActive(false);
         }
     }
 
     public void OnPlayerLeftZone(GameObject zone)
     {
-        StopCoroutine("WaitAndRepositionRoutine");
-        StartCoroutine(WaitAndRepositionRoutine(zone));
-    }
-
-    private IEnumerator WaitAndRepositionRoutine(GameObject zone)
-    {
-        FishingZone zoneScript = zone.GetComponent<FishingZone>();
-        float elapsedWaitTime = 0f;
-
-        while (elapsedWaitTime < waitDuration)
-        {
-            bool isUIActive = false;
-
-            if (_encyclopediaManager != null && _encyclopediaManager.encyclopediaPanel != null)
-            {
-                if (_encyclopediaManager.encyclopediaPanel.activeSelf) isUIActive = true;
-            }
-            
-            if (_dialogueManager != null && _dialogueManager.dialoguePanel != null)
-            {
-                if (_dialogueManager.dialoguePanel.activeSelf) isUIActive = true;
-            }
-
-            if ((zoneScript != null && zoneScript.isPlayerInside) || isUIActive)
-            {
-                yield return new WaitForSeconds(0.5f);
-                continue;
-            }
-
-            elapsedWaitTime += 0.5f;
-            yield return new WaitForSeconds(0.5f);
-        }
-
-        float distanceToPlayer = Mathf.Abs(zone.transform.position.x - playerTransform.position.x);
-
-        if (distanceToPlayer > minDistanceToMove)
-        {
-            Vector3 newPos = GetRandomValidPosition();
-            if (newPos != Vector3.zero)
-            {
-                zone.transform.position = newPos;
-            }
-        }
+        
     }
 
     private Vector3 GetRandomValidPosition()

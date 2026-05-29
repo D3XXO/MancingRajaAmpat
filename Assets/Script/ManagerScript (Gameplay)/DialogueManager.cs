@@ -80,11 +80,11 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         TogglePlayerUI(true);
 
-        playerManager.AddValueScore(5);
+        playerManager.AddValueScore(2);
         FloatingText floatScript = playerManager.GetComponentInChildren<FloatingText>(true);
                 if (floatScript != null)
                 {
-                    floatScript.TriggerText("+5", Color.white);
+                    floatScript.TriggerText("+2", Color.white);
                 }
     }
 
