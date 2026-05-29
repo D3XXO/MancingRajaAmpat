@@ -36,6 +36,7 @@ public class PlayerStateManager : MonoBehaviour
     public Image caughtFishImage;
     public Text caughtFishText;
     public Text streakText;
+    public GameObject newFishIndicator;
 
     [Header("Value Score")]
     public int totalValueScore;
@@ -159,15 +160,20 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-    public void ShowCaughtFish(FishData fish, int multiplier)
+    public void ShowCaughtFish(FishData fish, int multiplier, bool isNewCatch = false)
     {
-        StartCoroutine(DisplayFishRoutine(fish, multiplier));
+        StartCoroutine(DisplayFishRoutine(fish, multiplier, isNewCatch));
     }
 
-    private IEnumerator DisplayFishRoutine(FishData fish, int multiplier)
+    private IEnumerator DisplayFishRoutine(FishData fish, int multiplier, bool isNewCatch)
     {
         caughtFishImage.sprite = fish.fishIcon;
         caughtFishText.text = fish.fishName;
+
+        if (newFishIndicator != null)
+        {
+            newFishIndicator.SetActive(isNewCatch);
+        }
 
         if (streakText != null)
         {

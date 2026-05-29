@@ -469,7 +469,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &139782729
@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &657052917
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 1
+  m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &714130624
@@ -7306,7 +7306,7 @@ MonoBehaviour:
   m_Text: '- Kecepatan ritem menengah.
 
     - Terdapat kelipatan score streak hingga
-    x5'
+    x5.'
 --- !u!222 &1233178878
 CanvasRenderer:
   m_ObjectHideFlags: 0

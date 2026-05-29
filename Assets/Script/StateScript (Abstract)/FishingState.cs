@@ -75,6 +75,7 @@ public class FishingState : IPlayerState
                     _manager.shrinkingSpawner.gameObject.SetActive(true);
                     _manager.shrinkingSpawner.StartSpawning(_activeFish);
                 }
+
             }
             else
             {
@@ -130,6 +131,8 @@ public class FishingState : IPlayerState
             int multiplier = Mathf.Min(_manager.currentWinStreak, maxMultiplier);
             int finalScore = _activeFish.vsValue * multiplier;
 
+            bool isNewCatch = PlayerPrefs.GetInt("Caught_" + _activeFish.fishID, 0) == 0;
+
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);
             PlayerPrefs.Save();
 
@@ -141,8 +144,13 @@ public class FishingState : IPlayerState
                 floatScript.TriggerText("+" + finalScore, Color.white);
             }
 
-            _manager.ShowCaughtFish(_activeFish, multiplier);
+            _manager.ShowCaughtFish(_activeFish, multiplier, isNewCatch);
             _manager.StartCoroutine(PlayRecordAudioRoutine(_activeFish.fishID));
+        }
+
+        if (_manager.currentFishingZone != null)
+        {
+            _manager.currentFishingZone.RecordFishingAttempt();
         }
 
         _manager.SwitchState(_manager.MovementState);
@@ -192,6 +200,12 @@ public class FishingState : IPlayerState
         }
 
         _manager.AddValueScore(-penalty, true);
+
+        if (_manager.currentFishingZone != null)
+        {
+            _manager.currentFishingZone.RecordFishingAttempt();
+        }
+
         _manager.TriggerShake(2.0f, 0.5f);
         _manager.SwitchState(_manager.MovementState);
     }

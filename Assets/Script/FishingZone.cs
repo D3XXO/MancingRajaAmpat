@@ -27,6 +27,18 @@ public class FishingZone : MonoBehaviour
     private Coroutine _cooldownCoroutine;
     private float _currentCooldownTimer = 0f;
 
+    private int _fishingAttempts = 0;
+    private int _endemicAttempts = 0;
+    private int _rareAttempts = 0;
+    private bool _unlockedEndemicInZone = false;
+    private bool _unlockedRareInZone = false;
+
+    private float _baseEndemicChance = 0f;
+    private float _baseRareChance = 0f;
+
+    private float _endemicDecayRate = 0f;
+    private float _rareDecayRate = 0f;
+
     public void ForceUpdateChances(int playerScore, System.Collections.Generic.List<FishData> allFish)
     {
         GenerateDynamicChances(playerScore, allFish);
@@ -60,6 +72,16 @@ public class FishingZone : MonoBehaviour
                 
                 if (!_hasGeneratedBefore)
                 {
+                    _fishingAttempts = 0;
+                    _endemicAttempts = 0;
+                    _rareAttempts = 0;
+                    _unlockedEndemicInZone = false;
+                    _unlockedRareInZone = false;
+                    _baseEndemicChance = 0f;
+                    _baseRareChance = 0f;
+                    _endemicDecayRate = 0f;
+                    _rareDecayRate = 0f;
+
                     GenerateDynamicChances(_currentPlayer.totalValueScore, _currentPlayer.availableFish);
                     _hasGeneratedBefore = true;
                 }
@@ -130,14 +152,37 @@ public class FishingZone : MonoBehaviour
                 minRareReq = fish.minVSRequirement;
         }
 
-        float maxEndemicPossible = 0f;
-        float maxRarePossible = 0f;
+        bool meetsEndemic = playerScore >= minEndemicReq;
+        bool meetsRare = playerScore >= minRareReq;
 
-        if (playerScore >= minEndemicReq) maxEndemicPossible = 50f;
-        if (playerScore >= minRareReq) maxRarePossible = 30f;
+        if (meetsEndemic && !_unlockedEndemicInZone)
+        {
+            _unlockedEndemicInZone = true;
+            _endemicAttempts = 0;
+            _baseEndemicChance = Random.Range(0f, 50f);
+            _endemicDecayRate = Random.Range(4f, 12f);
+        }
 
-        float endemicChance = Random.Range(0f, maxEndemicPossible);
-        float rareChance = Random.Range(0f, maxRarePossible);
+        if (meetsRare && !_unlockedRareInZone)
+        {
+            _unlockedRareInZone = true;
+            _rareAttempts = 0;
+            _baseRareChance = Random.Range(0f, 30f);
+            _rareDecayRate = Random.Range(2f, 7f);
+        }
+
+        float endemicChance = 0f;
+        if (_unlockedEndemicInZone)
+        {
+            endemicChance = Mathf.Max(0f, _baseEndemicChance - (_endemicAttempts * _endemicDecayRate));
+        }
+
+        float rareChance = 0f;
+        if (_unlockedRareInZone)
+        {
+            rareChance = Mathf.Max(0f, _baseRareChance - (_rareAttempts * _rareDecayRate));
+        }
+
         float normalChance = 100f - (endemicChance + rareChance);
 
         zoneSettings.normalChance = Mathf.Round(normalChance);
@@ -147,7 +192,7 @@ public class FishingZone : MonoBehaviour
         zoneSettings.selectedMinigame = Random.Range(0, 2);
     }
 
-    private void UpdateZoneInfoUI()
+    public void UpdateZoneInfoUI()
     {
         if (_instantiatedUI == null && textPrefab != null)
         {
@@ -158,18 +203,19 @@ public class FishingZone : MonoBehaviour
         {
             string ritemMode = zoneSettings.selectedMinigame == 0 ? "Flow" : "Catch";
 
+            string uiText = $"(Ritem {ritemMode} Mode)\n\n" +
+                            $"Normal: {zoneSettings.normalChance}%\n" +
+                            $"Endemic: {zoneSettings.endemicChance}%\n" +
+                            $"Rare: {zoneSettings.rareChance}%";
+
             Text txt = _instantiatedUI.GetComponentInChildren<Text>();
             if (txt != null)
             {
-                txt.text = $"(Ritem {ritemMode} Mode)\n\n" +
-                        $"Normal: {zoneSettings.normalChance}%\n" +
-                        $"Endemic: {zoneSettings.endemicChance}%\n" +
-                        $"Rare: {zoneSettings.rareChance}%";
+                txt.text = uiText;
             }
         }
 
         PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
-        
         bool hasStreak = (player != null && player.activeStreakZone == this && player.currentWinStreak >= 2);
 
         if (hasStreak)
@@ -186,7 +232,6 @@ public class FishingZone : MonoBehaviour
                 {
                     int nextStreak = player.currentWinStreak + 1;
                     int maxMultiplier = DifficultyManager.GetCurrentStrategy().GetMaxStreakMultiplier();
-                    
                     int displayedMultiplier = Mathf.Min(nextStreak, maxMultiplier);
 
                     if (DifficultyManager.GetCurrentLevel() == DifficultyLevel.Easy)
@@ -207,6 +252,18 @@ public class FishingZone : MonoBehaviour
                 Destroy(_instantiatedStreakUI);
                 _instantiatedStreakUI = null;
             }
+        }
+    }
+
+    public void RecordFishingAttempt()
+    {
+        _fishingAttempts++;
+        if (_unlockedEndemicInZone) _endemicAttempts++;
+        if (_unlockedRareInZone) _rareAttempts++;
+        
+        if (_currentPlayer != null)
+        {
+            ForceUpdateChances(_currentPlayer.totalValueScore, _currentPlayer.availableFish);
         }
     }
 

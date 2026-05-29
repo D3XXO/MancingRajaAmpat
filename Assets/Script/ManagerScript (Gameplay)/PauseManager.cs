@@ -99,7 +99,7 @@ public class PauseManager : MonoBehaviour
             if (_player.currentFishingZone != null)
             {
                 _player.currentFishingZone.DestroyZoneUI();
-                _player.currentFishingZone.ForceUpdateChances(_player.totalValueScore, _player.availableFish);
+                _player.currentFishingZone.UpdateZoneInfoUI();
             }
         }
 
