@@ -10,10 +10,25 @@ public class LoadingScreen : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        StartCoroutine(LoadSceneAsync(sceneName));
+        GameObject canvasRoot = loadingPanel.transform.root.gameObject;
+        Canvas canvas = canvasRoot.GetComponent<Canvas>();
+        if (canvas != null)
+        {
+            canvas.sortingOrder = 9999;
+        }
+
+        DontDestroyOnLoad(canvasRoot);
+
+        GameObject scriptRoot = transform.root.gameObject;
+        if (scriptRoot != canvasRoot)
+        {
+            DontDestroyOnLoad(scriptRoot);
+        }
+
+        StartCoroutine(LoadSceneAsync(sceneName, canvasRoot, scriptRoot));
     }
 
-    IEnumerator LoadSceneAsync(string sceneName)
+    IEnumerator LoadSceneAsync(string sceneName, GameObject canvasRoot, GameObject scriptRoot)
     {
         loadingPanel.SetActive(true);
         Time.timeScale = 1f;
@@ -30,7 +45,16 @@ public class LoadingScreen : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSecondsRealtime(0.5f);
         operation.allowSceneActivation = true;
+
+        yield return new WaitUntil(() => operation.isDone);
+        yield return new WaitForSecondsRealtime(0.5f);
+
+        Destroy(canvasRoot);
+        
+        if (scriptRoot != canvasRoot)
+        {
+            Destroy(scriptRoot);
+        }
     }
 }

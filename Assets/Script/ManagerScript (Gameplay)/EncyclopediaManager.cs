@@ -218,8 +218,8 @@ public class EncyclopediaManager : MonoBehaviour
         encyclopediaPanel.SetActive(willBeActive);
 
         if (movementButtons != null) movementButtons.SetActive(!willBeActive);
+        if (homeButton != null) homeButton.SetActive(!willBeActive);
         if (willBeActive && interactButton != null) interactButton.SetActive(false);
-        if (willBeActive && homeButton != null) homeButton.SetActive(false);
 
         if (fishingButton != null)
         {

@@ -219,4 +219,19 @@ public class FishingZone : MonoBehaviour
             player.activeStreakZone = null;
         }
     }
+
+    public void DestroyZoneUI()
+    {
+        if (_instantiatedUI != null)
+        {
+            Destroy(_instantiatedUI);
+            _instantiatedUI = null;
+        }
+
+        if (_instantiatedStreakUI != null)
+        {
+            Destroy(_instantiatedStreakUI);
+            _instantiatedStreakUI = null;
+        }
+    }
 }

@@ -15,6 +15,7 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject ensiklopediaButton;
     public GameObject pauseButton;
     public GameObject homeButton;
+    public GameObject interactButton;
     public Text difficultyText;
     public Animator PlayerAnimator;
     public AudioClip clickButton;
@@ -56,12 +57,10 @@ public class PlayerStateManager : MonoBehaviour
     public FishingState FishingState { get; private set; }
     public List<FishData> availableFish;
 
-    [HideInInspector]
-    public FishingZoneData currentZoneData;
-    [HideInInspector]
-    public FishingZone currentFishingZone;
-    [HideInInspector]
-    public FishingZone activeStreakZone;
+    [HideInInspector] public FishingZoneData currentZoneData;
+    [HideInInspector] public FishingZone currentFishingZone;
+    [HideInInspector] public FishingZone activeStreakZone;
+    [HideInInspector] public bool isTeleporting = false;
 
     void Awake()
     {
@@ -120,6 +119,8 @@ public class PlayerStateManager : MonoBehaviour
             AudioManager.Instance.PlaySFX(clickButton);
         }
 
+        if (isTeleporting) return;
+
         DialogueManager dialogue = FindObjectOfType<DialogueManager>();
         if (dialogue != null && dialogue.dialoguePanel != null && dialogue.dialoguePanel.activeSelf) return;
 
@@ -128,6 +129,12 @@ public class PlayerStateManager : MonoBehaviour
             if (movementComponent != null)
             {
                 movementComponent.StopMoving();
+
+                if (movementButtonsParent != null) movementButtonsParent.SetActive(false);
+                if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
+                if (pauseButton != null) pauseButton.SetActive(false);
+                if (homeButton != null) homeButton.SetActive(false);
+                if (interactButton != null) interactButton.SetActive(false);
             }
 
             NPCStateManager[] allNPCs = FindObjectsOfType<NPCStateManager>();
@@ -305,7 +312,7 @@ public class PlayerStateManager : MonoBehaviour
 
     public void TeleportHome()
     {
-        if (_currentState == MovementState)
+        if (_currentState == MovementState && !isTeleporting)
         {
             if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(clickButton);
             StartCoroutine(TeleportRoutine());
@@ -314,12 +321,21 @@ public class PlayerStateManager : MonoBehaviour
 
     private IEnumerator TeleportRoutine()
     {
-        SwitchState(WaitingState);
-        
+        isTeleporting = true;
+
+        if (movementComponent != null) movementComponent.StopMoving();
+        PlayerAnimator.SetBool("isMoving", false);
+
+        if (movementButtonsParent != null) movementButtonsParent.SetActive(false);
+        if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
+        if (homeButton != null) homeButton.SetActive(false);
+        if (pauseButton != null) pauseButton.SetActive(false);
+        if (fishingButton != null) fishingButton.SetActive(false);
+        if (interactButton != null) interactButton.SetActive(false);
+
         float fadeDuration = 1f;
         float elapsed = 0f;
 
-        // 2. Fade Out ke Hitam
         if (fadePanel != null)
         {
             fadePanel.gameObject.SetActive(true);
@@ -368,6 +384,12 @@ public class PlayerStateManager : MonoBehaviour
             yield return new WaitForSeconds(fadeDuration);
         }
 
-        SwitchState(MovementState);
+        if (movementButtonsParent != null) movementButtonsParent.SetActive(true);
+        if (ensiklopediaButton != null) ensiklopediaButton.SetActive(true);
+        if (homeButton != null) homeButton.SetActive(true);
+        if (pauseButton != null) pauseButton.SetActive(true);
+        if (fishingButton != null) fishingButton.SetActive(IsInFishingZone);
+
+        isTeleporting = false;
     }
 }

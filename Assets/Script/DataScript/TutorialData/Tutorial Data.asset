@@ -47,7 +47,7 @@ MonoBehaviour:
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}
   - sentence: Oh ya! Kamu tidak sendirian di laut, nanti kita akan berpapasan dengan
-      penduduk lokal.
+      beberapa penduduk lokal.
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}
@@ -94,6 +94,13 @@ MonoBehaviour:
       tersebut berhasil tertangkap.
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
+    fishingTutorImage: {fileID: 0}
+  - sentence: 'Lalu, jangan lupa jalan pulang ya.
+
+      Kamu bisa klik tombol rumah
+      untuk langsung teleportasi ke tempat awal.'
+    characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
+    tutorialImage: {fileID: 21300000, guid: 26ff3dccaddc40e4da70719bceaa84e8, type: 3}
     fishingTutorImage: {fileID: 0}
   - sentence: Sekarang mari berpetualang, Penjelajah!
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}

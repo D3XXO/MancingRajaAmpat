@@ -192,7 +192,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kecepatan ritem rendah, untuk kamu yang tujuannya murni untuk belajar.
+  m_Text: Kecepatan ritem rendah, untuk kamu yang tujuannya murni belajar.
 --- !u!222 &28751571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -492,10 +492,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 139782728}
-  playerManager: {fileID: 0}
-  requiredScore: 0
   thisButtonDifficultyIndex: -1
   notificationTextObj: {fileID: 0}
   notificationText: {fileID: 0}
@@ -1514,10 +1512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 657052916}
-  playerManager: {fileID: 0}
-  requiredScore: 0
   thisButtonDifficultyIndex: -1
   notificationTextObj: {fileID: 0}
   notificationText: {fileID: 0}
@@ -1730,10 +1726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 714130623}
-  playerManager: {fileID: 0}
-  requiredScore: 0
   thisButtonDifficultyIndex: -1
   notificationTextObj: {fileID: 0}
   notificationText: {fileID: 0}
@@ -7309,8 +7303,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kecepatan ritem menengah, untuk kamu yang ingin belajar dan dihadapi sedikit
-    tantangan.
+  m_Text: '- Kecepatan ritem menengah.
+
+    - Terdapat kelipatan score streak hingga
+    x5'
 --- !u!222 &1233178878
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13826,7 +13822,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kecepatan ritem tinggi, untuk kamu penikmat ritem game.
+  m_Text: '- Kecepatan ritem tinggi, untuk penikmat ritem game.
+
+    - Terdapat kelipatan
+    score streak tak hingga.'
 --- !u!222 &2100302638
 CanvasRenderer:
   m_ObjectHideFlags: 0

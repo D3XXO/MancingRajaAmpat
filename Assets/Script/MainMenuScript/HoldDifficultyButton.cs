@@ -11,10 +11,6 @@ public class HoldDifficultyButton : MonoBehaviour, IPointerDownHandler, IPointer
 
     [Header("References")]
     public Image fillImage;
-
-    [Header("Validation & Notification")]
-    public PlayerStateManager playerManager;
-    public int requiredScore;
     public int thisButtonDifficultyIndex;
     
     public GameObject notificationTextObj;
@@ -75,17 +71,6 @@ public class HoldDifficultyButton : MonoBehaviour, IPointerDownHandler, IPointer
     public void OnPointerDown(PointerEventData eventData)
     {
         if (_isCurrentActiveLevel) return;
-
-        if (playerManager != null && requiredScore > 0 && thisButtonDifficultyIndex != -1)
-        {
-            bool isFree = PlayerPrefs.GetInt("FreeDifficultyUsed", 0) == 0;
-            if (!isFree && playerManager.totalValueScore < requiredScore)
-            {
-                ShowNotification("Skor tidak cukup! Butuh " + requiredScore + " Score", Color.red);
-                return;
-            }
-        }
-
         _isPointerDown = true;
         _holdTimer = 0f;
         _hasTriggered = false;

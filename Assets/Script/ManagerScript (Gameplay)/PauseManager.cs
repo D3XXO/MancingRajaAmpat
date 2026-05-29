@@ -89,34 +89,18 @@ public class PauseManager : MonoBehaviour
             return;
         }
 
-        bool isFree = PlayerPrefs.GetInt("FreeDifficultyUsed", 0) == 0;
-
-        if (_player != null)
-        {
-            if (!isFree)
-            {
-                if (_player.totalValueScore >= 200)
-                {
-                    _player.AddValueScore(-200, true);
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                PlayerPrefs.SetInt("FreeDifficultyUsed", 1);
-                PlayerPrefs.Save();
-            }
-        }
-
         DifficultyManager.SetDifficulty(targetLevel);
 
         if (_player != null)
         {
             _player.UpdateDifficultyText();
             _player.ResetStreak();
+
+            if (_player.currentFishingZone != null)
+            {
+                _player.currentFishingZone.DestroyZoneUI();
+                _player.currentFishingZone.ForceUpdateChances(_player.totalValueScore, _player.availableFish);
+            }
         }
 
         selectionLevelPanel.SetActive(false);

@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 24254842}
   - component: {fileID: 24254848}
   - component: {fileID: 24254849}
+  - component: {fileID: 24254850}
   m_Layer: 5
   m_Name: EasyButton
   m_TagString: Untagged
@@ -307,13 +308,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 24254845}
-  playerManager: {fileID: 1670303218}
-  requiredScore: 200
   thisButtonDifficultyIndex: 0
-  notificationTextObj: {fileID: 870637436}
-  notificationText: {fileID: 870637437}
+  notificationTextObj: {fileID: 0}
+  notificationText: {fileID: 0}
   onHoldComplete:
     m_PersistentCalls:
       m_Calls:
@@ -342,6 +341,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &24254850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24254840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &51653593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,8 +3339,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 728343488}
-  - {fileID: 1430436796}
-  - {fileID: 870637439}
   - {fileID: 659538619}
   - {fileID: 1925702093}
   - {fileID: 1683677021}
@@ -3356,7 +3366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4172,7 +4182,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -168.91437}
+  m_AnchoredPosition: {x: 0, y: -168.9143}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &569501866
@@ -4621,7 +4631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -222.28595}
+  m_AnchoredPosition: {x: 0, y: -222.28589}
   m_SizeDelta: {x: 480, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &606050026
@@ -5977,7 +5987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -413.37155}
+  m_AnchoredPosition: {x: 0, y: -413.37158}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &768708557
@@ -11786,85 +11796,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840329667}
   m_CullTransparentMesh: 1
---- !u!1 &870637436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 870637439}
-  - component: {fileID: 870637438}
-  - component: {fileID: 870637437}
-  m_Layer: 5
-  m_Name: NotifText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &870637437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870637436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 5348ca3456181eb4fb1f5af0c252b7d7, type: 3}
-    m_FontSize: 45
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 200
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: NotifText
---- !u!222 &870637438
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870637436}
-  m_CullTransparentMesh: 1
---- !u!224 &870637439
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 870637436}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 501506979}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 380}
-  m_SizeDelta: {x: 650, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &871004723
 GameObject:
   m_ObjectHideFlags: 0
@@ -15652,85 +15583,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &1430436795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1430436796}
-  - component: {fileID: 1430436798}
-  - component: {fileID: 1430436797}
-  m_Layer: 5
-  m_Name: KeteranganLevelText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1430436796
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430436795}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 501506979}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 650, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1430436797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430436795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.92156863, g: 0.8980392, b: 0.9019608, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 5348ca3456181eb4fb1f5af0c252b7d7, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 200
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Pergantian pertama gratis, setelahnya butuh 200 score
---- !u!222 &1430436798
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1430436795}
-  m_CullTransparentMesh: 1
 --- !u!1 &1432018457
 GameObject:
   m_ObjectHideFlags: 0
@@ -22871,6 +22723,7 @@ MonoBehaviour:
   ensiklopediaButton: {fileID: 555404888}
   pauseButton: {fileID: 1188390005}
   homeButton: {fileID: 1512584325}
+  interactButton: {fileID: 1697341455}
   difficultyText: {fileID: 1641992532}
   PlayerAnimator: {fileID: 1670303216}
   clickButton: {fileID: 8300000, guid: cfdbea779eb599f4089cd55aadf57b21, type: 3}
@@ -22912,6 +22765,7 @@ MonoBehaviour:
     selectedMinigame: 0
   currentFishingZone: {fileID: 0}
   activeStreakZone: {fileID: 0}
+  isTeleporting: 0
 --- !u!1 &1683677020
 GameObject:
   m_ObjectHideFlags: 0
@@ -22984,7 +22838,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '- Kecepatan ritem tinggi
 
-    - Kelipatan score streak unlimited.'
+    - Kelipatan score streak tak hingga.'
 --- !u!222 &1683677023
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24027,6 +23881,7 @@ GameObject:
   - component: {fileID: 1771261709}
   - component: {fileID: 1771261715}
   - component: {fileID: 1771261716}
+  - component: {fileID: 1771261717}
   m_Layer: 5
   m_Name: MediumButton
   m_TagString: Untagged
@@ -24119,13 +23974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 1771261712}
-  playerManager: {fileID: 1670303218}
-  requiredScore: 200
   thisButtonDifficultyIndex: 1
-  notificationTextObj: {fileID: 870637436}
-  notificationText: {fileID: 870637437}
+  notificationTextObj: {fileID: 0}
+  notificationText: {fileID: 0}
   onHoldComplete:
     m_PersistentCalls:
       m_Calls:
@@ -24154,6 +24007,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &1771261717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771261707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &1771885514
 GameObject:
   m_ObjectHideFlags: 0
@@ -24710,7 +24576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -285.37155}
+  m_AnchoredPosition: {x: 0, y: -285.37158}
   m_SizeDelta: {x: 1200, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1902991378
@@ -24959,7 +24825,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: '- Kecepatan ritem menengah
 
-    - Kelipatan score streak sampai x5.'
+    - Kelipatan score streak hingga x5.'
 --- !u!222 &1925702095
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26430,6 +26296,7 @@ GameObject:
   - component: {fileID: 2126908035}
   - component: {fileID: 2126908041}
   - component: {fileID: 2126908042}
+  - component: {fileID: 2126908043}
   m_Layer: 5
   m_Name: HardButton
   m_TagString: Untagged
@@ -26522,13 +26389,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a64feccc9db8a48876bcbb988373d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdDuration: 2
+  holdDuration: 1
   fillImage: {fileID: 2126908038}
-  playerManager: {fileID: 1670303218}
-  requiredScore: 200
   thisButtonDifficultyIndex: 2
-  notificationTextObj: {fileID: 870637436}
-  notificationText: {fileID: 870637437}
+  notificationTextObj: {fileID: 0}
+  notificationText: {fileID: 0}
   onHoldComplete:
     m_PersistentCalls:
       m_Calls:
@@ -26557,6 +26422,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrinkFactor: 0.9
+--- !u!114 &2126908043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126908033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &2127892780
 GameObject:
   m_ObjectHideFlags: 0
