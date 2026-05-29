@@ -79,12 +79,20 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         TogglePlayerUI(true);
+
+        playerManager.AddValueScore(5);
+        FloatingText floatScript = playerManager.GetComponentInChildren<FloatingText>(true);
+                if (floatScript != null)
+                {
+                    floatScript.TriggerText("+5", Color.white);
+                }
     }
 
     private void TogglePlayerUI(bool status)
     {
         playerManager.movementButtonsParent.SetActive(status);
         playerManager.ensiklopediaButton.SetActive(status);
+        playerManager.homeButton.SetActive(status);
 
         if (playerManager.fishingButton != null)
         {

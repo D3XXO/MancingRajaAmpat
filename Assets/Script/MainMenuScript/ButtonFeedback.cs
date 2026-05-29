@@ -10,6 +10,7 @@ public class ButtonFeedback : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     void Awake()
     {
         _originalScale = transform.localScale;
+        _isInitialized = true;
     }
 
     public void OnPointerDown(PointerEventData eventData)

@@ -3,16 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-    [Header("UI Panels")]
     public GameObject pauseGamePanel;
-
-    [Header("Gameplay HUD to Hide")]
+    public GameObject selectionLevelPanel;
     public GameObject movementButtons;
     public GameObject ensiklopediaButton;
     public GameObject fishingButton;
     public GameObject interactButton;
     public GameObject pauseButton;
     public GameObject muteIcon;
+    public GameObject homeButton;
     public AudioClip clickButton;
 
     private PlayerStateManager _player;
@@ -50,6 +49,7 @@ public class PauseManager : MonoBehaviour
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
         if (fishingButton != null) fishingButton.SetActive(false);
         if (interactButton != null) interactButton.SetActive(false);
+        if (homeButton != null) homeButton.SetActive(false);
     }
 
     public void ResumeGame()
@@ -70,6 +70,59 @@ public class PauseManager : MonoBehaviour
         RestoreGameplayUI();
     }
 
+    public void OpenSelectionLevel()
+    {
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(clickButton);
+        selectionLevelPanel.SetActive(true);
+        pauseGamePanel.SetActive(false);
+    }
+
+    public void ChangeDifficulty(int levelIndex)
+    {
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(clickButton);
+        
+        DifficultyLevel currentLevel = DifficultyManager.GetCurrentLevel();
+        DifficultyLevel targetLevel = (DifficultyLevel)levelIndex;
+
+        if (currentLevel == targetLevel)
+        {
+            return;
+        }
+
+        bool isFree = PlayerPrefs.GetInt("FreeDifficultyUsed", 0) == 0;
+
+        if (_player != null)
+        {
+            if (!isFree)
+            {
+                if (_player.totalValueScore >= 200)
+                {
+                    _player.AddValueScore(-200, true);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("FreeDifficultyUsed", 1);
+                PlayerPrefs.Save();
+            }
+        }
+
+        DifficultyManager.SetDifficulty(targetLevel);
+
+        if (_player != null)
+        {
+            _player.UpdateDifficultyText();
+            _player.ResetStreak();
+        }
+
+        selectionLevelPanel.SetActive(false);
+        pauseGamePanel.SetActive(true);
+    }
+
     private void RestoreGameplayUI()
     {
         if (_player == null) return;
@@ -78,6 +131,7 @@ public class PauseManager : MonoBehaviour
         
         if (movementButtons != null) movementButtons.SetActive(isMoving);
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(isMoving);
+        if (homeButton != null) homeButton.SetActive(isMoving);
         if (fishingButton != null) fishingButton.SetActive(isMoving && _player.IsInFishingZone);
 
         pauseButton.SetActive(true);

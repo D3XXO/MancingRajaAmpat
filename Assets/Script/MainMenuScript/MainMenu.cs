@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public AudioClip clickButton;
     public GameObject muteIcon;
     public LoadingScreen loadingScreen;
+    public GameObject selectionLevelPanel;
 
     private void Start()
     {
@@ -22,6 +23,23 @@ public class MainMenu : MonoBehaviour
             AudioManager.Instance.PlaySFX(clickButton);
         }
 
+        if (!DifficultyManager.HasSelectedDifficulty())
+        {
+            selectionLevelPanel.SetActive(true);
+        }
+        else
+        {
+            loadingScreen.LoadScene("MainScene");
+        }
+    }
+
+    public void SelectDifficultyAndPlay(int levelIndex)
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(clickButton);
+
+        DifficultyManager.SetDifficulty((DifficultyLevel)levelIndex);
+        selectionLevelPanel.SetActive(false);
         loadingScreen.LoadScene("MainScene");
     }
 

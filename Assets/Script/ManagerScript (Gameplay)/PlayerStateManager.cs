@@ -14,8 +14,11 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject movementButtonsParent;
     public GameObject ensiklopediaButton;
     public GameObject pauseButton;
+    public GameObject homeButton;
+    public Text difficultyText;
     public Animator PlayerAnimator;
     public AudioClip clickButton;
+    public Image fadePanel;
 
     [Header("Fishing Minigame UI")]
     public GameObject fishingMinigamePanel;
@@ -36,13 +39,11 @@ public class PlayerStateManager : MonoBehaviour
     [Header("Value Score")]
     public int totalValueScore;
     public Text valueScoreText;
-    public int highScore;
-    public Text highScoreText;
     public int currentWinStreak;
 
     [Header("Camera Settings")]
     public CinemachineVirtualCamera virtualCamera;
-    public bool IsInFishingZone;
+    [HideInInspector] public bool IsInFishingZone;
 
     [Header("Movement Boundaries")]
     public GameObject leftMoveButton;
@@ -74,8 +75,17 @@ public class PlayerStateManager : MonoBehaviour
     void Start()
     {
         totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        if (PlayerPrefs.HasKey("PlayerPosX"))
+        {
+            float savedX = PlayerPrefs.GetFloat("PlayerPosX");
+            Vector2 loadedPosition = transform.position;
+            loadedPosition.x = savedX;
+            transform.position = loadedPosition;
+        }
+
         UpdateVSText();
+        UpdateDifficultyText();
 
         SwitchState(MovementState);
 
@@ -154,14 +164,29 @@ public class PlayerStateManager : MonoBehaviour
 
         if (streakText != null)
         {
-            if (multiplier > 1)
+            if (DifficultyManager.GetCurrentLevel() == DifficultyLevel.Easy)
             {
-                streakText.text = "STREAK!! Score X" + multiplier;
-                streakText.gameObject.SetActive(true);
+                if (currentWinStreak > 1)
+                {
+                    streakText.text = "STREAK!";
+                    streakText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    streakText.gameObject.SetActive(false);
+                }
             }
             else
             {
-                streakText.gameObject.SetActive(false);
+                if (multiplier > 1)
+                {
+                    streakText.text = "STREAK!! Score X" + multiplier;
+                    streakText.gameObject.SetActive(true);
+                }
+                else
+                {
+                    streakText.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -173,12 +198,6 @@ public class PlayerStateManager : MonoBehaviour
     public void AddValueScore(int amount, bool forceUpdate = false)
     {
         totalValueScore = Mathf.Max(0, totalValueScore + amount);
-
-        if (totalValueScore > highScore)
-        {
-            highScore = totalValueScore;
-            PlayerPrefs.SetInt("HighScore", highScore);
-        }
 
         if (forceUpdate && IsInFishingZone)
         {
@@ -197,46 +216,21 @@ public class PlayerStateManager : MonoBehaviour
         UpdateVSText();
     }
 
-    public float GetDynamicMoveSpeed()
-    {
-        if (totalValueScore <= 500)
-        {
-            float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-            float t = clampedScore / 500f;
-            return Mathf.Lerp(4f, 12f, t);
-        }
-        else
-        {
-            int excessScore = totalValueScore - 500;
-            int multiplier = excessScore / 50;
-            return 12f + (multiplier * 0.2f);
-        }
-    }
-
-    public float GetDynamicMinSpawnInterval()
-    {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
-        return Mathf.Lerp(0.5f, 0.2f, t);
-    }
-
-    public float GetDynamicMaxSpawnInterval()
-    {
-        float clampedScore = Mathf.Clamp(totalValueScore, 0f, 500f);
-        float t = clampedScore / 500f;
-        return Mathf.Lerp(1.0f, 0.5f, t);
-    }
-
     private void UpdateVSText()
     {
         if (valueScoreText != null)
         {
             valueScoreText.text = "Score: " + totalValueScore;
         }
+    }
 
-        if (highScoreText != null)
+    public void UpdateDifficultyText()
+    {
+        if (difficultyText != null)
         {
-            highScoreText.text = "High Score: " + highScore;
+            DifficultyLevel currentLevel = DifficultyManager.GetCurrentLevel();
+            
+            difficultyText.text = currentLevel.ToString() + " Mode";
         }
     }
 
@@ -288,5 +282,92 @@ public class PlayerStateManager : MonoBehaviour
         noise.m_AmplitudeGain = intensity;
         yield return new WaitForSeconds(duration);
         noise.m_AmplitudeGain = 0f;
+    }
+
+    public void SavePlayerPosition()
+    {
+        PlayerPrefs.SetFloat("PlayerPosX", transform.position.x);
+        PlayerPrefs.Save();
+    }
+
+    private void OnDisable()
+    {
+        SavePlayerPosition();
+    }
+
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            SavePlayerPosition();
+        }
+    }
+
+    public void TeleportHome()
+    {
+        if (_currentState == MovementState)
+        {
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(clickButton);
+            StartCoroutine(TeleportRoutine());
+        }
+    }
+
+    private IEnumerator TeleportRoutine()
+    {
+        SwitchState(WaitingState);
+        
+        float fadeDuration = 1f;
+        float elapsed = 0f;
+
+        // 2. Fade Out ke Hitam
+        if (fadePanel != null)
+        {
+            fadePanel.gameObject.SetActive(true);
+            Color c = fadePanel.color;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                c.a = Mathf.Clamp01(elapsed / fadeDuration);
+                fadePanel.color = c;
+                yield return null;
+            }
+            c.a = 1f;
+            fadePanel.color = c;
+        }
+        else
+        {
+            yield return new WaitForSeconds(fadeDuration);
+        }
+
+        Vector3 newPos = transform.position;
+        newPos.x = -2f;
+        newPos.y = -3f;
+        transform.position = newPos;
+        
+        SavePlayerPosition();
+
+        yield return new WaitForSeconds(0.2f);
+
+        elapsed = 0f;
+        if (fadePanel != null)
+        {
+            Color c = fadePanel.color;
+            while (elapsed < fadeDuration)
+            {
+                elapsed += Time.deltaTime;
+                c.a = 1f - Mathf.Clamp01(elapsed / fadeDuration);
+                fadePanel.color = c;
+                yield return null;
+            }
+            c.a = 0f;
+            fadePanel.color = c;
+            fadePanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(fadeDuration);
+        }
+
+        SwitchState(MovementState);
     }
 }

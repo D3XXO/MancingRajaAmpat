@@ -80,7 +80,7 @@ public class RhythmSpawner : MonoBehaviour
             newNoteObj.transform.position = spawnPoint.position;
 
             RhythmNote noteComponent = newNoteObj.GetComponent<RhythmNote>();
-            noteComponent.moveSpeed = _manager.GetDynamicMoveSpeed();
+            noteComponent.moveSpeed = DifficultyManager.GetCurrentStrategy().GetDynamicMoveSpeed(_manager.totalValueScore);
 
             Image noteImage = newNoteObj.GetComponent<Image>();
             if (noteImage != null)
@@ -113,7 +113,8 @@ public class RhythmSpawner : MonoBehaviour
                 rhythmManager.allActiveNotes.Add(noteComponent);
             }
 
-            float randomInterval = Random.Range(_manager.GetDynamicMinSpawnInterval(), _manager.GetDynamicMaxSpawnInterval());
+            float randomInterval = Random.Range(DifficultyManager.GetCurrentStrategy().GetDynamicMinSpawnInterval(_manager.totalValueScore)
+                                                , DifficultyManager.GetCurrentStrategy().GetDynamicMaxSpawnInterval(_manager.totalValueScore));
             yield return new WaitForSeconds(randomInterval);
         }
     }

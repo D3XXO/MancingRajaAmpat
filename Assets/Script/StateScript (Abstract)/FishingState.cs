@@ -29,6 +29,7 @@ public class FishingState : IPlayerState
         _manager.fishingMinigamePanel.SetActive(true);
         _manager.fishingButton.SetActive(false);
         _manager.movementButtonsParent.SetActive(false);
+        _manager.homeButton.SetActive(false);
 
         if (_manager.rhythmSpawner != null && _manager.availableFish.Count > 0 && _manager.currentZoneData != null)
         {
@@ -125,7 +126,8 @@ public class FishingState : IPlayerState
         {
             _manager.currentWinStreak++;
             
-            int multiplier = _manager.currentWinStreak;
+            int maxMultiplier = DifficultyManager.GetCurrentStrategy().GetMaxStreakMultiplier();
+            int multiplier = Mathf.Min(_manager.currentWinStreak, maxMultiplier);
             int finalScore = _activeFish.vsValue * multiplier;
 
             PlayerPrefs.SetInt("Caught_" + _activeFish.fishID, 1);

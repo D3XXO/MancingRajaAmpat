@@ -148,7 +148,7 @@ public class ShrinkingSpawner : MonoBehaviour
                         if (colorIndex == 4) noteComp.isRedNote = true;
                     }
 
-                    noteComp.SetupNote(startScale, _manager.GetDynamicMoveSpeed());
+                    noteComp.SetupNote(startScale, DifficultyManager.GetCurrentStrategy().GetDynamicMoveSpeed(_manager.totalValueScore));
 
                     if (noteComp.labelText != null)
                     {
@@ -170,7 +170,8 @@ public class ShrinkingSpawner : MonoBehaviour
                 Destroy(newNote);
             }
 
-            float randomInterval = Random.Range(_manager.GetDynamicMinSpawnInterval(), _manager.GetDynamicMaxSpawnInterval());
+            float randomInterval = Random.Range(DifficultyManager.GetCurrentStrategy().GetDynamicMinSpawnInterval(_manager.totalValueScore)
+                                                , DifficultyManager.GetCurrentStrategy().GetDynamicMaxSpawnInterval(_manager.totalValueScore));
             yield return new WaitForSeconds(randomInterval);
         }
     }

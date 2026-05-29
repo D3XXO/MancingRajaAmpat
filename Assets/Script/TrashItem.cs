@@ -18,7 +18,6 @@ public class TrashItem : MonoBehaviour
                 player.AddValueScore(scoreReward);
 
                 FloatingText floatScript = player.GetComponentInChildren<FloatingText>(true);
-                
                 if (floatScript != null)
                 {
                     floatScript.TriggerText("+" + scoreReward, Color.white);

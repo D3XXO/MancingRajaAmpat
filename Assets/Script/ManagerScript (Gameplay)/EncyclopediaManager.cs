@@ -9,6 +9,7 @@ public class EncyclopediaManager : MonoBehaviour
 {
     [Header("UI References")]
     public GameObject encyclopediaPanel;
+    public GameObject homeButton;
     public Transform gridParent;
     public GameObject slotPrefab;
     public Text descriptionText;
@@ -218,6 +219,7 @@ public class EncyclopediaManager : MonoBehaviour
 
         if (movementButtons != null) movementButtons.SetActive(!willBeActive);
         if (willBeActive && interactButton != null) interactButton.SetActive(false);
+        if (willBeActive && homeButton != null) homeButton.SetActive(false);
 
         if (fishingButton != null)
         {

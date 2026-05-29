@@ -133,9 +133,19 @@ public class TutorialManager : MonoBehaviour
             playerManager.ensiklopediaButton.SetActive(status);
         }
 
+        if (playerManager.homeButton != null)
+        {
+            playerManager.homeButton.SetActive(status);
+        }
+
         if (playerManager.valueScoreText != null)
         {
             playerManager.valueScoreText.gameObject.SetActive(status);
+        }
+
+        if (playerManager.difficultyText != null)
+        {
+            playerManager.difficultyText.gameObject.SetActive(status);
         }
 
         if (playerManager.pauseButton != null)

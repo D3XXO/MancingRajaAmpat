@@ -184,8 +184,19 @@ public class FishingZone : MonoBehaviour
                 Text streakTxt = _instantiatedStreakUI.GetComponentInChildren<Text>();
                 if (streakTxt != null)
                 {
-                    int multiplier = player.currentWinStreak + 1;
-                    streakTxt.text = $"Streak berikutnya X{multiplier}";
+                    int nextStreak = player.currentWinStreak + 1;
+                    int maxMultiplier = DifficultyManager.GetCurrentStrategy().GetMaxStreakMultiplier();
+                    
+                    int displayedMultiplier = Mathf.Min(nextStreak, maxMultiplier);
+
+                    if (DifficultyManager.GetCurrentLevel() == DifficultyLevel.Easy)
+                    {
+                        streakTxt.text = "Streak!";
+                    }
+                    else
+                    {
+                        streakTxt.text = $"Streak berikutnya X{displayedMultiplier}";
+                    }
                 }
             }
         }
