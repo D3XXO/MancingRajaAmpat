@@ -146,7 +146,7 @@ public class FishingZone : MonoBehaviour
             if (_currentPlayer != null && _currentPlayer.fishingButton != null)
             {
                 _currentPlayer.IsInFishingZone = true;
-                _currentPlayer.fishingButton.SetActive(true);
+                _currentPlayer.SetButtonVisualState(_currentPlayer.fishingButton, true);
 
                 _currentPlayer.currentFishingZone = this;
                 
@@ -181,7 +181,7 @@ public class FishingZone : MonoBehaviour
             if (_currentPlayer != null && _currentPlayer.fishingButton != null)
             {
                 _currentPlayer.IsInFishingZone = false;
-                _currentPlayer.fishingButton.SetActive(false);
+                _currentPlayer.SetButtonVisualState(_currentPlayer.fishingButton, false);
                 _currentPlayer.currentZoneData = null;
                 _currentPlayer.currentFishingZone = null;
 

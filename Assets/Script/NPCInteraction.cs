@@ -19,14 +19,15 @@ public class NPCInteraction : MonoBehaviour
         if (interactButton == null)
         {
             GameObject foundButton = GameObject.Find("InteractButton");
-            
-            if (foundButton != null)
-            {
-                interactButton = foundButton;
-            }
+            if (foundButton != null) interactButton = foundButton;
         }
 
-        if (interactButton != null) interactButton.SetActive(false);
+        if (interactButton != null) 
+        {
+            interactButton.SetActive(true);
+            PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+            if (player != null) player.SetButtonVisualState(interactButton, false);
+        }
     }
 
     void Update()
@@ -54,10 +55,7 @@ public class NPCInteraction : MonoBehaviour
             }
 
             bool canInteract = isMovingState && isNotTalking && enzyIsClosed;
-            if (interactButton.activeSelf != canInteract)
-            {
-                interactButton.SetActive(canInteract);
-            }
+            _dialogueManager.playerManager.SetButtonVisualState(interactButton, canInteract);
         }
     }
 
@@ -79,7 +77,9 @@ public class NPCInteraction : MonoBehaviour
         {
             _isPlayerNear = false;
             if (_npcAI != null) _npcAI.SetInteracting(false);
-            if (interactButton != null) interactButton.SetActive(false);
+
+            PlayerStateManager player = other.GetComponent<PlayerStateManager>();
+            if (player != null && interactButton != null) player.SetButtonVisualState(interactButton, false);
         }
     }
 

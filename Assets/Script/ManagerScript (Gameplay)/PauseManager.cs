@@ -110,13 +110,13 @@ public class PauseManager : MonoBehaviour
     private void RestoreGameplayUI()
     {
         if (_player == null) return;
-
         bool isMoving = _player.CurrentState == _player.MovementState;
         
         if (movementButtons != null) movementButtons.SetActive(isMoving);
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(isMoving);
         if (homeButton != null) homeButton.SetActive(isMoving);
-        if (fishingButton != null) fishingButton.SetActive(isMoving && _player.IsInFishingZone);
+        if (fishingButton != null) fishingButton.SetActive(isMoving);
+        if (interactButton != null) interactButton.SetActive(isMoving);
 
         pauseButton.SetActive(true);
     }

@@ -94,27 +94,12 @@ public class DialogueManager : MonoBehaviour
         playerManager.ensiklopediaButton.SetActive(status);
         playerManager.homeButton.SetActive(status);
 
-        if (playerManager.fishingButton != null)
-        {
-            if (status)
-            {
-                playerManager.fishingButton.SetActive(playerManager.IsInFishingZone);
-            }
-            else
-            {
-                playerManager.fishingButton.SetActive(false);
-            }
-        }
+        if (playerManager.fishingButton != null) playerManager.fishingButton.SetActive(status);
+        if (playerManager.interactButton != null) playerManager.interactButton.SetActive(status);
 
-        if (!status)
-        {
-            playerManager.movementComponent.StopMoving();
-        }
+        if (!status) playerManager.movementComponent.StopMoving();
 
         PauseManager pm = FindObjectOfType<PauseManager>();
-        if (pm != null && pm.pauseButton != null)
-        {
-            pm.pauseButton.SetActive(status);
-        }
+        if (pm != null && pm.pauseButton != null) pm.pauseButton.SetActive(status);
     }
 }

@@ -246,20 +246,12 @@ public class FishingState : IPlayerState
         if (_manager.shrinkingSpawner != null)
             _manager.shrinkingSpawner.gameObject.SetActive(false);
 
-        if (_manager.movementButtonsParent != null)
-            _manager.movementButtonsParent.SetActive(true);
-            
-        if (_manager.homeButton != null)
-            _manager.homeButton.SetActive(true);
-            
-        if (_manager.ensiklopediaButton != null)
-            _manager.ensiklopediaButton.SetActive(true);
-            
-        if (_manager.pauseButton != null)
-            _manager.pauseButton.SetActive(true);
-            
-        if (_manager.fishingButton != null)
-            _manager.fishingButton.SetActive(_manager.IsInFishingZone);
+        if (_manager.movementButtonsParent != null) _manager.movementButtonsParent.SetActive(true);
+        if (_manager.homeButton != null) _manager.homeButton.SetActive(true);
+        if (_manager.ensiklopediaButton != null) _manager.ensiklopediaButton.SetActive(true);
+        if (_manager.pauseButton != null) _manager.pauseButton.SetActive(true);
+        if (_manager.interactButton != null) _manager.interactButton.SetActive(true);
+        if (_manager.fishingButton != null) _manager.fishingButton.SetActive(true);
 
         _activeFish = null;
     }

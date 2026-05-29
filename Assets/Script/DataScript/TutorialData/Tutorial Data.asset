@@ -21,7 +21,7 @@ MonoBehaviour:
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}
   - sentence: Kita akan menjelajah perairan ini untuk menemukan berbagai jenis spesies
-      ikan dan melengkapi ensiklopedia!
+      ikan dan melengkapi ensiklopedia.
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 21300000, guid: 995a748e25f26d4458602cd6eb103c8d, type: 3}
     fishingTutorImage: {fileID: 0}
-  - sentence: Jadi jangan lupa untuk tetap menjaga kebersihan surga dunia ini!
+  - sentence: Jadi jangan lupa untuk tetap menjaga kebersihan surga dunia ini.
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}
@@ -56,8 +56,8 @@ MonoBehaviour:
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 21300000, guid: 8cdcbc8ac21f14b43a2f273ad31d89df, type: 3}
     fishingTutorImage: {fileID: 0}
-  - sentence: Lalu jika nanti kita masuk spot mancing, sebuah tombol pancing akan
-      muncul dan kamu bisa memancing dengan bermain ritem game.
+  - sentence: Lalu jika nanti kita masuk spot mancing, kamu bisa memancing dengan
+      bermain ritem game.
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 21300000, guid: a042ba23bbc707e4db720e7f6546be77, type: 3}
     fishingTutorImage: {fileID: 0}

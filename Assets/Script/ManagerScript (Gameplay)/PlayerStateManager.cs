@@ -63,6 +63,33 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public FishingZone activeStreakZone;
     [HideInInspector] public bool isTeleporting = false;
 
+    public void SetButtonVisualState(GameObject buttonObj, bool isInteractable)
+    {
+        if (buttonObj == null) return;
+        
+        Button btn = buttonObj.GetComponent<Button>();
+        if (btn != null) btn.interactable = isInteractable;
+
+        Image img = buttonObj.GetComponent<Image>();
+        if (img != null)
+        {
+            Color c = img.color;
+            c.a = isInteractable ? 1f : 0.1f;
+            img.color = c;
+        }
+
+        Outline[] outlines = buttonObj.GetComponentsInChildren<Outline>(true);
+        foreach (Outline outline in outlines)
+        {
+            if (outline != null)
+            {
+                Color oc = outline.effectColor;
+                oc.a = isInteractable ? 1f : 0f;
+                outline.effectColor = oc;
+            }
+        }
+    }
+
     void Awake()
     {
         MovementState = new MovementState(this);
@@ -90,7 +117,17 @@ public class PlayerStateManager : MonoBehaviour
         SwitchState(MovementState);
 
         if (fishingMinigamePanel != null) fishingMinigamePanel.SetActive(false);
-        if (fishingButton != null) fishingButton.SetActive(false);
+
+        if (fishingButton != null) 
+        {
+            fishingButton.SetActive(true);
+            SetButtonVisualState(fishingButton, false);
+        }
+        if (interactButton != null) 
+        {
+            interactButton.SetActive(true);
+            SetButtonVisualState(interactButton, false);
+        }
     }
 
     void Update()
@@ -127,16 +164,14 @@ public class PlayerStateManager : MonoBehaviour
 
         if (_currentState == MovementState)
         {
-            if (movementComponent != null)
-            {
-                movementComponent.StopMoving();
+            if (movementComponent != null) movementComponent.StopMoving();
+            if (movementButtonsParent != null) movementButtonsParent.SetActive(false);
 
-                if (movementButtonsParent != null) movementButtonsParent.SetActive(false);
-                if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
-                if (pauseButton != null) pauseButton.SetActive(false);
-                if (homeButton != null) homeButton.SetActive(false);
-                if (interactButton != null) interactButton.SetActive(false);
-            }
+            if (ensiklopediaButton != null) ensiklopediaButton.SetActive(false);
+            if (pauseButton != null) pauseButton.SetActive(false);
+            if (homeButton != null) homeButton.SetActive(false);
+            if (interactButton != null) interactButton.SetActive(false);
+            if (fishingButton != null) fishingButton.SetActive(false);
 
             NPCStateManager[] allNPCs = FindObjectsOfType<NPCStateManager>();
             foreach (NPCStateManager npc in allNPCs)
@@ -394,7 +429,8 @@ public class PlayerStateManager : MonoBehaviour
         if (ensiklopediaButton != null) ensiklopediaButton.SetActive(true);
         if (homeButton != null) homeButton.SetActive(true);
         if (pauseButton != null) pauseButton.SetActive(true);
-        if (fishingButton != null) fishingButton.SetActive(IsInFishingZone);
+        if (fishingButton != null) fishingButton.SetActive(true); 
+        if (interactButton != null) interactButton.SetActive(true);
 
         isTeleporting = false;
     }
