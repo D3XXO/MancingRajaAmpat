@@ -62,6 +62,7 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public FishingZone currentFishingZone;
     [HideInInspector] public FishingZone activeStreakZone;
     [HideInInspector] public bool isTeleporting = false;
+    [HideInInspector] public bool isTutorialActive = false;
 
     public void SetButtonVisualState(GameObject buttonObj, bool isInteractable)
     {

@@ -81,6 +81,15 @@ public class FishingZone : MonoBehaviour
 
     void Update()
     {
+        PlayerStateManager tempPlayer = _currentPlayer;
+        if (tempPlayer == null) tempPlayer = FindObjectOfType<PlayerStateManager>();
+        if (tempPlayer != null && tempPlayer.isTutorialActive)
+        {
+            if (_leftIndicator != null && _leftIndicator.activeSelf) _leftIndicator.SetActive(false);
+            if (_rightIndicator != null && _rightIndicator.activeSelf) _rightIndicator.SetActive(false);
+            return;
+        }
+
         if (_mainCamera != null)
         {
             Vector3 viewportPos = _mainCamera.WorldToViewportPoint(transform.position);
@@ -373,6 +382,15 @@ public class FishingZone : MonoBehaviour
         {
             Destroy(_instantiatedStreakUI);
             _instantiatedStreakUI = null;
+        }
+    }
+
+    public void ToggleIndicatorsByTutorial(bool status)
+    {
+        if (!status)
+        {
+            if (_leftIndicator != null) _leftIndicator.SetActive(false);
+            if (_rightIndicator != null) _rightIndicator.SetActive(false);
         }
     }
 }

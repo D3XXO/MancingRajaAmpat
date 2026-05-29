@@ -37,6 +37,7 @@ public class TutorialManager : MonoBehaviour
     public void StartTutorial()
     {
         if (tutorialData == null || tutorialData.steps.Length == 0) return;
+        if (playerManager != null) playerManager.isTutorialActive = true;
 
         tutorialPanel.SetActive(true);
         TogglePlayerUI(false);
@@ -112,6 +113,7 @@ public class TutorialManager : MonoBehaviour
 
     private void EndTutorial()
     {
+        if (playerManager != null) playerManager.isTutorialActive = false;
         tutorialPanel.SetActive(false);
         TogglePlayerUI(true);
         
@@ -153,21 +155,28 @@ public class TutorialManager : MonoBehaviour
             playerManager.pauseButton.SetActive(status);
         }
 
+        if (playerManager.interactButton != null)
+        {
+            playerManager.interactButton.SetActive(status);
+        }
+
         if (playerManager.fishingButton != null)
         {
-            if (status)
-            {
-                playerManager.fishingButton.SetActive(playerManager.IsInFishingZone);
-            }
-            else
-            {
-                playerManager.fishingButton.SetActive(false);
-            }
+            playerManager.fishingButton.SetActive(status);
         }
 
         if (!status && playerManager.movementComponent != null)
         {
             playerManager.movementComponent.StopMoving();
+        }
+
+        FishingZone[] zones = FindObjectsOfType<FishingZone>();
+        foreach (FishingZone zone in zones)
+        {
+            if (zone != null)
+            {
+                zone.ToggleIndicatorsByTutorial(status);
+            }
         }
     }
 }
