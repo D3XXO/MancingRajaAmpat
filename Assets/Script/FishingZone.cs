@@ -57,15 +57,29 @@ public class FishingZone : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        if (_spriteRenderer != null)
-        {
-            Color goldColor;
-            ColorUtility.TryParseHtmlString("#FFD700", out goldColor);
-            _spriteRenderer.color = goldColor;
-        }
-
         _mainCamera = Camera.main;
         ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
+
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.color = _indicatorGoldColor;
+        }
+
+        PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
+        if (player != null)
+        {
+            Collider2D zoneCollider = GetComponent<Collider2D>();
+            if (zoneCollider != null && zoneCollider.OverlapPoint(player.transform.position))
+            {
+                hasBeenVisited = true;
+                hasBeenEnteredOnce = true;
+
+                if (_spriteRenderer != null)
+                {
+                    _spriteRenderer.color = Color.white;
+                }
+            }
+        }
 
         GameObject leftObj = GameObject.Find("LeftIndicatorContainer");
         GameObject rightObj = GameObject.Find("RightIndicatorContainer");
@@ -191,16 +205,15 @@ public class FishingZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _currentPlayer = other.GetComponent<PlayerStateManager>();
             isPlayerInside = true;
             hasBeenVisited = true;
             hasBeenEnteredOnce = true;
 
-            if (_spriteRenderer != null) 
+            if (_spriteRenderer != null)
             {
                 _spriteRenderer.color = Color.white;
             }
-
-            _currentPlayer = other.GetComponent<PlayerStateManager>();
 
             if (_cooldownCoroutine != null)
             {
@@ -242,6 +255,11 @@ public class FishingZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInside = false;
+
+            if (_spriteRenderer != null)
+            {
+                _spriteRenderer.color = Color.white;
+            }
 
             if (_currentPlayer != null && _currentPlayer.fishingButton != null)
             {

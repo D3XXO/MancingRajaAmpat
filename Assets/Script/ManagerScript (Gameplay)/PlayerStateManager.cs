@@ -279,7 +279,7 @@ public class PlayerStateManager : MonoBehaviour
         {
             DifficultyLevel currentLevel = DifficultyManager.GetCurrentLevel();
             
-            difficultyText.text = currentLevel.ToString() + " Mode";
+            difficultyText.text =  "Mode " + currentLevel.ToString();
         }
     }
 
