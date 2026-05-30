@@ -14,19 +14,23 @@ public class ShrinkingSpawner : MonoBehaviour
 
     [Header("Accessibility Settings")]
     public string[] safeLabels;
-
-    private Color[] _noteColors = new Color[]
-    {
-        new Color(0.2f, 0.8f, 0.2f), // Hijau
-        new Color(1f, 0.9f, 0f),     // Kuning
-        new Color(0.2f, 0.6f, 1f),   // Biru
-        new Color(1f, 0.5f, 0f),     // Oren
-        new Color(1f, 0.2f, 0.2f)    // Merah
-    };
+    private Color[] _noteColors;
 
     private bool _isSpawning;
     private Coroutine _spawnRoutine;
     private PlayerStateManager _manager;
+
+    void Awake()
+    {
+        Color colorGreen, colorYellow, colorBlue, colorOrange, colorRed;
+        ColorUtility.TryParseHtmlString("#76A973", out colorGreen);
+        ColorUtility.TryParseHtmlString("#E1B05F", out colorYellow);
+        ColorUtility.TryParseHtmlString("#7199C7", out colorBlue);
+        ColorUtility.TryParseHtmlString("#E7964E", out colorOrange);
+        ColorUtility.TryParseHtmlString("#D36666", out colorRed);
+
+        _noteColors = new Color[] { colorGreen, colorYellow, colorBlue, colorOrange, colorRed };
+    }
 
     void Start()
     {
@@ -109,6 +113,7 @@ public class ShrinkingSpawner : MonoBehaviour
                     foreach (Transform child in spawnPanel)
                     {
                         if (child.gameObject == newNote) continue;
+                        if (child.GetComponent<ShrinkingNote>() == null) continue;
 
                         RectTransform childRect = child.GetComponent<RectTransform>();
                         
@@ -155,12 +160,10 @@ public class ShrinkingSpawner : MonoBehaviour
                         if (noteComp.isRedNote)
                         {
                             noteComp.labelText.text = "x";
-                            noteComp.labelText.color = Color.black;
                         }
                         else
                         {
                             noteComp.labelText.text = safeLabels[Random.Range(0, safeLabels.Length)];
-                            noteComp.labelText.color = Color.white;
                         }
                     }
                 }

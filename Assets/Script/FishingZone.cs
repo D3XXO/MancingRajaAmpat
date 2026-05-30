@@ -17,9 +17,10 @@ public class FishingZone : MonoBehaviour
     private GameObject _instantiatedStreakUI;
 
     [Header("UI Off-Screen Indicator Setup")]
-    public GameObject leftIndicatorPrefab; 
-    public GameObject rightIndicatorPrefab; 
+    public GameObject leftIndicatorPrefab;
+    public GameObject rightIndicatorPrefab;
     [HideInInspector] public bool hasBeenVisited = false;
+    [HideInInspector] public bool hasBeenEnteredOnce = false;
     
     private GameObject _leftIndicator;
     private GameObject _rightIndicator;
@@ -29,6 +30,7 @@ public class FishingZone : MonoBehaviour
     private Transform _rightContainer;
     private Camera _mainCamera;
     private Color _indicatorGoldColor;
+    private bool _isBlinkingIndicator = false;
 
     [HideInInspector] public FishingZoneData zoneSettings = new FishingZoneData();
     [HideInInspector] public bool isPlayerInside = false;
@@ -40,18 +42,16 @@ public class FishingZone : MonoBehaviour
 
     private Coroutine _cooldownCoroutine;
     private float _currentCooldownTimer = 0f;
-
     private int _fishingAttempts = 0;
     private int _endemicAttempts = 0;
     private int _rareAttempts = 0;
     private bool _unlockedEndemicInZone = false;
     private bool _unlockedRareInZone = false;
-
     private float _baseEndemicChance = 0f;
     private float _baseRareChance = 0f;
-
     private float _endemicDecayRate = 0f;
     private float _rareDecayRate = 0f;
+    private const float INDICATOR_ALPHA_MAX = 0.1f;
 
     void Start()
     {
@@ -68,15 +68,17 @@ public class FishingZone : MonoBehaviour
         {
             _leftIndicator = Instantiate(leftIndicatorPrefab, _leftContainer);
             _leftIndicatorImage = _leftIndicator.GetComponent<Image>();
-            _leftIndicator.SetActive(false); // Sembunyikan default
+            _leftIndicator.SetActive(false);
         }
 
         if (rightIndicatorPrefab != null && _rightContainer != null)
         {
             _rightIndicator = Instantiate(rightIndicatorPrefab, _rightContainer);
             _rightIndicatorImage = _rightIndicator.GetComponent<Image>();
-            _rightIndicator.SetActive(false); // Sembunyikan default
+            _rightIndicator.SetActive(false);
         }
+
+        StartCoroutine(BlinkIndicatorRoutine());
     }
 
     void Update()
@@ -104,13 +106,14 @@ public class FishingZone : MonoBehaviour
             else
             {
                 Color targetColor = hasBeenVisited ? Color.white : _indicatorGoldColor;
+                targetColor.a = INDICATOR_ALPHA_MAX;
 
                 if (viewportPos.x < 0f)
                 {
                     if (_leftIndicator != null)
                     {
                         if (!_leftIndicator.activeSelf) _leftIndicator.SetActive(true);
-                        if (_leftIndicatorImage != null) _leftIndicatorImage.color = targetColor;
+                        if (_leftIndicatorImage != null && !_isBlinkingIndicator) _leftIndicatorImage.color = targetColor;
                     }
                     if (_rightIndicator != null && _rightIndicator.activeSelf) _rightIndicator.SetActive(false);
                 }
@@ -119,11 +122,48 @@ public class FishingZone : MonoBehaviour
                     if (_rightIndicator != null)
                     {
                         if (!_rightIndicator.activeSelf) _rightIndicator.SetActive(true);
-                        if (_rightIndicatorImage != null) _rightIndicatorImage.color = targetColor;
+                        if (_rightIndicatorImage != null && !_isBlinkingIndicator) _rightIndicatorImage.color = targetColor;
                     }
                     if (_leftIndicator != null && _leftIndicator.activeSelf) _leftIndicator.SetActive(false);
                 }
             }
+        }
+    }
+
+    private IEnumerator BlinkIndicatorRoutine()
+    {
+        _isBlinkingIndicator = true;
+        int blinkCount = 3;
+        float blinkDuration = 0.5f;
+
+        for (int i = 0; i < blinkCount; i++)
+        {
+            SetIndicatorAlpha(0f);
+            yield return new WaitForSeconds(blinkDuration);
+
+            SetIndicatorAlpha(1f);
+            yield return new WaitForSeconds(blinkDuration);
+        }
+
+        _isBlinkingIndicator = false;
+    }
+
+    private void SetIndicatorAlpha(float alphaMultiplier)
+    {
+        float finalAlpha = alphaMultiplier * INDICATOR_ALPHA_MAX;
+
+        if (_leftIndicatorImage != null)
+        {
+            Color c = _indicatorGoldColor;
+            c.a = finalAlpha;
+            _leftIndicatorImage.color = c;
+        }
+
+        if (_rightIndicatorImage != null)
+        {
+            Color c = _indicatorGoldColor;
+            c.a = finalAlpha;
+            _rightIndicatorImage.color = c;
         }
     }
 
@@ -144,6 +184,7 @@ public class FishingZone : MonoBehaviour
         {
             isPlayerInside = true;
             hasBeenVisited = true;
+            hasBeenEnteredOnce = true;
             _currentPlayer = other.GetComponent<PlayerStateManager>();
 
             if (_cooldownCoroutine != null)

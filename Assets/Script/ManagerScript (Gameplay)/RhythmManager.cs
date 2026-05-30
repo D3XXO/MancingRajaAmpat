@@ -107,15 +107,31 @@ public class RhythmManager : MonoBehaviour
         }
     }
 
-    private void ShowFeedback(float distance)
+    public void ShowFeedback(float distance)
     {
         string message;
-        Color color;
+        Color color = Color.white;
 
-        if (distance >= 999f) { message = "BAD"; color = Color.red; }
-        else if (distance <= 20f) { message = "PERFECT"; color = Color.green; }
-        else if (distance <= 80f) { message = "GOOD"; color = Color.yellow; }
-        else { message = "MISS"; color = Color.red; }
+        if (distance >= 999f)
+        {
+            message = "BAD";
+            ColorUtility.TryParseHtmlString("#D36666", out color);
+        }
+        else if (distance <= 20f)
+        {
+            message = "PERFECT";
+            ColorUtility.TryParseHtmlString("#76A973", out color);
+        }
+        else if (distance <= 80f)
+        {
+            message = "GOOD";
+            ColorUtility.TryParseHtmlString("#E1B05F", out color);
+        }
+        else
+        {
+            message = "MISS";
+            ColorUtility.TryParseHtmlString("#D36666", out color);
+        }
 
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         

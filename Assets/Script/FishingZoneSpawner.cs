@@ -66,7 +66,7 @@ public class FishingZoneSpawner : MonoBehaviour
             if (_encyclopediaManager != null && _encyclopediaManager.encyclopediaPanel != null && _encyclopediaManager.encyclopediaPanel.activeSelf) isUIActive = true;
             if (_dialogueManager != null && _dialogueManager.dialoguePanel != null && _dialogueManager.dialoguePanel.activeSelf) isUIActive = true;
 
-            if (!zoneScript.isPlayerInside && !isUIActive)
+            if (zoneScript.hasBeenEnteredOnce && !zoneScript.isPlayerInside && !isUIActive)
             {
                 if (!_zoneTimers.ContainsKey(zone))
                 {

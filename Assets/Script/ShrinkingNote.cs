@@ -12,6 +12,7 @@ public class ShrinkingNote : MonoBehaviour
     [Header("Visual Settings")]
     public RectTransform visualTransform;
     public float minHitboxScale;
+    public GameObject explosionPrefab;
 
     private float _currentScale;
     private PlayerStateManager _stateManager;
@@ -79,7 +80,29 @@ public class ShrinkingNote : MonoBehaviour
                 _stateManager.FishingState.ChangeProgress(0.05f);
             }
         }
-        
+
+        SpawnExplosion();
         Destroy(gameObject);
+    }
+
+    private void SpawnExplosion()
+    {
+        if (explosionPrefab != null)
+        {
+            GameObject vfx = Instantiate(explosionPrefab, transform.position, Quaternion.identity, transform.parent);
+            
+            Image targetImage = visualTransform != null ? visualTransform.GetComponent<Image>() : GetComponent<Image>();
+            if (targetImage != null)
+            {
+                ParticleSystem ps = vfx.GetComponent<ParticleSystem>();
+                if (ps != null)
+                {
+                    var main = ps.main;
+                    main.startColor = targetImage.color;
+                }
+            }
+
+            Destroy(vfx, 1f);
+        }
     }
 }

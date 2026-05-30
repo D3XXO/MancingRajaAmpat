@@ -6,27 +6,39 @@ public class RhythmNote : MonoBehaviour
     public int noteID;
     public float moveSpeed;
     public bool isRedNote;
-    public Text labelText;
 
     private Image _noteImage;
     private bool _isTransparent = false;
+    private bool _hasMissed = false;
+    private RhythmManager _rhythmManager;
 
     void Awake()
     {
         _noteImage = GetComponent<Image>();
+        _rhythmManager = FindObjectOfType<RhythmManager>();
     }
 
     void Update()
     {
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
 
-        if (transform.localPosition.x < -550f)
+        if (transform.localPosition.x < -450f && !_hasMissed)
         {
+            _hasMissed = true;
+            
             if (!isRedNote)
             {
                 FindObjectOfType<PlayerStateManager>().FishingState.ChangeProgress(-0.1f);
+                
+                if (_rhythmManager != null)
+                {
+                    _rhythmManager.ShowFeedback(100f);
+                }
             }
+        }
 
+        if (transform.localPosition.x < -550f)
+        {
             Destroy(gameObject);
         }
     }
@@ -38,14 +50,6 @@ public class RhythmNote : MonoBehaviour
             Color c = _noteImage.color;
             c.a = 0.1f;
             _noteImage.color = c;
-            
-            if (labelText != null)
-            {
-                Color txtColor = labelText.color;
-                txtColor.a = 0.1f;
-                labelText.color = txtColor;
-            }
-            
             _isTransparent = true;
         }
     }

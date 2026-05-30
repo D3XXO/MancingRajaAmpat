@@ -6,6 +6,7 @@ public class RhythmSpawner : MonoBehaviour
 {
     [Header("Settings")]
     public GameObject[] notePrefabs;
+    public GameObject redNotePrefab;
     public Transform spawnPoint;
     public Transform laneParent;
     public float spawnInterval;
@@ -14,22 +15,28 @@ public class RhythmSpawner : MonoBehaviour
     [Header("Systems")]
     public RhythmManager rhythmManager;
 
-    [Header("Accessibility Settings")]
-    public string[] safeLabels;
-
-    private Color[] _noteColors = new Color[]
-    {
-        new Color(0.2f, 0.8f, 0.2f), // Hijau
-        new Color(1f, 0.9f, 0f),     // Kuning
-        new Color(0.2f, 0.6f, 1f),   // Biru
-        new Color(1f, 0.5f, 0f),     // Oren
-        new Color(1f, 0.2f, 0.2f)    // Merah
-    };
+    private Color _colorGreen;
+    private Color _colorYellow;
+    private Color _colorBlue;
+    private Color _colorOrange;
+    private Color _colorRed;
+    private Color[] _normalNoteColors;
 
     private bool _isSpawning = false;
     private Coroutine _spawnRoutine;
     private PlayerStateManager _manager;
     public bool isCountingDown = false;
+
+    void Awake()
+    {
+        ColorUtility.TryParseHtmlString("#76A973", out _colorGreen);
+        ColorUtility.TryParseHtmlString("#E1B05F", out _colorYellow);
+        ColorUtility.TryParseHtmlString("#7199C7", out _colorBlue);
+        ColorUtility.TryParseHtmlString("#E7964E", out _colorOrange);
+        ColorUtility.TryParseHtmlString("#D36666", out _colorRed);
+
+        _normalNoteColors = new Color[] { _colorGreen, _colorYellow, _colorBlue, _colorOrange };
+    }
 
     void Start()
     {
@@ -74,39 +81,40 @@ public class RhythmSpawner : MonoBehaviour
 
         while (_isSpawning)
         {
-            int randomIndex = Random.Range(0, notePrefabs.Length);
-            
-            GameObject newNoteObj = Instantiate(notePrefabs[randomIndex], laneParent);
-            newNoteObj.transform.position = spawnPoint.position;
+            GameObject newNoteObj = null;
+            RhythmNote noteComponent = null;
 
-            RhythmNote noteComponent = newNoteObj.GetComponent<RhythmNote>();
+            bool spawnRedNote = Random.value <= 0.2f;
+
+            if (spawnRedNote && redNotePrefab != null)
+            {
+                newNoteObj = Instantiate(redNotePrefab, laneParent);
+                newNoteObj.transform.position = spawnPoint.position;
+                
+                noteComponent = newNoteObj.GetComponent<RhythmNote>();
+                noteComponent.isRedNote = true;
+
+                Image noteImage = newNoteObj.GetComponent<Image>();
+                if (noteImage != null) noteImage.color = _colorRed;
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, notePrefabs.Length);
+                newNoteObj = Instantiate(notePrefabs[randomIndex], laneParent);
+                newNoteObj.transform.position = spawnPoint.position;
+                
+                noteComponent = newNoteObj.GetComponent<RhythmNote>();
+                noteComponent.isRedNote = false;
+
+                Image noteImage = newNoteObj.GetComponent<Image>();
+                if (noteImage != null)
+                {
+                    int randomColorIndex = Random.Range(0, _normalNoteColors.Length);
+                    noteImage.color = _normalNoteColors[randomColorIndex];
+                }
+            }
+
             noteComponent.moveSpeed = DifficultyManager.GetCurrentStrategy().GetDynamicMoveSpeed(_manager.totalValueScore);
-
-            Image noteImage = newNoteObj.GetComponent<Image>();
-            if (noteImage != null)
-            {
-                int randomColorIndex = Random.Range(0, _noteColors.Length);
-                noteImage.color = _noteColors[randomColorIndex];
-
-                if (randomColorIndex == 4)
-                {
-                    noteComponent.isRedNote = true;
-                }
-            }
-
-            if (noteComponent.labelText != null)
-            {
-                if (noteComponent.isRedNote)
-                {
-                    noteComponent.labelText.text = "x";
-                    noteComponent.labelText.color = Color.red;
-                }
-                else
-                {
-                    noteComponent.labelText.text = safeLabels[Random.Range(0, safeLabels.Length)];
-                    noteComponent.labelText.color = Color.white;
-                }
-            }
 
             if (rhythmManager != null)
             {
