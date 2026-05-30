@@ -183,6 +183,7 @@ MonoBehaviour:
   leftIndicatorPrefab: {fileID: 3850687068072876189, guid: 7ccad4657672f74418a68afa772ee9c8, type: 3}
   rightIndicatorPrefab: {fileID: 3850687068072876189, guid: 3796a3b13763e5e418892fce31fd4de5, type: 3}
   hasBeenVisited: 0
+  hasBeenEnteredOnce: 0
   zoneSettings:
     normalChance: 0
     endemicChance: 0

@@ -56,7 +56,7 @@ public class MediumDifficulty : IDifficultyStrategy
 
     public float GetDynamicMaxSpawnInterval(int totalValueScore)
     {
-        return Mathf.Lerp(0.8f, 0.8f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return Mathf.Lerp(0.8f, 0.6f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
     }
 
     public int GetMaxStreakMultiplier()

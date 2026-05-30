@@ -31,6 +31,7 @@ public class FishingZone : MonoBehaviour
     private Camera _mainCamera;
     private Color _indicatorGoldColor;
     private bool _isBlinkingIndicator = false;
+    private SpriteRenderer _spriteRenderer;
 
     [HideInInspector] public FishingZoneData zoneSettings = new FishingZoneData();
     [HideInInspector] public bool isPlayerInside = false;
@@ -51,10 +52,18 @@ public class FishingZone : MonoBehaviour
     private float _baseRareChance = 0f;
     private float _endemicDecayRate = 0f;
     private float _rareDecayRate = 0f;
-    private const float INDICATOR_ALPHA_MAX = 0.1f;
+    private const float INDICATOR_ALPHA_MAX = 0.5f;
 
     void Start()
     {
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (_spriteRenderer != null)
+        {
+            Color goldColor;
+            ColorUtility.TryParseHtmlString("#FFD700", out goldColor);
+            _spriteRenderer.color = goldColor;
+        }
+
         _mainCamera = Camera.main;
         ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
 
@@ -185,6 +194,12 @@ public class FishingZone : MonoBehaviour
             isPlayerInside = true;
             hasBeenVisited = true;
             hasBeenEnteredOnce = true;
+
+            if (_spriteRenderer != null) 
+            {
+                _spriteRenderer.color = Color.white;
+            }
+
             _currentPlayer = other.GetComponent<PlayerStateManager>();
 
             if (_cooldownCoroutine != null)
@@ -261,6 +276,13 @@ public class FishingZone : MonoBehaviour
         _hasGeneratedBefore = false;
         _currentCooldownTimer = 0f;
         hasBeenVisited = false;
+
+        if (_spriteRenderer != null)
+        {
+            Color goldColor;
+            ColorUtility.TryParseHtmlString("#FFD700", out goldColor);
+            _spriteRenderer.color = goldColor;
+        }
 
         PlayerStateManager player = FindObjectOfType<PlayerStateManager>();
         if (player != null && player.activeStreakZone == this)
