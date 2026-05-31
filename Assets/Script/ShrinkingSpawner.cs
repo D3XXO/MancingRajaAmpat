@@ -174,7 +174,7 @@ public class ShrinkingSpawner : MonoBehaviour
             }
 
             float currentBPM = DifficultyManager.GetCurrentStrategy().GetBPM(_manager.totalValueScore);
-            float beatInterval = 45f / currentBPM;
+            float beatInterval = 30f / currentBPM;
             int beatsToWait = Random.Range(1, 3);
 
             yield return new WaitForSeconds(beatInterval * beatsToWait);

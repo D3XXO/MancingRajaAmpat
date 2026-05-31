@@ -60,7 +60,7 @@ public class HardDifficulty : IDifficultyStrategy
     {
         if (totalValueScore <= 500)
         return Mathf.Lerp(6f, 10f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
-        return 10f + ((totalValueScore - 500) / 50) * 0.2f;
+        return 10f + ((totalValueScore - 500) / 50) * 0.3f;
     }
 
     public float GetBPM(int totalValueScore)
