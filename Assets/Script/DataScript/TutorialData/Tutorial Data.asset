@@ -61,22 +61,22 @@ MonoBehaviour:
     characterSprite: {fileID: 669661150, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 21300000, guid: a042ba23bbc707e4db720e7f6546be77, type: 3}
     fishingTutorImage: {fileID: 0}
-  - sentence: 'Ritem game 1, namanya Ritem Flow Mode.
+  - sentence: 'Ritem game 1, namanya Ritem Flow.
 
       Kamu harus menekan tombol
       yang sesuai dengan note tepat pada lingkaran putih.'
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
-    fishingTutorImage: {fileID: 21300000, guid: d59fc54e3169fad4785b588e6a2d0f95, type: 3}
-  - sentence: 'Ritem game 2, namanya Ritem Catch Mode.
+    fishingTutorImage: {fileID: 21300000, guid: f83738eb612ff334dacc174008463b02, type: 3}
+  - sentence: 'Ritem game 2, namanya Ritem TapTap.
 
-      Kamu harus menekan
-      note yang muncul di layar sebelum dia menyusut dan menghilang.'
+      Kamu harus menekan note
+      yang muncul di layar sebelum dia menyusut dan menghilang.'
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
-    fishingTutorImage: {fileID: 21300000, guid: 95d40497a92c03f4db5e0af7d371d0b4, type: 3}
+    fishingTutorImage: {fileID: 21300000, guid: 11d82f8211aee0f469f0ef158365dab6, type: 3}
   - sentence: Hati-hati ya dalam memancing! Karena jika kamu gagal, maka skor yang
-      kamu miliki akan diambil <color=#B22222>sepersepuluh.</color>
+      kamu miliki akan diambil <color=red>sepersepuluh.</color>
     characterSprite: {fileID: 1751235890, guid: c538ff57c18627a4eafe3e9c661704a4, type: 3}
     tutorialImage: {fileID: 0}
     fishingTutorImage: {fileID: 0}

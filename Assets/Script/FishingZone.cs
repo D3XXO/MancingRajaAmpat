@@ -372,9 +372,9 @@ public class FishingZone : MonoBehaviour
 
         if (_instantiatedUI != null)
         {
-            string ritemMode = zoneSettings.selectedMinigame == 0 ? "Flow" : "Catch";
+            string ritemMode = zoneSettings.selectedMinigame == 0 ? "Flow" : "TapTap";
 
-            string uiText = $"(Ritem {ritemMode} Mode)\n\n" +
+            string uiText = $"(Ritem {ritemMode})\n\n" +
                             $"Normal: {zoneSettings.normalChance}%\n" +
                             $"Endemic: {zoneSettings.endemicChance}%\n" +
                             $"Rare: {zoneSettings.rareChance}%";
