@@ -5,6 +5,7 @@ public class ShrinkingNote : MonoBehaviour
 {
     public bool isRedNote;
     public float shrinkSpeed;
+    public AudioClip clickSfx;
 
     [Header("Accessibility")]
     public Text labelText;
@@ -79,6 +80,11 @@ public class ShrinkingNote : MonoBehaviour
             {
                 _stateManager.FishingState.ChangeProgress(0.05f);
             }
+        }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayFeedback(clickSfx);
         }
 
         SpawnExplosion();

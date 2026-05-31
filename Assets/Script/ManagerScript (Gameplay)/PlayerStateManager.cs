@@ -102,7 +102,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Start()
     {
-        totalValueScore = PlayerPrefs.GetInt("TotalValueScore", 0);
+        totalValueScore = 750;
 
         if (PlayerPrefs.HasKey("PlayerPosX"))
         {

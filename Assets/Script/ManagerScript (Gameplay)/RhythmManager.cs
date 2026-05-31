@@ -8,6 +8,8 @@ public class RhythmManager : MonoBehaviour
     public PlayerStateManager stateManager;
     public GameObject feedbackTextPrefab;
     public RectTransform feedbackPanel;
+    public AudioClip perfectSfx;
+    public AudioClip goodSfx;
     public List<RhythmNote> allActiveNotes = new List<RhythmNote>();
 
     [Header("Threshold Settings")]
@@ -121,11 +123,21 @@ public class RhythmManager : MonoBehaviour
         {
             message = "PERFECT";
             ColorUtility.TryParseHtmlString("#76A973", out color);
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayFeedback(perfectSfx);
+            }
         }
         else if (distance <= 80f)
         {
             message = "GOOD";
             ColorUtility.TryParseHtmlString("#E1B05F", out color);
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayFeedback(goodSfx);
+            }
         }
         else
         {

@@ -121,9 +121,11 @@ public class RhythmSpawner : MonoBehaviour
                 rhythmManager.allActiveNotes.Add(noteComponent);
             }
 
-            float randomInterval = Random.Range(DifficultyManager.GetCurrentStrategy().GetDynamicMinSpawnInterval(_manager.totalValueScore)
-                                                , DifficultyManager.GetCurrentStrategy().GetDynamicMaxSpawnInterval(_manager.totalValueScore));
-            yield return new WaitForSeconds(randomInterval);
+            float currentBPM = DifficultyManager.GetCurrentStrategy().GetBPM(_manager.totalValueScore);
+            float beatInterval = 60f / currentBPM;
+            
+            int beatsToWait = Random.Range(1, 3);
+            yield return new WaitForSeconds(beatInterval * beatsToWait);
         }
     }
 }

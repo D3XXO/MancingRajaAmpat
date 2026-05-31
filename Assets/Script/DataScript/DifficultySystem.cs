@@ -10,8 +10,7 @@ public enum DifficultyLevel
 public interface IDifficultyStrategy
 {
     float GetDynamicMoveSpeed(int totalValueScore);
-    float GetDynamicMinSpawnInterval(int totalValueScore);
-    float GetDynamicMaxSpawnInterval(int totalValueScore);
+    float GetBPM(int totalValueScore);
     int GetMaxStreakMultiplier();
 }
 
@@ -20,18 +19,13 @@ public class EasyDifficulty : IDifficultyStrategy
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
         if (totalValueScore <= 1000)
-            return Mathf.Lerp(4f, 12f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
-        return 12f + ((totalValueScore - 1000) / 50) * 0.1f;
+        return Mathf.Lerp(4f, 10f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
+        return 10f + ((totalValueScore - 1000) / 50) * 0.1f;
     }
 
-    public float GetDynamicMinSpawnInterval(int totalValueScore)
+    public float GetBPM(int totalValueScore)
     {
-        return Mathf.Lerp(0.8f, 0.4f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
-    }
-
-    public float GetDynamicMaxSpawnInterval(int totalValueScore)
-    {
-        return Mathf.Lerp(1.5f, 1.0f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
+        return Mathf.Lerp(120f, 180f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
     }
 
     public int GetMaxStreakMultiplier()
@@ -45,18 +39,13 @@ public class MediumDifficulty : IDifficultyStrategy
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
         if (totalValueScore <= 650)
-            return Mathf.Lerp(5f, 12f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
-        return 12f + ((totalValueScore - 650) / 50) * 0.2f;
+        return Mathf.Lerp(5f, 10f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return 10f + ((totalValueScore - 650) / 50) * 0.2f;
     }
 
-    public float GetDynamicMinSpawnInterval(int totalValueScore)
+    public float GetBPM(int totalValueScore)
     {
-        return Mathf.Lerp(0.5f, 0.3f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
-    }
-
-    public float GetDynamicMaxSpawnInterval(int totalValueScore)
-    {
-        return Mathf.Lerp(0.8f, 0.6f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return Mathf.Lerp(160f, 240f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
     }
 
     public int GetMaxStreakMultiplier()
@@ -70,18 +59,13 @@ public class HardDifficulty : IDifficultyStrategy
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
         if (totalValueScore <= 500)
-            return Mathf.Lerp(6f, 12f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
-        return 12f + ((totalValueScore - 500) / 50) * 0.2f;
+        return Mathf.Lerp(6f, 10f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
+        return 10f + ((totalValueScore - 500) / 50) * 0.2f;
     }
 
-    public float GetDynamicMinSpawnInterval(int totalValueScore)
+    public float GetBPM(int totalValueScore)
     {
-        return Mathf.Lerp(0.3f, 0.2f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
-    }
-
-    public float GetDynamicMaxSpawnInterval(int totalValueScore)
-    {
-        return Mathf.Lerp(0.5f, 0.3f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
+        return Mathf.Lerp(200f, 300f, Mathf.Clamp(totalValueScore, 0f, 500f) / 500f);
     }
 
     public int GetMaxStreakMultiplier()

@@ -13667,6 +13667,8 @@ MonoBehaviour:
   stateManager: {fileID: 1670303218}
   feedbackTextPrefab: {fileID: 8189696645031209661, guid: 6407b2993d3ea3d49ab63be7d8a3bb8a, type: 3}
   feedbackPanel: {fileID: 509362897}
+  perfectSfx: {fileID: 8300000, guid: ab98f7004b85daf4e8bc9d53afecdc10, type: 3}
+  goodSfx: {fileID: 8300000, guid: 32b64d1334d68654583f067db0273eb8, type: 3}
   allActiveNotes: []
   rightThreshold: 180
   leftThreshold: 45

@@ -291,6 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRedNote: 0
   shrinkSpeed: 0
+  clickSfx: {fileID: 8300000, guid: ab98f7004b85daf4e8bc9d53afecdc10, type: 3}
   labelText: {fileID: 7302413428127372361}
   visualTransform: {fileID: 4611086964454791785}
   minHitboxScale: 5
