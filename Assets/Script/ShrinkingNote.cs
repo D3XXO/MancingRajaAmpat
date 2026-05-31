@@ -15,6 +15,11 @@ public class ShrinkingNote : MonoBehaviour
     public float minHitboxScale;
     public GameObject explosionPrefab;
 
+    [Header("Feedback Settings")]
+    public GameObject feedbackTextPrefab;
+    public string[] complimentMessages;
+    public string[] mockMessages;
+
     private float _currentScale;
     private PlayerStateManager _stateManager;
 
@@ -73,21 +78,22 @@ public class ShrinkingNote : MonoBehaviour
         {
             if (isRedNote)
             {
-                _stateManager.FishingState.ChangeProgress(-0.1f);
+                _stateManager.FishingState.ChangeProgress(-0.05f);
                 _stateManager.TriggerShake(2.0f, 0.5f);
+                Handheld.Vibrate();
             }
             else
             {
-                _stateManager.FishingState.ChangeProgress(0.05f);
+                _stateManager.FishingState.ChangeProgress(0.025f);
+                if (AudioManager.Instance != null)
+                {
+                    AudioManager.Instance.PlayFeedback(clickSfx);
+                }
             }
         }
 
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayFeedback(clickSfx);
-        }
-
         SpawnExplosion();
+        ShowFeedbackText();
         Destroy(gameObject);
     }
 
@@ -109,6 +115,37 @@ public class ShrinkingNote : MonoBehaviour
             }
 
             Destroy(vfx, 1f);
+        }
+    }
+
+    private void ShowFeedbackText()
+    {
+        if (feedbackTextPrefab != null)
+        {
+            GameObject go = Instantiate(feedbackTextPrefab, transform.position, Quaternion.identity, transform.parent);
+
+            Color noteColor = Color.white;
+            Image targetImage = visualTransform != null ? visualTransform.GetComponent<Image>() : GetComponent<Image>();
+            if (targetImage != null)
+            {
+                noteColor = targetImage.color;
+            }
+
+            string message = "";
+            if (isRedNote && mockMessages != null && mockMessages.Length > 0)
+            {
+                message = mockMessages[Random.Range(0, mockMessages.Length)];
+            }
+            else if (!isRedNote && complimentMessages != null && complimentMessages.Length > 0)
+            {
+                message = complimentMessages[Random.Range(0, complimentMessages.Length)];
+            }
+
+            FeedbackText feedbackComp = go.GetComponent<FeedbackText>();
+            if (feedbackComp != null)
+            {
+                feedbackComp.Setup(message, noteColor);
+            }
         }
     }
 }

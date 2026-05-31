@@ -19,8 +19,8 @@ public class EasyDifficulty : IDifficultyStrategy
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
         if (totalValueScore <= 1000)
-        return Mathf.Lerp(4f, 10f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
-        return 10f + ((totalValueScore - 1000) / 50) * 0.1f;
+        return Mathf.Lerp(4f, 8f, Mathf.Clamp(totalValueScore, 0f, 1000f) / 1000f);
+        return 8f + ((totalValueScore - 1000) / 50) * 0.1f;
     }
 
     public float GetBPM(int totalValueScore)
@@ -39,13 +39,13 @@ public class MediumDifficulty : IDifficultyStrategy
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
         if (totalValueScore <= 650)
-        return Mathf.Lerp(5f, 10f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
-        return 10f + ((totalValueScore - 650) / 50) * 0.2f;
+        return Mathf.Lerp(5f, 9f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return 9f + ((totalValueScore - 650) / 50) * 0.2f;
     }
 
     public float GetBPM(int totalValueScore)
     {
-        return Mathf.Lerp(160f, 240f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return Mathf.Lerp(160f, 250f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
     }
 
     public int GetMaxStreakMultiplier()

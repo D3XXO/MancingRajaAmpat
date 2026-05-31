@@ -296,3 +296,14 @@ MonoBehaviour:
   visualTransform: {fileID: 4611086964454791785}
   minHitboxScale: 5
   explosionPrefab: {fileID: 688188334417194181, guid: 5276aca2cb64cb741ab82dbdd4d7464d, type: 3}
+  feedbackTextPrefab: {fileID: 8189696645031209661, guid: 6407b2993d3ea3d49ab63be7d8a3bb8a, type: 3}
+  complimentMessages:
+  - GOOD!
+  - WELL!
+  - NICE!
+  - COOL!!
+  mockMessages:
+  - HAHA!
+  - LOL!
+  - ULULU!
+  - UPS!

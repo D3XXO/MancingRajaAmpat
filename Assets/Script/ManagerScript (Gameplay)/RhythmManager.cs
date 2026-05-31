@@ -83,18 +83,18 @@ public class RhythmManager : MonoBehaviour
             {
                 ShowFeedback(targetDistance);
 
-                if (targetDistance <= 20f) stateManager.FishingState.ChangeProgress(0.1f);
-                else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.05f);
+                if (targetDistance <= 20f) stateManager.FishingState.ChangeProgress(0.05f);
+                else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.025f);
                 else
                 {
-                    stateManager.FishingState.ChangeProgress(-0.1f);
+                    stateManager.FishingState.ChangeProgress(-0.05f);
                     stateManager.TriggerShake(2.0f, 0.5f);
                 }
             }
             else
             {
                 ShowFeedback(999f);
-                stateManager.FishingState.ChangeProgress(-0.1f);
+                stateManager.FishingState.ChangeProgress(-0.05f);
                 stateManager.TriggerShake(2.0f, 0.5f);
             }
 
@@ -103,7 +103,7 @@ public class RhythmManager : MonoBehaviour
         }
         else
         {
-            stateManager.FishingState.ChangeProgress(-0.1f);
+            stateManager.FishingState.ChangeProgress(-0.05f);
             stateManager.TriggerShake(2.0f, 0.5f);
             ShowFeedback(999f);
         }
@@ -116,12 +116,13 @@ public class RhythmManager : MonoBehaviour
 
         if (distance >= 999f)
         {
-            message = "BAD";
+            message = "LOL!!";
             ColorUtility.TryParseHtmlString("#D36666", out color);
+            Handheld.Vibrate();
         }
         else if (distance <= 20f)
         {
-            message = "PERFECT";
+            message = "PERFECT!";
             ColorUtility.TryParseHtmlString("#76A973", out color);
 
             if (AudioManager.Instance != null)
@@ -131,7 +132,7 @@ public class RhythmManager : MonoBehaviour
         }
         else if (distance <= 80f)
         {
-            message = "GOOD";
+            message = "WELL!";
             ColorUtility.TryParseHtmlString("#E1B05F", out color);
 
             if (AudioManager.Instance != null)
@@ -141,7 +142,7 @@ public class RhythmManager : MonoBehaviour
         }
         else
         {
-            message = "MISS";
+            message = "MISS!";
             ColorUtility.TryParseHtmlString("#D36666", out color);
         }
 

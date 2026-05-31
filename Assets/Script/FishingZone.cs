@@ -56,10 +56,9 @@ public class FishingZone : MonoBehaviour
 
     void Start()
     {
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _mainCamera = Camera.main;
-        ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
 
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer != null)
         {
             _spriteRenderer.color = _indicatorGoldColor;
@@ -80,6 +79,8 @@ public class FishingZone : MonoBehaviour
                 }
             }
         }
+
+        ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
 
         GameObject leftObj = GameObject.Find("LeftIndicatorContainer");
         GameObject rightObj = GameObject.Find("RightIndicatorContainer");
