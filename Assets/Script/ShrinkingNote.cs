@@ -44,9 +44,9 @@ public class ShrinkingNote : MonoBehaviour
 
     void Update()
     {
-        float speedMultiplier = (shrinkSpeed / 40f);
-        
-        _currentScale -= speedMultiplier;
+        float speedMultiplier = shrinkSpeed * 1.5f;
+        _currentScale -= speedMultiplier * Time.deltaTime;
+
         UpdateScale();
 
         if (_currentScale <= 0)

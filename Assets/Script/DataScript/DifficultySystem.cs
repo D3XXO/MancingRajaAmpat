@@ -38,14 +38,14 @@ public class MediumDifficulty : IDifficultyStrategy
 {
     public float GetDynamicMoveSpeed(int totalValueScore)
     {
-        if (totalValueScore <= 650)
-        return Mathf.Lerp(5f, 9f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
-        return 9f + ((totalValueScore - 650) / 50) * 0.2f;
+        if (totalValueScore <= 750)
+        return Mathf.Lerp(5f, 9f, Mathf.Clamp(totalValueScore, 0f, 750f) / 750f);
+        return 9f + ((totalValueScore - 750) / 50) * 0.2f;
     }
 
     public float GetBPM(int totalValueScore)
     {
-        return Mathf.Lerp(160f, 250f, Mathf.Clamp(totalValueScore, 0f, 650f) / 650f);
+        return Mathf.Lerp(160f, 250f, Mathf.Clamp(totalValueScore, 0f, 750f) / 750f);
     }
 
     public int GetMaxStreakMultiplier()
