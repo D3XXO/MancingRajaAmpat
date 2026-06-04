@@ -227,6 +227,20 @@ public class EncyclopediaManager : MonoBehaviour
     {
         if (_selectedFish == null) return;
 
+        if (fishAudioSource != null && fishAudioSource.isPlaying)
+        {
+            fishAudioSource.Stop();
+        }
+
+        string filePath = Path.Combine(Application.persistentDataPath, _selectedFish.fishID + ".wav");
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+
+        _selectedFish.customAudioPath = "";
+        _selectedFish.customAudioClip = null;
+
         _isRecordingCancelled = false;
         _isRecordingActive = true;
 
