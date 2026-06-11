@@ -145,7 +145,12 @@ public class FishingState : IPlayerState
             }
 
             _manager.ShowCaughtFish(_activeFish, multiplier, isNewCatch);
-            _manager.StartCoroutine(PlayRecordAudioRoutine(_activeFish.fishID));
+
+            EncyclopediaManager encyclopedia = GameObject.FindObjectOfType<EncyclopediaManager>();
+            if (encyclopedia != null)
+            {
+                encyclopedia.PlayFishAudioByID(_activeFish.fishID);
+            }
         }
 
         if (_manager.currentFishingZone != null)
@@ -154,35 +159,6 @@ public class FishingState : IPlayerState
         }
 
         _manager.SwitchState(_manager.MovementState);
-    }
-
-    private IEnumerator PlayRecordAudioRoutine(string fishID)
-    {
-        string path = Path.Combine(Application.persistentDataPath, fishID + ".wav");
-        
-        if (File.Exists(path))
-        {
-            string fullPath = new System.Uri(path).AbsoluteUri;
-
-            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
-            {
-                yield return www.SendWebRequest();
-
-                if (www.result == UnityWebRequest.Result.Success)
-                {
-                    AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
-                    
-                    if (AudioManager.Instance != null)
-                    {
-                        AudioManager.Instance.PlaySFX(clip);
-                    }
-                    else if (Camera.main != null)
-                    {
-                        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
-                    }
-                }
-            }
-        }
     }
 
     private void LoseFishing()

@@ -362,4 +362,30 @@ public class EncyclopediaManager : MonoBehaviour
             if (recordingStatusText != null) recordingStatusText.text = "Tekan Untuk Rekam (maks 3 detik)";
         }
     }
+
+    public void PlayFishAudioByID(string fishID)
+    {
+        string path = Path.Combine(Application.persistentDataPath, fishID + ".wav");
+        
+        if (File.Exists(path))
+        {
+            StartCoroutine(LoadAndPlayAudioRoutine(path));
+        }
+    }
+
+    private IEnumerator LoadAndPlayAudioRoutine(string path)
+    {
+        string fullPath = new System.Uri(path).AbsoluteUri;
+
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(fullPath, AudioType.WAV))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.Success)
+            {
+                AudioClip clip = DownloadHandlerAudioClip.GetContent(www);
+                PlayClip(clip);
+            }
+        }
+    }
 }

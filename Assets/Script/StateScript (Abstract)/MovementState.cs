@@ -14,8 +14,11 @@ public class MovementState : IPlayerState
         _manager.movementButtonsParent.SetActive(true);
         _manager.movementComponent.enabled = true;
 
-        if (_manager.IsInFishingZone && _manager.fishingButton != null)
-        _manager.fishingButton.SetActive(true);
+        if (_manager.fishingButton != null)
+        {
+            _manager.fishingButton.SetActive(true);
+            _manager.SetButtonVisualState(_manager.fishingButton, _manager.IsInFishingZone);
+        }
 
         if (_manager.ensiklopediaButton != null)
         _manager.ensiklopediaButton.SetActive(true);

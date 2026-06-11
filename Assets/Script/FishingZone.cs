@@ -59,6 +59,8 @@ public class FishingZone : MonoBehaviour
         _mainCamera = Camera.main;
 
         ColorUtility.TryParseHtmlString("#FFD700", out _indicatorGoldColor);
+        _indicatorGoldColor.a = 0.5f;
+
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         if (_spriteRenderer != null)
         {
@@ -76,7 +78,7 @@ public class FishingZone : MonoBehaviour
 
                 if (_spriteRenderer != null)
                 {
-                    _spriteRenderer.color = Color.white;
+                    _spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
                 }
             }
         }
@@ -212,7 +214,7 @@ public class FishingZone : MonoBehaviour
 
             if (_spriteRenderer != null)
             {
-                _spriteRenderer.color = Color.white;
+                _spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
             }
 
             if (_cooldownCoroutine != null)
@@ -254,32 +256,72 @@ public class FishingZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            isPlayerInside = false;
-
-            if (_spriteRenderer != null)
+            PlayerStateManager p = other.GetComponent<PlayerStateManager>();
+            if (p != null)
             {
-                _spriteRenderer.color = Color.white;
+                if (p.CurrentState == p.WaitingState || p.CurrentState == p.FishingState)
+                {
+                    StartCoroutine(DeferredExitRoutine(p));
+                }
+                else
+                {
+                    ExecuteExitLogic(p);
+                }
+            }
+        }
+    }
+
+    private IEnumerator DeferredExitRoutine(PlayerStateManager player)
+    {
+        while (player != null && (player.CurrentState == player.WaitingState || player.CurrentState == player.FishingState))
+        {
+            yield return null;
+        }
+
+        if (player != null)
+        {
+            Collider2D zoneCollider = GetComponent<Collider2D>();
+            if (zoneCollider != null && !zoneCollider.OverlapPoint(player.transform.position))
+            {
+                ExecuteExitLogic(player);
+            }
+        }
+    }
+
+    private void ExecuteExitLogic(PlayerStateManager player)
+    {
+        isPlayerInside = false;
+
+        if (_spriteRenderer != null)
+        {
+            _spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f);
+        }
+
+        if (player != null && player.fishingButton != null)
+        {
+            player.IsInFishingZone = false;
+            player.SetButtonVisualState(player.fishingButton, false);
+            
+            if (player.currentFishingZone == this)
+            {
+                player.currentZoneData = null;
+                player.currentFishingZone = null;
             }
 
-            if (_currentPlayer != null && _currentPlayer.fishingButton != null)
-            {
-                _currentPlayer.IsInFishingZone = false;
-                _currentPlayer.SetButtonVisualState(_currentPlayer.fishingButton, false);
-                _currentPlayer.currentZoneData = null;
-                _currentPlayer.currentFishingZone = null;
+            if (_instantiatedUI != null) Destroy(_instantiatedUI);
+            if (_instantiatedStreakUI != null) Destroy(_instantiatedStreakUI);
+        }
 
-                if (_instantiatedUI != null) Destroy(_instantiatedUI);
-                if (_instantiatedStreakUI != null) Destroy(_instantiatedStreakUI);
-            }
+        _currentPlayer = null;
 
-            _currentPlayer = null;
-
+        if (gameObject.activeInHierarchy)
+        {
             _cooldownCoroutine = StartCoroutine(CooldownRoutine());
+        }
 
-            if (spawnerParent != null)
-            {
-                spawnerParent.OnPlayerLeftZone(this.gameObject);
-            }
+        if (spawnerParent != null)
+        {
+            spawnerParent.OnPlayerLeftZone(this.gameObject);
         }
     }
 
@@ -299,6 +341,7 @@ public class FishingZone : MonoBehaviour
         {
             Color goldColor;
             ColorUtility.TryParseHtmlString("#FFD700", out goldColor);
+            goldColor.a = 0.5f;
             _spriteRenderer.color = goldColor;
         }
 

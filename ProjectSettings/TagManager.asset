@@ -69,6 +69,12 @@ TagManager:
   - name: PulauTerdepan
     uniqueID: 3770472879
     locked: 0
+  - name: FishingSpot
+    uniqueID: 3839582805
+    locked: 0
+  - name: Trash
+    uniqueID: 2787496389
+    locked: 0
   - name: Homestay
     uniqueID: 1032789961
     locked: 0

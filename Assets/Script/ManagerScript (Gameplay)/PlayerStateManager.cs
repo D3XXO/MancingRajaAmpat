@@ -35,6 +35,7 @@ public class PlayerStateManager : MonoBehaviour
     public GameObject caughtFishPanel;
     public Image caughtFishImage;
     public Text caughtFishText;
+    public Text rarityText;
     public Text streakText;
     public GameObject newFishIndicator;
 
@@ -206,6 +207,26 @@ public class PlayerStateManager : MonoBehaviour
         caughtFishImage.sprite = fish.fishIcon;
         caughtFishText.text = fish.fishName;
 
+        if (rarityText != null)
+        {
+            rarityText.text = fish.rarity.ToString();
+            
+            Color rarityColor = Color.white;
+            switch (fish.rarity)
+            {
+                case FishRarity.Normal:
+                    ColorUtility.TryParseHtmlString("#9EB8D9", out rarityColor);
+                    break;
+                case FishRarity.Endemic:
+                    ColorUtility.TryParseHtmlString("#A3C2A0", out rarityColor);
+                    break;
+                case FishRarity.Rare:
+                    ColorUtility.TryParseHtmlString("#D9C39E", out rarityColor);
+                    break;
+            }
+            rarityText.color = rarityColor;
+        }
+
         if (newFishIndicator != null)
         {
             newFishIndicator.SetActive(isNewCatch);
@@ -314,9 +335,10 @@ public class PlayerStateManager : MonoBehaviour
 
         virtualCamera.m_Lens.OrthographicSize = targetSize;
 
-        if (fishingButton != null && IsInFishingZone && _currentState == MovementState)
+        if (fishingButton != null && _currentState == MovementState)
         {
             fishingButton.SetActive(true);
+            SetButtonVisualState(fishingButton, IsInFishingZone);
         }
     }
 

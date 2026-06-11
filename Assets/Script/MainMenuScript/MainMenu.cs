@@ -50,11 +50,7 @@ public class MainMenu : MonoBehaviour
             AudioManager.Instance.PlaySFX(clickButton);
         }
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-        QuitToUrl("https://d3xxo.itch.io/reel-rhythm");
-#else
         Application.Quit();
-#endif
     }
 
     public void ToggleMusic()
