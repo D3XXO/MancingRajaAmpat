@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class RhythmManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class RhythmManager : MonoBehaviour
     private int _currentQTENoteID = -1;
     private GameObject _activeQTENoteObj;
     private Coroutine _qteCoroutine;
+    private float _qteStartTime = 0f;
 
     private void OnDisable()
     {
@@ -62,6 +64,11 @@ public class RhythmManager : MonoBehaviour
 
         if (_isQTEActive)
         {
+            if (Time.unscaledTime - _qteStartTime < 1.0f) 
+            {
+                return;
+            }
+
             if (buttonID == _currentQTENoteID)
             {
                 EndQTE(true);
@@ -150,6 +157,7 @@ public class RhythmManager : MonoBehaviour
         _isQTEActive = true;
         Time.timeScale = 0.05f;
         qtePanel.SetActive(true);
+        _qteStartTime = Time.unscaledTime;
 
         GameObject[] prefabs = stateManager.rhythmSpawner.notePrefabs;
         GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
@@ -167,6 +175,13 @@ public class RhythmManager : MonoBehaviour
         
         rt.anchoredPosition = new Vector2(randomX, randomY);
         rt.localScale = Vector3.one * 2.0f;
+
+        Image noteImage = _activeQTENoteObj.GetComponent<Image>();
+        if (noteImage != null)
+        {
+            ColorUtility.TryParseHtmlString("#FFD700", out Color goldColor);
+            noteImage.color = goldColor;
+        }
 
         RhythmNote noteComp = _activeQTENoteObj.GetComponent<RhythmNote>();
         if (noteComp != null)
