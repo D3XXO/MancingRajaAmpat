@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public class RhythmManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class RhythmManager : MonoBehaviour
     public RectTransform targetZoneRect;
     public PlayerStateManager stateManager;
     public GameObject feedbackTextPrefab;
+    public GameObject qtePanel;
     public RectTransform feedbackPanel;
     public AudioClip perfectSfx;
     public AudioClip goodSfx;
@@ -15,6 +17,11 @@ public class RhythmManager : MonoBehaviour
     [Header("Threshold Settings")]
     public float rightThreshold;
     public float leftThreshold;
+
+    private bool _isQTEActive = false;
+    private int _currentQTENoteID = -1;
+    private GameObject _activeQTENoteObj;
+    private Coroutine _qteCoroutine;
 
     void Update()
     {
@@ -41,6 +48,19 @@ public class RhythmManager : MonoBehaviour
     public void OnButtonPressed(int buttonID)
     {
         if (stateManager != null && stateManager.rhythmSpawner != null && stateManager.rhythmSpawner.isCountingDown) return;
+
+        if (_isQTEActive)
+        {
+            if (buttonID == _currentQTENoteID)
+            {
+                EndQTE(true);
+            }
+            else
+            {
+                EndQTE(false);
+            }
+            return;
+        }
 
         RhythmNote targetNote = null;
         float targetDistance = 0f;
@@ -83,7 +103,11 @@ public class RhythmManager : MonoBehaviour
             {
                 ShowFeedback(targetDistance);
 
-                if (targetDistance <= 20f) stateManager.FishingState.ChangeProgress(0.05f);
+                if (targetDistance <= 20f) 
+                {
+                    stateManager.FishingState.ChangeProgress(0.025f);
+                    TriggerPerfectQTE();
+                }
                 else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.025f);
                 else
                 {
@@ -109,6 +133,84 @@ public class RhythmManager : MonoBehaviour
         }
     }
 
+    private void TriggerPerfectQTE()
+    {
+        _isQTEActive = true;
+        Time.timeScale = 0.05f;
+        qtePanel.SetActive(true);
+
+        GameObject[] prefabs = stateManager.rhythmSpawner.notePrefabs;
+        GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Length)];
+
+        _activeQTENoteObj = Instantiate(prefabToSpawn, feedbackPanel);
+        
+        RectTransform rt = _activeQTENoteObj.GetComponent<RectTransform>();
+        rt.anchoredPosition = Vector2.zero;
+        rt.localScale = Vector3.one * 2.0f;
+
+        RhythmNote noteComp = _activeQTENoteObj.GetComponent<RhythmNote>();
+        if (noteComp != null)
+        {
+            _currentQTENoteID = noteComp.noteID;
+            noteComp.enabled = false; 
+        }
+
+        _qteCoroutine = StartCoroutine(QTERoutine());
+    }
+
+    private IEnumerator QTERoutine()
+    {
+        float duration = 2.0f;
+        float elapsed = 0f;
+        Vector3 startScale = Vector3.one * 2.0f;
+        Vector3 endScale = Vector3.zero;
+
+        RectTransform rt = _activeQTENoteObj.GetComponent<RectTransform>();
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime; 
+            if (rt != null)
+            {
+                rt.localScale = Vector3.Lerp(startScale, endScale, elapsed / duration);
+            }
+            yield return null;
+        }
+
+        EndQTE(false);
+    }
+
+    private void EndQTE(bool isSuccess)
+    {
+        if (!_isQTEActive) return;
+
+        _isQTEActive = false;
+        Time.timeScale = 1f;
+        qtePanel.SetActive(false);
+
+        if (_qteCoroutine != null)
+        {
+            StopCoroutine(_qteCoroutine);
+            _qteCoroutine = null;
+        }
+
+        if (_activeQTENoteObj != null)
+        {
+            Destroy(_activeQTENoteObj);
+        }
+
+        if (isSuccess)
+        {
+            stateManager.FishingState.ChangeProgress(0.025f);
+            SpawnFeedbackText("NICE!", Color.cyan);
+            
+            if (AudioManager.Instance != null && perfectSfx != null)
+            {
+                AudioManager.Instance.PlayFeedback(perfectSfx);
+            }
+        }
+    }
+
     public void ShowFeedback(float distance)
     {
         string message;
@@ -116,9 +218,9 @@ public class RhythmManager : MonoBehaviour
 
         if (distance >= 999f)
         {
-            message = "LOL!!";
-            ColorUtility.TryParseHtmlString("#D36666", out color);
             Handheld.Vibrate();
+            message = "HAHAHA!!";
+            ColorUtility.TryParseHtmlString("#D36666", out color);
         }
         else if (distance <= 20f)
         {
@@ -132,7 +234,7 @@ public class RhythmManager : MonoBehaviour
         }
         else if (distance <= 80f)
         {
-            message = "WELL!";
+            message = "WELL";
             ColorUtility.TryParseHtmlString("#E1B05F", out color);
 
             if (AudioManager.Instance != null)
@@ -146,6 +248,11 @@ public class RhythmManager : MonoBehaviour
             ColorUtility.TryParseHtmlString("#D36666", out color);
         }
 
+        SpawnFeedbackText(message, color);
+    }
+
+    private void SpawnFeedbackText(string message, Color color)
+    {
         GameObject go = Instantiate(feedbackTextPrefab, feedbackPanel);
         
         RectTransform rt = go.GetComponent<RectTransform>();
