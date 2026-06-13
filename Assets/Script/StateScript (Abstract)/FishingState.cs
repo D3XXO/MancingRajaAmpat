@@ -207,6 +207,8 @@ public class FishingState : IPlayerState
 
     public void Exit()
     {
+        Time.timeScale = 1f;
+
         if (_manager.fishingMinigamePanel != null)
             _manager.fishingMinigamePanel.SetActive(false);
 

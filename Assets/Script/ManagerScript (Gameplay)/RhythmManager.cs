@@ -23,6 +23,17 @@ public class RhythmManager : MonoBehaviour
     private GameObject _activeQTENoteObj;
     private Coroutine _qteCoroutine;
 
+    private void OnDisable()
+    {
+        Time.timeScale = 1f;
+        _isQTEActive = false;
+        
+        if (qtePanel != null) qtePanel.SetActive(false);
+        if (_activeQTENoteObj != null) Destroy(_activeQTENoteObj);
+        
+        _qteCoroutine = null;
+    }
+
     void Update()
     {
         if (targetZoneRect == null) return;
@@ -105,7 +116,7 @@ public class RhythmManager : MonoBehaviour
 
                 if (targetDistance <= 20f) 
                 {
-                    stateManager.FishingState.ChangeProgress(0.025f);
+                    stateManager.FishingState.ChangeProgress(0.05f);
                     TriggerPerfectQTE();
                 }
                 else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.025f);
@@ -135,6 +146,7 @@ public class RhythmManager : MonoBehaviour
 
     private void TriggerPerfectQTE()
     {
+        if (!gameObject.activeInHierarchy) return;
         _isQTEActive = true;
         Time.timeScale = 0.05f;
         qtePanel.SetActive(true);
@@ -145,7 +157,15 @@ public class RhythmManager : MonoBehaviour
         _activeQTENoteObj = Instantiate(prefabToSpawn, feedbackPanel);
         
         RectTransform rt = _activeQTENoteObj.GetComponent<RectTransform>();
-        rt.anchoredPosition = Vector2.zero;
+        
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+
+        float randomX = Random.Range(-200f, 200f);
+        float randomY = Random.Range(-200f, 200f);
+        
+        rt.anchoredPosition = new Vector2(randomX, randomY);
         rt.localScale = Vector3.one * 2.0f;
 
         RhythmNote noteComp = _activeQTENoteObj.GetComponent<RhythmNote>();
@@ -219,7 +239,7 @@ public class RhythmManager : MonoBehaviour
         if (distance >= 999f)
         {
             Handheld.Vibrate();
-            message = "HAHAHA!!";
+            message = "HAHA!!";
             ColorUtility.TryParseHtmlString("#D36666", out color);
         }
         else if (distance <= 20f)
