@@ -82,6 +82,7 @@ public class RhythmManager : MonoBehaviour
             if (targetNote.isRedNote)
             {
                 ShowFeedback(999f);
+                Handheld.Vibrate();
                 stateManager.FishingState.ChangeProgress(-0.05f);
                 stateManager.TriggerShake(2.0f, 0.5f);
 
@@ -100,6 +101,7 @@ public class RhythmManager : MonoBehaviour
                 else if (targetDistance <= 80f) stateManager.FishingState.ChangeProgress(0.025f);
                 else
                 {
+                    Handheld.Vibrate();
                     stateManager.FishingState.ChangeProgress(-0.05f);
                     stateManager.TriggerShake(2.0f, 0.5f);
                 }
@@ -107,6 +109,7 @@ public class RhythmManager : MonoBehaviour
             else
             {
                 ShowFeedback(999f);
+                Handheld.Vibrate();
                 stateManager.FishingState.ChangeProgress(-0.05f);
                 stateManager.TriggerShake(2.0f, 0.5f);
             }
@@ -117,6 +120,7 @@ public class RhythmManager : MonoBehaviour
         else
         {
             ShowFeedback(999f);
+            Handheld.Vibrate();
             stateManager.FishingState.ChangeProgress(-0.05f);
             stateManager.TriggerShake(2.0f, 0.5f);
         }
@@ -129,7 +133,6 @@ public class RhythmManager : MonoBehaviour
 
         if (distance >= 999f)
         {
-            Handheld.Vibrate();
             message = "HAHA!";
             ColorUtility.TryParseHtmlString("#D36666", out color);
         }
