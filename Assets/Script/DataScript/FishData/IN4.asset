@@ -13,18 +13,14 @@ MonoBehaviour:
   m_Name: IN4
   m_EditorClassIdentifier: 
   fishID: IN4
-  fishName: Gobi Kerdil
-  fishIcon: {fileID: 21300000, guid: 9ea65c5162e465049a2b0cb9ddd876c5, type: 3}
+  fishName: Butterfly Fish
+  fishIcon: {fileID: 21300000, guid: 22836114098468949b3ad44723894471, type: 3}
   rarity: 0
-  generalDescription: Sebagai bagian dari kelompok gobi kerdil, ikan ini adalah salah
-    satu kandidat vertebrata terkecil di dunia. Ukuran tubuhnya yang mungil adalah
-    bentuk adaptasi untuk memanfaatkan celah karang yang sempit, yang tidak dapat
-    diakses oleh predator yang lebih besar.
-  funFact: Memiliki warna yang sangat cerah, dan sering kali tubuhnya sedikit transparan.
-    Mereka memiliki mata yang berukuran relatif besar dibandingkan dengan proporsi
-    kepalanya, yang berfungsi untuk membantu penglihatan di area karang yang minim
-    cahaya.
-  minVSRequirement: 50
-  vsValue: 10
+  generalDescription: Ikan karang berbentuk pipih dengan warna kuning atau cerah.
+    Moncongnya runcing untuk mematuk makanan di celah karang.
+  funFact: Sering berenang berpasangan sehidup semati. Corak hitam di dekat ekornya
+    berfungsi mengecoh predator agar mengira itu adalah matanya.
+  minVSRequirement: 20
+  vsValue: 6
   customAudioPath: 
   customAudioClip: {fileID: 0}

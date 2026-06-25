@@ -13,21 +13,17 @@ MonoBehaviour:
   m_Name: IR2
   m_EditorClassIdentifier: 
   fishID: IR2
-  fishName: Ikan Raja Laut
-  fishIcon: {fileID: 21300000, guid: c675965bb12f0284aa8285586c669953, type: 3}
+  fishName: Hiu Kalabia
+  fishIcon: {fileID: 21300000, guid: c0d192dc350ba4a4eae873688982609a, type: 3}
   rarity: 2
-  generalDescription: Sering dijuluki sebagai Fosil Hidup. Ikan ini memiliki bentuk
-    tubuh purba yang sangat khas dengan sirip-sirip yang berdaging dan terlihat seperti
-    pangkal kaki. Biasanya mendiami gua-gua di laut dalam.
-  funFact: Ikan ini sempat dianggap telah punah jutaan tahun yang lalu bersama dinosaurus,
-    sampai akhirnya ditemukan kembali di perairan Indonesia. Penemuan ini mengguncang
-    dunia sains internasional karena membuktikan bahwa mahluk dari zaman prasejarah
-    masih hidup dan menjaga rahasia lautan Nusantara hingga saat ini.
-  moveSpeed: 9
-  minSpawnInterval: 0.2
-  maxSpawnInterval: 0.5
+  generalDescription: Hiu yang hidup di dasar laut dengan pola bintik-bintik gelap
+    yang menyerupai motif karpet atau kulit macan. Berbeda dengan hiu laut lepas,
+    hiu ini berukuran relatif kecil dan sangat tenang.
+  funFact: Mirip dengan kerabatnya Hiu Berjalan, hiu kalabia ini lebih sering menggunakan
+    sirip dadanya untuk berjalan di dasar laut daripada berenang. Pola bintiknya
+    adalah kamuflase sempurna agar tidak terlihat oleh mangsanya saat ia sedang beristirahat
+    di antara karang dan pasir.
   minVSRequirement: 750
-  vsValue: 40
-  minusScore: -200
+  vsValue: 35
   customAudioPath: 
   customAudioClip: {fileID: 0}

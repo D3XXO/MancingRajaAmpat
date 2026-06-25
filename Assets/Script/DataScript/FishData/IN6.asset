@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a8383ef7619284ea014b1320762cd1, type: 3}
+  m_Name: IN6
+  m_EditorClassIdentifier: 
+  fishID: Ikan Parrot
+  fishName: IN6
+  fishIcon: {fileID: 21300000, guid: e62028cc6366d6a418230ee295d89a45, type: 3}
+  rarity: 0
+  generalDescription: Ikan herbivora berukuran sedang dengan warna tubuh neon mencolok
+    dan gigi yang menyatu mirip paruh burung kakatua.
+  funFact: Saat memakan alga di karang, mereka ikut menelan batu karang dan mengeluarkannya
+    sebagai kotoran berupa pasir. Pasir putih di pantai tropis sebagian besar berasal
+    dari kotoran ikan ini.
+  minVSRequirement: 40
+  vsValue: 8
+  customAudioPath: 
+  customAudioClip: {fileID: 0}

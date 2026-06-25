@@ -13,21 +13,14 @@ MonoBehaviour:
   m_Name: IN2
   m_EditorClassIdentifier: 
   fishID: IN2
-  fishName: Ikan Kakap
-  fishIcon: {fileID: 21300000, guid: 044925216b8a5624fb39ffc7f6df9ef6, type: 3}
+  fishName: Ikan Badut
+  fishIcon: {fileID: 21300000, guid: 3b76c1e672e7659478d86468ae272eb6, type: 3}
   rarity: 0
-  generalDescription: Ikan kakap adalah kelompok ikan predator yang tersebar luas
-    di perairan tropis dan subtropis. Secara biologis, ikan ini memiliki tubuh yang
-    kuat dengan sisik yang keras serta rahang yang kokoh.
-  funFact: Memiliki rahang yang kuat, kakap dilengkapi dengan gigi-gigi kecil berbentuk
-    kerucut yang tersusun rapat pada rahangnya. Struktur gigi ini dirancang bukan
-    untuk mengunyah, melainkan untuk mencengkeram mangsa dengan kuat agar tidak lepas
-    sebelum ditelan.
-  moveSpeed: 5.5
-  minSpawnInterval: 0.3
-  maxSpawnInterval: 1
-  minVSRequirement: 10
-  vsValue: 5
-  minusScore: -8
+  generalDescription: Ikan kecil berwarna oranye cerah dengan garis putih yang selalu
+    hidup berdampingan dengan anemon laut.
+  funFact: Mereka punya lapisan lendir khusus di kulitnya yang membuat mereka kebal
+    dari sengatan beracun anemon.
+  minVSRequirement: 5
+  vsValue: 3
   customAudioPath: 
   customAudioClip: {fileID: 0}
